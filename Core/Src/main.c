@@ -32,10 +32,10 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-uint16_t Get_Compare(int16_t ch_data){
-  return 150.0/132.0*(ch_data+660) + 500;
+float Get_Pos(int16_t ch_data){
+  return 6.0/1320.0*(ch_data+660);
 }
-uint16_t PWM_Compare[6]={500,500,2000,500,500,500};
+float Pos[4] = {0,0,0,0};
 extern RC_t RC;
 extern CAN_TxHeaderTypeDef motor_tx_message;
 extern uint8_t motor_can_send_data[8];
@@ -109,6 +109,7 @@ int main(void)
   can_filter_init();
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   uint8_t Enable_flag = 0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,20 +120,46 @@ int main(void)
       //判断是否使能如果没有使能就使能
       if(!Enable_flag) {
         DM_Enable(0x101);
+        HAL_Delay(5);
+        DM_Enable(0x102);
+        HAL_Delay(5);
+        DM_Enable(0x103);
+        HAL_Delay(5);
+        DM_Enable(0x104);
+        HAL_Delay(5);
         Enable_flag = 1;
-        HAL_Delay(10);
       }
 
-      // DM_SpeedPosition_cmd(&hcan1,0x101,0.0,0.0);
+      Pos[0] =(Get_Pos(RC.ch0)<=6 && Get_Pos(RC.ch0)>=0)?Get_Pos(RC.ch0):0;
+      Pos[1] =(Get_Pos(RC.ch1)<=6 && Get_Pos(RC.ch1)>=0)?Get_Pos(RC.ch1):0;
+      Pos[2] =(Get_Pos(RC.ch2)<=6 && Get_Pos(RC.ch2)>=0)?Get_Pos(RC.ch2):0;
+      Pos[3] =(Get_Pos(RC.ch3)<=6 && Get_Pos(RC.ch3)>=0)?Get_Pos(RC.ch3):0;
+
+      DM_SpeedPosition_cmd(&hcan1,0x101,3.0,Pos[0]);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x102,3.0,Pos[1]);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x103,3.0,Pos[2]);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x104,3.0,Pos[3]);
+      HAL_Delay(5);
+
     }else {
+      //判断是否失能如果没有失能就失能
       if(Enable_flag) {
         DM_Disable(0x101);
+        HAL_Delay(5);
+        DM_Disable(0x102);
+        HAL_Delay(5);
+        DM_Disable(0x103);
+        HAL_Delay(5);
+        DM_Disable(0x104);
+        HAL_Delay(5);
         Enable_flag = 0;
-        HAL_Delay(10);
       }
     }
 
-    HAL_Delay(10);
+    HAL_Delay(50);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

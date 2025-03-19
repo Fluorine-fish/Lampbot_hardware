@@ -28,6 +28,9 @@ motor_t M3508_2={0,0,0,0};
 motor_t M3508_3={0,0,0,0};
 motor_t M3508_4={0,0,0,0};
 DM_motor_t J4310_1={0,0,0,0,0,0,0};
+DM_motor_t J4310_2={0,0,0,0,0,0,0};
+DM_motor_t J4310_3={0,0,0,0,0,0,0};
+DM_motor_t J4310_4={0,0,0,0,0,0,0};
 motor_t H6215_1={0,0,0,0};
 motor_t H6215_2={0,0,0,0};
 uint8_t motor_can_send_data[8];
@@ -111,7 +114,7 @@ HAL_StatusTypeDef DM_SpeedPosition_cmd(CAN_HandleTypeDef *hacn,uint32_t stdid, f
   motor_can_send_data[6] = *(vbuf+2);
   motor_can_send_data[7] = *(vbuf+3);
 
-  return HAL_CAN_AddTxMessage(&hacn, &motor_tx_message, motor_can_send_data, &send_mail_box);
+  return HAL_CAN_AddTxMessage(hacn, &motor_tx_message, motor_can_send_data, &send_mail_box);
 }
 
 //达妙相关函数；
@@ -252,5 +255,14 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan)
   //达妙在速度位置模式下接收为MasterID
   if (rx_header.StdId == 0x011) {
     decode_motor_measure_DM(&J4310_1, rx_data);
+  }
+  if (rx_header.StdId == 0x012) {
+    decode_motor_measure_DM(&J4310_2, rx_data);
+  }
+  if (rx_header.StdId == 0x013) {
+    decode_motor_measure_DM(&J4310_3, rx_data);
+  }
+  if (rx_header.StdId == 0x014) {
+    decode_motor_measure_DM(&J4310_4, rx_data);
   }
 }

@@ -5,13 +5,15 @@ D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none
 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_mulsf3.o)
                               CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj (__aeabi_fmul)
 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
-                              CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj (__aeabi_dadd)
-D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixunsdfsi.o)
-                              CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj (__aeabi_d2uiz)
+                              CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj (__aeabi_i2d)
+D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_truncdfsf2.o)
+                              CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj (__aeabi_d2f)
 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
                               CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj (__aeabi_fsub)
 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
                               CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj (__aeabi_fdiv)
+D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_cmpsf2.o)
+                              CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj (__aeabi_fcmple)
 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixsfsi.o)
                               CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj (__aeabi_f2iz)
 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_aeabi_uldivmod.o)
@@ -90,8 +92,6 @@ Discarded input sections
  .bss           0x00000000        0x0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
  .text.cmd_motor
                 0x00000000       0x58 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
- .text.DM_SpeedPosition_cmd
-                0x00000000       0x5c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
  .text.float_to_uint
                 0x00000000       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
  .bss.H6215_2   0x00000000        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
@@ -110,10 +110,6 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
  .data          0x00000000        0x0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
  .bss           0x00000000        0x0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
- .text.Get_Compare
-                0x00000000       0x34 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
- .data.PWM_Compare
-                0x00000000        0xc CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
  .text          0x00000000        0x0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
  .data          0x00000000        0x0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
  .bss           0x00000000        0x0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
@@ -1076,34 +1072,24 @@ Discarded input sections
                 0x00000000       0x66 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.HAL_UARTEx_ReceiveToIdle_DMA
                 0x00000000       0x66 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .text          0x00000000      0x254 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldf3.o)
  .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldf3.o)
  .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldf3.o)
- .debug_frame   0x00000000       0x30 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldf3.o)
- .ARM.attributes
-                0x00000000       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldf3.o)
  .text          0x00000000      0x168 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_mulsf3.o)
  .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_mulsf3.o)
  .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_mulsf3.o)
  .debug_frame   0x00000000       0x24 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_mulsf3.o)
  .ARM.attributes
                 0x00000000       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_mulsf3.o)
- .text          0x00000000      0x378 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
  .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
  .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00000000       0xac D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
- .ARM.attributes
-                0x00000000       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
- .text          0x00000000       0x40 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixunsdfsi.o)
- .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixunsdfsi.o)
- .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixunsdfsi.o)
- .debug_frame   0x00000000       0x24 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixunsdfsi.o)
- .ARM.attributes
-                0x00000000       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixunsdfsi.o)
+ .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_truncdfsf2.o)
+ .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_truncdfsf2.o)
  .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
  .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
  .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
  .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
+ .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_cmpsf2.o)
+ .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_cmpsf2.o)
  .text          0x00000000       0x4c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixsfsi.o)
  .data          0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixsfsi.o)
  .bss           0x00000000        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_fixsfsi.o)
@@ -1626,536 +1612,580 @@ LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm
                 0x08000000                g_pfnVectors
                 0x08000188                        . = ALIGN (0x4)
 
-.text           0x08000188     0x3350
+.text           0x08000188     0x3cd0
                 0x08000188                        . = ALIGN (0x4)
  *(.text)
  .text          0x08000188       0x40 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
- .text          0x080001c8      0x21c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
-                0x080001c8                __aeabi_frsub
-                0x080001d0                __subsf3
-                0x080001d0                __aeabi_fsub
-                0x080001d4                __aeabi_fadd
-                0x080001d4                __addsf3
-                0x08000334                __aeabi_ui2f
-                0x08000334                __floatunsisf
-                0x0800033c                __aeabi_i2f
-                0x0800033c                __floatsisf
-                0x08000358                __aeabi_ul2f
-                0x08000358                __floatundisf
-                0x08000368                __aeabi_l2f
-                0x08000368                __floatdisf
- .text          0x080003e4      0x2a0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
-                0x080003e4                __mulsf3
-                0x080003e4                __aeabi_fmul
-                0x0800054c                __aeabi_fdiv
-                0x0800054c                __divsf3
- .text          0x08000684       0x30 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_aeabi_uldivmod.o)
-                0x08000684                __aeabi_uldivmod
- .text          0x080006b4      0x2bc D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
-                0x080006b4                __udivmoddi4
- .text          0x08000970        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_dvmd_tls.o)
-                0x08000970                __aeabi_idiv0
-                0x08000970                __aeabi_ldiv0
+ .text          0x080001c8      0x254 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldf3.o)
+                0x080001c8                __muldf3
+                0x080001c8                __aeabi_dmul
+ .text          0x0800041c      0x378 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
+                0x0800041c                __aeabi_drsub
+                0x08000424                __aeabi_dsub
+                0x08000424                __subdf3
+                0x08000428                __aeabi_dadd
+                0x08000428                __adddf3
+                0x080006a0                __floatunsidf
+                0x080006a0                __aeabi_ui2d
+                0x080006c0                __floatsidf
+                0x080006c0                __aeabi_i2d
+                0x080006e4                __aeabi_f2d
+                0x080006e4                __extendsfdf2
+                0x08000728                __floatundidf
+                0x08000728                __aeabi_ul2d
+                0x08000738                __floatdidf
+                0x08000738                __aeabi_l2d
+ .text          0x08000794       0xa0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_truncdfsf2.o)
+                0x08000794                __truncdfsf2
+                0x08000794                __aeabi_d2f
+ .text          0x08000834      0x21c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
+                0x08000834                __aeabi_frsub
+                0x0800083c                __subsf3
+                0x0800083c                __aeabi_fsub
+                0x08000840                __aeabi_fadd
+                0x08000840                __addsf3
+                0x080009a0                __aeabi_ui2f
+                0x080009a0                __floatunsisf
+                0x080009a8                __aeabi_i2f
+                0x080009a8                __floatsisf
+                0x080009c4                __aeabi_ul2f
+                0x080009c4                __floatundisf
+                0x080009d4                __aeabi_l2f
+                0x080009d4                __floatdisf
+ .text          0x08000a50      0x2a0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
+                0x08000a50                __mulsf3
+                0x08000a50                __aeabi_fmul
+                0x08000bb8                __aeabi_fdiv
+                0x08000bb8                __divsf3
+ .text          0x08000cf0       0xec D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_cmpsf2.o)
+                0x08000cf0                __gesf2
+                0x08000cf0                __gtsf2
+                0x08000cf8                __lesf2
+                0x08000cf8                __ltsf2
+                0x08000d00                __nesf2
+                0x08000d00                __eqsf2
+                0x08000d00                __cmpsf2
+                0x08000d60                __aeabi_cfrcmple
+                0x08000d68                __aeabi_cfcmpeq
+                0x08000d68                __aeabi_cfcmple
+                0x08000d78                __aeabi_fcmpeq
+                0x08000d8c                __aeabi_fcmplt
+                0x08000da0                __aeabi_fcmple
+                0x08000db4                __aeabi_fcmpge
+                0x08000dc8                __aeabi_fcmpgt
+ .text          0x08000ddc       0x30 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+                0x08000ddc                __aeabi_uldivmod
+ .text          0x08000e0c      0x2bc D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x08000e0c                __udivmoddi4
+ .text          0x080010c8        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_dvmd_tls.o)
+                0x080010c8                __aeabi_idiv0
+                0x080010c8                __aeabi_ldiv0
  *(.text*)
  .text.can_filter_init
-                0x08000974       0x3c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x08000974                can_filter_init
+                0x080010cc       0x3c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x080010cc                can_filter_init
+ .text.DM_SpeedPosition_cmd
+                0x08001108       0x58 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x08001108                DM_SpeedPosition_cmd
  .text.DM_Enable
-                0x080009b0       0x44 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x080009b0                DM_Enable
+                0x08001160       0x44 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x08001160                DM_Enable
  .text.DM_Disable
-                0x080009f4       0x44 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x080009f4                DM_Disable
+                0x080011a4       0x44 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x080011a4                DM_Disable
  .text.decode_motor_measure
-                0x08000a38       0x24 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x08000a38                decode_motor_measure
+                0x080011e8       0x24 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x080011e8                decode_motor_measure
  .text.uint_to_float
-                0x08000a5c       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x08000a5c                uint_to_float
+                0x0800120c       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x0800120c                uint_to_float
  .text.decode_motor_measure_DM
-                0x08000a94       0x74 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x08000a94                decode_motor_measure_DM
+                0x08001244       0x74 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x08001244                decode_motor_measure_DM
  .text.HAL_CAN_RxFifo0MsgPendingCallback
-                0x08000b08       0xa0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x08000b08                HAL_CAN_RxFifo0MsgPendingCallback
+                0x080012b8       0xdc CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x080012b8                HAL_CAN_RxFifo0MsgPendingCallback
  .text.MX_CAN1_Init
-                0x08000ba8       0x40 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
-                0x08000ba8                MX_CAN1_Init
+                0x08001394       0x40 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+                0x08001394                MX_CAN1_Init
  .text.MX_CAN2_Init
-                0x08000be8       0x40 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
-                0x08000be8                MX_CAN2_Init
+                0x080013d4       0x40 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+                0x080013d4                MX_CAN2_Init
  .text.HAL_CAN_MspInit
-                0x08000c28      0x120 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
-                0x08000c28                HAL_CAN_MspInit
+                0x08001414      0x120 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+                0x08001414                HAL_CAN_MspInit
  .text.MX_DMA_Init
-                0x08000d48       0x34 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
-                0x08000d48                MX_DMA_Init
+                0x08001534       0x34 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
+                0x08001534                MX_DMA_Init
  .text.MX_GPIO_Init
-                0x08000d7c       0x9c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
-                0x08000d7c                MX_GPIO_Init
+                0x08001568       0x9c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
+                0x08001568                MX_GPIO_Init
+ *fill*         0x08001604        0x4 
+ .text.Get_Pos  0x08001608       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+                0x08001608                Get_Pos
  .text.Error_Handler
-                0x08000e18        0x4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
-                0x08000e18                Error_Handler
+                0x08001630        0x4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+                0x08001630                Error_Handler
  .text.SystemClock_Config
-                0x08000e1c       0xa4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
-                0x08000e1c                SystemClock_Config
- .text.main     0x08000ec0       0x80 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
-                0x08000ec0                main
+                0x08001634       0xa4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+                0x08001634                SystemClock_Config
+ .text.main     0x080016d8      0x1e8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+                0x080016d8                main
  .text.RC_Processing_Data
-                0x08000f40       0xa4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
-                0x08000f40                RC_Processing_Data
+                0x080018c0       0xa4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+                0x080018c0                RC_Processing_Data
  .text.HAL_UART_RxCpltCallback
-                0x08000fe4       0x18 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
-                0x08000fe4                HAL_UART_RxCpltCallback
+                0x08001964       0x18 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+                0x08001964                HAL_UART_RxCpltCallback
  .text.HAL_MspInit
-                0x08000ffc       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
-                0x08000ffc                HAL_MspInit
+                0x0800197c       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+                0x0800197c                HAL_MspInit
  .text.NMI_Handler
-                0x08001034        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001034                NMI_Handler
+                0x080019b4        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019b4                NMI_Handler
  .text.HardFault_Handler
-                0x08001036        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001036                HardFault_Handler
+                0x080019b6        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019b6                HardFault_Handler
  .text.MemManage_Handler
-                0x08001038        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001038                MemManage_Handler
+                0x080019b8        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019b8                MemManage_Handler
  .text.BusFault_Handler
-                0x0800103a        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x0800103a                BusFault_Handler
+                0x080019ba        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019ba                BusFault_Handler
  .text.UsageFault_Handler
-                0x0800103c        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x0800103c                UsageFault_Handler
+                0x080019bc        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019bc                UsageFault_Handler
  .text.SVC_Handler
-                0x0800103e        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x0800103e                SVC_Handler
+                0x080019be        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019be                SVC_Handler
  .text.DebugMon_Handler
-                0x08001040        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001040                DebugMon_Handler
+                0x080019c0        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019c0                DebugMon_Handler
  .text.PendSV_Handler
-                0x08001042        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001042                PendSV_Handler
+                0x080019c2        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019c2                PendSV_Handler
  .text.SysTick_Handler
-                0x08001044        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001044                SysTick_Handler
+                0x080019c4        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019c4                SysTick_Handler
  .text.DMA1_Stream1_IRQHandler
-                0x0800104c       0x14 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x0800104c                DMA1_Stream1_IRQHandler
+                0x080019cc       0x14 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019cc                DMA1_Stream1_IRQHandler
  .text.CAN1_RX0_IRQHandler
-                0x08001060       0x10 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001060                CAN1_RX0_IRQHandler
+                0x080019e0       0x10 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019e0                CAN1_RX0_IRQHandler
  .text.CAN2_RX0_IRQHandler
-                0x08001070       0x10 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001070                CAN2_RX0_IRQHandler
+                0x080019f0       0x10 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080019f0                CAN2_RX0_IRQHandler
  .text.SystemInit
-                0x08001080        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
-                0x08001080                SystemInit
- *fill*         0x08001082        0x2 
+                0x08001a00        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+                0x08001a00                SystemInit
+ *fill*         0x08001a02        0x2 
  .text.HAL_TIM_PWM_MspInit
-                0x08001084       0x30 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
-                0x08001084                HAL_TIM_PWM_MspInit
+                0x08001a04       0x30 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+                0x08001a04                HAL_TIM_PWM_MspInit
  .text.HAL_TIM_OC_MspInit
-                0x080010b4       0x30 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
-                0x080010b4                HAL_TIM_OC_MspInit
+                0x08001a34       0x30 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+                0x08001a34                HAL_TIM_OC_MspInit
  .text.HAL_TIM_MspPostInit
-                0x080010e4       0xc0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
-                0x080010e4                HAL_TIM_MspPostInit
+                0x08001a64       0xc0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+                0x08001a64                HAL_TIM_MspPostInit
  .text.MX_TIM1_Init
-                0x080011a4       0xf4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
-                0x080011a4                MX_TIM1_Init
+                0x08001b24       0xf4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+                0x08001b24                MX_TIM1_Init
  .text.MX_TIM8_Init
-                0x08001298       0xdc CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
-                0x08001298                MX_TIM8_Init
+                0x08001c18       0xdc CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+                0x08001c18                MX_TIM8_Init
  .text.MX_USART3_UART_Init
-                0x08001374       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
-                0x08001374                MX_USART3_UART_Init
+                0x08001cf4       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+                0x08001cf4                MX_USART3_UART_Init
  .text.HAL_UART_MspInit
-                0x080013ac       0xb4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
-                0x080013ac                HAL_UART_MspInit
+                0x08001d2c       0xb4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+                0x08001d2c                HAL_UART_MspInit
  .text.Reset_Handler
-                0x08001460       0x50 CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
-                0x08001460                Reset_Handler
+                0x08001de0       0x50 CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
+                0x08001de0                Reset_Handler
  .text.Default_Handler
-                0x080014b0        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
-                0x080014b0                RTC_Alarm_IRQHandler
-                0x080014b0                HASH_RNG_IRQHandler
-                0x080014b0                EXTI2_IRQHandler
-                0x080014b0                TIM8_CC_IRQHandler
-                0x080014b0                TIM1_CC_IRQHandler
-                0x080014b0                DMA2_Stream5_IRQHandler
-                0x080014b0                DMA1_Stream5_IRQHandler
-                0x080014b0                PVD_IRQHandler
-                0x080014b0                SDIO_IRQHandler
-                0x080014b0                TAMP_STAMP_IRQHandler
-                0x080014b0                CAN2_RX1_IRQHandler
-                0x080014b0                EXTI3_IRQHandler
-                0x080014b0                TIM8_TRG_COM_TIM14_IRQHandler
-                0x080014b0                TIM1_UP_TIM10_IRQHandler
-                0x080014b0                TIM8_UP_TIM13_IRQHandler
-                0x080014b0                I2C3_ER_IRQHandler
-                0x080014b0                EXTI0_IRQHandler
-                0x080014b0                I2C2_EV_IRQHandler
-                0x080014b0                DMA1_Stream2_IRQHandler
-                0x080014b0                FPU_IRQHandler
-                0x080014b0                OTG_HS_WKUP_IRQHandler
-                0x080014b0                CAN2_SCE_IRQHandler
-                0x080014b0                DMA2_Stream2_IRQHandler
-                0x080014b0                SPI1_IRQHandler
-                0x080014b0                TIM6_DAC_IRQHandler
-                0x080014b0                TIM1_BRK_TIM9_IRQHandler
-                0x080014b0                DCMI_IRQHandler
-                0x080014b0                DMA2_Stream3_IRQHandler
-                0x080014b0                USART6_IRQHandler
-                0x080014b0                USART3_IRQHandler
-                0x080014b0                CAN1_RX1_IRQHandler
-                0x080014b0                UART5_IRQHandler
-                0x080014b0                DMA2_Stream0_IRQHandler
-                0x080014b0                TIM4_IRQHandler
-                0x080014b0                I2C1_EV_IRQHandler
-                0x080014b0                DMA1_Stream6_IRQHandler
-                0x080014b0                UART4_IRQHandler
-                0x080014b0                TIM3_IRQHandler
-                0x080014b0                RCC_IRQHandler
-                0x080014b0                TIM8_BRK_TIM12_IRQHandler
-                0x080014b0                Default_Handler
-                0x080014b0                EXTI15_10_IRQHandler
-                0x080014b0                ADC_IRQHandler
-                0x080014b0                DMA1_Stream7_IRQHandler
-                0x080014b0                TIM7_IRQHandler
-                0x080014b0                CAN2_TX_IRQHandler
-                0x080014b0                TIM5_IRQHandler
-                0x080014b0                DMA2_Stream7_IRQHandler
-                0x080014b0                I2C3_EV_IRQHandler
-                0x080014b0                EXTI9_5_IRQHandler
-                0x080014b0                RTC_WKUP_IRQHandler
-                0x080014b0                ETH_WKUP_IRQHandler
-                0x080014b0                SPI2_IRQHandler
-                0x080014b0                OTG_HS_EP1_IN_IRQHandler
-                0x080014b0                DMA1_Stream0_IRQHandler
-                0x080014b0                CAN1_TX_IRQHandler
-                0x080014b0                EXTI4_IRQHandler
-                0x080014b0                FSMC_IRQHandler
-                0x080014b0                ETH_IRQHandler
-                0x080014b0                OTG_HS_EP1_OUT_IRQHandler
-                0x080014b0                WWDG_IRQHandler
-                0x080014b0                TIM2_IRQHandler
-                0x080014b0                OTG_FS_WKUP_IRQHandler
-                0x080014b0                TIM1_TRG_COM_TIM11_IRQHandler
-                0x080014b0                OTG_HS_IRQHandler
-                0x080014b0                EXTI1_IRQHandler
-                0x080014b0                USART2_IRQHandler
-                0x080014b0                I2C2_ER_IRQHandler
-                0x080014b0                DMA2_Stream1_IRQHandler
-                0x080014b0                CAN1_SCE_IRQHandler
-                0x080014b0                FLASH_IRQHandler
-                0x080014b0                DMA2_Stream4_IRQHandler
-                0x080014b0                USART1_IRQHandler
-                0x080014b0                OTG_FS_IRQHandler
-                0x080014b0                SPI3_IRQHandler
-                0x080014b0                DMA1_Stream4_IRQHandler
-                0x080014b0                I2C1_ER_IRQHandler
-                0x080014b0                DMA2_Stream6_IRQHandler
-                0x080014b0                DMA1_Stream3_IRQHandler
- *fill*         0x080014b2        0x2 
+                0x08001e30        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
+                0x08001e30                RTC_Alarm_IRQHandler
+                0x08001e30                HASH_RNG_IRQHandler
+                0x08001e30                EXTI2_IRQHandler
+                0x08001e30                TIM8_CC_IRQHandler
+                0x08001e30                TIM1_CC_IRQHandler
+                0x08001e30                DMA2_Stream5_IRQHandler
+                0x08001e30                DMA1_Stream5_IRQHandler
+                0x08001e30                PVD_IRQHandler
+                0x08001e30                SDIO_IRQHandler
+                0x08001e30                TAMP_STAMP_IRQHandler
+                0x08001e30                CAN2_RX1_IRQHandler
+                0x08001e30                EXTI3_IRQHandler
+                0x08001e30                TIM8_TRG_COM_TIM14_IRQHandler
+                0x08001e30                TIM1_UP_TIM10_IRQHandler
+                0x08001e30                TIM8_UP_TIM13_IRQHandler
+                0x08001e30                I2C3_ER_IRQHandler
+                0x08001e30                EXTI0_IRQHandler
+                0x08001e30                I2C2_EV_IRQHandler
+                0x08001e30                DMA1_Stream2_IRQHandler
+                0x08001e30                FPU_IRQHandler
+                0x08001e30                OTG_HS_WKUP_IRQHandler
+                0x08001e30                CAN2_SCE_IRQHandler
+                0x08001e30                DMA2_Stream2_IRQHandler
+                0x08001e30                SPI1_IRQHandler
+                0x08001e30                TIM6_DAC_IRQHandler
+                0x08001e30                TIM1_BRK_TIM9_IRQHandler
+                0x08001e30                DCMI_IRQHandler
+                0x08001e30                DMA2_Stream3_IRQHandler
+                0x08001e30                USART6_IRQHandler
+                0x08001e30                USART3_IRQHandler
+                0x08001e30                CAN1_RX1_IRQHandler
+                0x08001e30                UART5_IRQHandler
+                0x08001e30                DMA2_Stream0_IRQHandler
+                0x08001e30                TIM4_IRQHandler
+                0x08001e30                I2C1_EV_IRQHandler
+                0x08001e30                DMA1_Stream6_IRQHandler
+                0x08001e30                UART4_IRQHandler
+                0x08001e30                TIM3_IRQHandler
+                0x08001e30                RCC_IRQHandler
+                0x08001e30                TIM8_BRK_TIM12_IRQHandler
+                0x08001e30                Default_Handler
+                0x08001e30                EXTI15_10_IRQHandler
+                0x08001e30                ADC_IRQHandler
+                0x08001e30                DMA1_Stream7_IRQHandler
+                0x08001e30                TIM7_IRQHandler
+                0x08001e30                CAN2_TX_IRQHandler
+                0x08001e30                TIM5_IRQHandler
+                0x08001e30                DMA2_Stream7_IRQHandler
+                0x08001e30                I2C3_EV_IRQHandler
+                0x08001e30                EXTI9_5_IRQHandler
+                0x08001e30                RTC_WKUP_IRQHandler
+                0x08001e30                ETH_WKUP_IRQHandler
+                0x08001e30                SPI2_IRQHandler
+                0x08001e30                OTG_HS_EP1_IN_IRQHandler
+                0x08001e30                DMA1_Stream0_IRQHandler
+                0x08001e30                CAN1_TX_IRQHandler
+                0x08001e30                EXTI4_IRQHandler
+                0x08001e30                FSMC_IRQHandler
+                0x08001e30                ETH_IRQHandler
+                0x08001e30                OTG_HS_EP1_OUT_IRQHandler
+                0x08001e30                WWDG_IRQHandler
+                0x08001e30                TIM2_IRQHandler
+                0x08001e30                OTG_FS_WKUP_IRQHandler
+                0x08001e30                TIM1_TRG_COM_TIM11_IRQHandler
+                0x08001e30                OTG_HS_IRQHandler
+                0x08001e30                EXTI1_IRQHandler
+                0x08001e30                USART2_IRQHandler
+                0x08001e30                I2C2_ER_IRQHandler
+                0x08001e30                DMA2_Stream1_IRQHandler
+                0x08001e30                CAN1_SCE_IRQHandler
+                0x08001e30                FLASH_IRQHandler
+                0x08001e30                DMA2_Stream4_IRQHandler
+                0x08001e30                USART1_IRQHandler
+                0x08001e30                OTG_FS_IRQHandler
+                0x08001e30                SPI3_IRQHandler
+                0x08001e30                DMA1_Stream4_IRQHandler
+                0x08001e30                I2C1_ER_IRQHandler
+                0x08001e30                DMA2_Stream6_IRQHandler
+                0x08001e30                DMA1_Stream3_IRQHandler
+ *fill*         0x08001e32        0x2 
  .text.HAL_InitTick
-                0x080014b4       0x4c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x080014b4                HAL_InitTick
+                0x08001e34       0x4c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x08001e34                HAL_InitTick
  .text.HAL_Init
-                0x08001500       0x34 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x08001500                HAL_Init
+                0x08001e80       0x34 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x08001e80                HAL_Init
  .text.HAL_IncTick
-                0x08001534       0x18 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x08001534                HAL_IncTick
+                0x08001eb4       0x18 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x08001eb4                HAL_IncTick
  .text.HAL_GetTick
-                0x0800154c        0xc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x0800154c                HAL_GetTick
+                0x08001ecc        0xc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x08001ecc                HAL_GetTick
  .text.HAL_Delay
-                0x08001558       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x08001558                HAL_Delay
+                0x08001ed8       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x08001ed8                HAL_Delay
  .text.HAL_CAN_Init
-                0x08001580      0x14c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001580                HAL_CAN_Init
+                0x08001f00      0x14c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001f00                HAL_CAN_Init
  .text.HAL_CAN_ConfigFilter
-                0x080016cc      0x13c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x080016cc                HAL_CAN_ConfigFilter
+                0x0800204c      0x13c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x0800204c                HAL_CAN_ConfigFilter
  .text.HAL_CAN_Start
-                0x08001808       0x5c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001808                HAL_CAN_Start
+                0x08002188       0x5c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002188                HAL_CAN_Start
  .text.HAL_CAN_AddTxMessage
-                0x08001864       0xea CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001864                HAL_CAN_AddTxMessage
+                0x080021e4       0xea CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x080021e4                HAL_CAN_AddTxMessage
  .text.HAL_CAN_GetRxMessage
-                0x0800194e      0x16a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x0800194e                HAL_CAN_GetRxMessage
+                0x080022ce      0x16a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x080022ce                HAL_CAN_GetRxMessage
  .text.HAL_CAN_ActivateNotification
-                0x08001ab8       0x24 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001ab8                HAL_CAN_ActivateNotification
+                0x08002438       0x24 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002438                HAL_CAN_ActivateNotification
  .text.HAL_CAN_TxMailbox0CompleteCallback
-                0x08001adc        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001adc                HAL_CAN_TxMailbox0CompleteCallback
+                0x0800245c        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x0800245c                HAL_CAN_TxMailbox0CompleteCallback
  .text.HAL_CAN_TxMailbox1CompleteCallback
-                0x08001ade        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001ade                HAL_CAN_TxMailbox1CompleteCallback
+                0x0800245e        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x0800245e                HAL_CAN_TxMailbox1CompleteCallback
  .text.HAL_CAN_TxMailbox2CompleteCallback
-                0x08001ae0        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001ae0                HAL_CAN_TxMailbox2CompleteCallback
+                0x08002460        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002460                HAL_CAN_TxMailbox2CompleteCallback
  .text.HAL_CAN_TxMailbox0AbortCallback
-                0x08001ae2        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001ae2                HAL_CAN_TxMailbox0AbortCallback
+                0x08002462        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002462                HAL_CAN_TxMailbox0AbortCallback
  .text.HAL_CAN_TxMailbox1AbortCallback
-                0x08001ae4        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001ae4                HAL_CAN_TxMailbox1AbortCallback
+                0x08002464        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002464                HAL_CAN_TxMailbox1AbortCallback
  .text.HAL_CAN_TxMailbox2AbortCallback
-                0x08001ae6        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001ae6                HAL_CAN_TxMailbox2AbortCallback
+                0x08002466        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002466                HAL_CAN_TxMailbox2AbortCallback
  .text.HAL_CAN_RxFifo0FullCallback
-                0x08001ae8        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001ae8                HAL_CAN_RxFifo0FullCallback
+                0x08002468        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002468                HAL_CAN_RxFifo0FullCallback
  .text.HAL_CAN_RxFifo1MsgPendingCallback
-                0x08001aea        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001aea                HAL_CAN_RxFifo1MsgPendingCallback
+                0x0800246a        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x0800246a                HAL_CAN_RxFifo1MsgPendingCallback
  .text.HAL_CAN_RxFifo1FullCallback
-                0x08001aec        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001aec                HAL_CAN_RxFifo1FullCallback
+                0x0800246c        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x0800246c                HAL_CAN_RxFifo1FullCallback
  .text.HAL_CAN_SleepCallback
-                0x08001aee        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001aee                HAL_CAN_SleepCallback
+                0x0800246e        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x0800246e                HAL_CAN_SleepCallback
  .text.HAL_CAN_WakeUpFromRxMsgCallback
-                0x08001af0        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001af0                HAL_CAN_WakeUpFromRxMsgCallback
+                0x08002470        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002470                HAL_CAN_WakeUpFromRxMsgCallback
  .text.HAL_CAN_ErrorCallback
-                0x08001af2        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001af2                HAL_CAN_ErrorCallback
+                0x08002472        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002472                HAL_CAN_ErrorCallback
  .text.HAL_CAN_IRQHandler
-                0x08001af4      0x24a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001af4                HAL_CAN_IRQHandler
- *fill*         0x08001d3e        0x2 
+                0x08002474      0x24a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08002474                HAL_CAN_IRQHandler
+ *fill*         0x080026be        0x2 
  .text.__NVIC_EnableIRQ
-                0x08001d40       0x1c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x080026c0       0x1c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .text.__NVIC_SetPriority
-                0x08001d5c       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x080026dc       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .text.NVIC_EncodePriority
-                0x08001d84       0x3e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- *fill*         0x08001dc2        0x2 
+                0x08002704       0x3e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ *fill*         0x08002742        0x2 
  .text.HAL_NVIC_SetPriorityGrouping
-                0x08001dc4       0x24 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
-                0x08001dc4                HAL_NVIC_SetPriorityGrouping
+                0x08002744       0x24 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x08002744                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x08001de8       0x20 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
-                0x08001de8                HAL_NVIC_SetPriority
+                0x08002768       0x20 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x08002768                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x08001e08        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
-                0x08001e08                HAL_NVIC_EnableIRQ
+                0x08002788        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x08002788                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x08001e10       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
-                0x08001e10                HAL_SYSTICK_Config
+                0x08002790       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x08002790                HAL_SYSTICK_Config
  .text.DMA_SetConfig
-                0x08001e38       0x2c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x080027b8       0x2c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .text.DMA_CalcBaseAndBitshift
-                0x08001e64       0x40 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x080027e4       0x40 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .text.DMA_CheckFifoParam
-                0x08001ea4       0x8e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- *fill*         0x08001f32        0x2 
+                0x08002824       0x8e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ *fill*         0x080028b2        0x2 
  .text.HAL_DMA_Init
-                0x08001f34       0xcc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x08001f34                HAL_DMA_Init
+                0x080028b4       0xcc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x080028b4                HAL_DMA_Init
  .text.HAL_DMA_Start_IT
-                0x08002000       0x6a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x08002000                HAL_DMA_Start_IT
- *fill*         0x0800206a        0x2 
+                0x08002980       0x6a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08002980                HAL_DMA_Start_IT
+ *fill*         0x080029ea        0x2 
  .text.HAL_DMA_IRQHandler
-                0x0800206c      0x1dc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x0800206c                HAL_DMA_IRQHandler
+                0x080029ec      0x1dc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x080029ec                HAL_DMA_IRQHandler
  .text.HAL_GPIO_Init
-                0x08002248      0x1f4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
-                0x08002248                HAL_GPIO_Init
+                0x08002bc8      0x1f4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+                0x08002bc8                HAL_GPIO_Init
  .text.HAL_RCC_OscConfig
-                0x0800243c      0x3f8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x0800243c                HAL_RCC_OscConfig
+                0x08002dbc      0x3f8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x08002dbc                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08002834       0xa8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x08002834                HAL_RCC_GetSysClockFreq
+                0x080031b4       0xa8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x080031b4                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_ClockConfig
-                0x080028dc      0x160 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x080028dc                HAL_RCC_ClockConfig
+                0x0800325c      0x160 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x0800325c                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetHCLKFreq
-                0x08002a3c        0xc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x08002a3c                HAL_RCC_GetHCLKFreq
+                0x080033bc        0xc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x080033bc                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x08002a48       0x20 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x08002a48                HAL_RCC_GetPCLK1Freq
+                0x080033c8       0x20 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x080033c8                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x08002a68       0x20 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x08002a68                HAL_RCC_GetPCLK2Freq
+                0x080033e8       0x20 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x080033e8                HAL_RCC_GetPCLK2Freq
  .text.TIM_OC1_SetConfig
-                0x08002a88       0x70 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x08003408       0x70 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
  .text.TIM_OC3_SetConfig
-                0x08002af8       0x70 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x08003478       0x70 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
  .text.TIM_OC4_SetConfig
-                0x08002b68       0x50 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x080034e8       0x50 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
  .text.TIM_Base_SetConfig
-                0x08002bb8       0xd8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
-                0x08002bb8                TIM_Base_SetConfig
+                0x08003538       0xd8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x08003538                TIM_Base_SetConfig
  .text.HAL_TIM_OC_Init
-                0x08002c90       0x58 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
-                0x08002c90                HAL_TIM_OC_Init
+                0x08003610       0x58 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x08003610                HAL_TIM_OC_Init
  .text.HAL_TIM_PWM_Init
-                0x08002ce8       0x58 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
-                0x08002ce8                HAL_TIM_PWM_Init
+                0x08003668       0x58 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x08003668                HAL_TIM_PWM_Init
  .text.TIM_OC2_SetConfig
-                0x08002d40       0x70 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
-                0x08002d40                TIM_OC2_SetConfig
+                0x080036c0       0x70 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x080036c0                TIM_OC2_SetConfig
  .text.HAL_TIM_OC_ConfigChannel
-                0x08002db0       0x5e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
-                0x08002db0                HAL_TIM_OC_ConfigChannel
+                0x08003730       0x5e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x08003730                HAL_TIM_OC_ConfigChannel
  .text.HAL_TIM_PWM_ConfigChannel
-                0x08002e0e       0xdc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
-                0x08002e0e                HAL_TIM_PWM_ConfigChannel
- *fill*         0x08002eea        0x2 
+                0x0800378e       0xdc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x0800378e                HAL_TIM_PWM_ConfigChannel
+ *fill*         0x0800386a        0x2 
  .text.HAL_TIMEx_MasterConfigSynchronization
-                0x08002eec       0x8c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
-                0x08002eec                HAL_TIMEx_MasterConfigSynchronization
+                0x0800386c       0x8c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+                0x0800386c                HAL_TIMEx_MasterConfigSynchronization
  .text.HAL_TIMEx_ConfigBreakDeadTime
-                0x08002f78       0x52 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
-                0x08002f78                HAL_TIMEx_ConfigBreakDeadTime
+                0x080038f8       0x52 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+                0x080038f8                HAL_TIMEx_ConfigBreakDeadTime
  .text.UART_EndTxTransfer
-                0x08002fca       0x20 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x0800394a       0x20 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_EndRxTransfer
-                0x08002fea       0x5c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- *fill*         0x08003046        0x2 
+                0x0800396a       0x5c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ *fill*         0x080039c6        0x2 
  .text.UART_SetConfig
-                0x08003048      0x110 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x080039c8      0x110 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.HAL_UART_Init
-                0x08003158       0x60 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003158                HAL_UART_Init
+                0x08003ad8       0x60 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003ad8                HAL_UART_Init
  .text.HAL_UART_RxHalfCpltCallback
-                0x080031b8        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x080031b8                HAL_UART_RxHalfCpltCallback
+                0x08003b38        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003b38                HAL_UART_RxHalfCpltCallback
  .text.HAL_UART_ErrorCallback
-                0x080031ba        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x080031ba                HAL_UART_ErrorCallback
+                0x08003b3a        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003b3a                HAL_UART_ErrorCallback
  .text.UART_DMAError
-                0x080031bc       0x58 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003b3c       0x58 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.HAL_UARTEx_RxEventCallback
-                0x08003214        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003214                HAL_UARTEx_RxEventCallback
+                0x08003b94        0x2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003b94                HAL_UARTEx_RxEventCallback
  .text.UART_DMARxHalfCplt
-                0x08003216       0x1e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003b96       0x1e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_DMAReceiveCplt
-                0x08003234       0x9a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- *fill*         0x080032ce        0x2 
+                0x08003bb4       0x9a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ *fill*         0x08003c4e        0x2 
  .text.UART_Start_Receive_DMA
-                0x080032d0       0xa4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x080032d0                UART_Start_Receive_DMA
+                0x08003c50       0xa4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003c50                UART_Start_Receive_DMA
  .text.HAL_UART_Receive_DMA
-                0x08003374       0x26 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003374                HAL_UART_Receive_DMA
- .text.memset   0x0800339a       0x10 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
-                0x0800339a                memset
- *fill*         0x080033aa        0x2 
+                0x08003cf4       0x26 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003cf4                HAL_UART_Receive_DMA
+ .text.memset   0x08003d1a       0x10 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
+                0x08003d1a                memset
+ *fill*         0x08003d2a        0x2 
  .text.__libc_init_array
-                0x080033ac       0x48 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
-                0x080033ac                __libc_init_array
+                0x08003d2c       0x48 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
+                0x08003d2c                __libc_init_array
  .text.__retarget_lock_acquire_recursive
-                0x080033f4        0x2 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
-                0x080033f4                __retarget_lock_acquire_recursive
+                0x08003d74        0x2 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+                0x08003d74                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x080033f6        0x2 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
-                0x080033f6                __retarget_lock_release_recursive
+                0x08003d76        0x2 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+                0x08003d76                __retarget_lock_release_recursive
  .text.startup.register_fini
-                0x080033f8       0x14 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
- .text.atexit   0x0800340c        0xc D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
-                0x0800340c                atexit
+                0x08003d78       0x14 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+ .text.atexit   0x08003d8c        0xc D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+                0x08003d8c                atexit
  .text.__libc_fini_array
-                0x08003418       0x28 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
-                0x08003418                __libc_fini_array
+                0x08003d98       0x28 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+                0x08003d98                __libc_fini_array
  .text.__register_exitproc
-                0x08003440       0x80 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
-                0x08003440                __register_exitproc
+                0x08003dc0       0x80 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+                0x08003dc0                __register_exitproc
  *(.glue_7)
- .glue_7        0x080034c0        0x0 linker stubs
+ .glue_7        0x08003e40        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x080034c0        0x0 linker stubs
+ .glue_7t       0x08003e40        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x080034c0        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
+ .eh_frame      0x08003e40        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
  *(.init)
- .init          0x080034c0        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crti.o
-                0x080034c0                _init
- .init          0x080034c4        0x8 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtn.o
+ .init          0x08003e40        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crti.o
+                0x08003e40                _init
+ .init          0x08003e44        0x8 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtn.o
  *(.fini)
- .fini          0x080034cc        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crti.o
-                0x080034cc                _fini
- .fini          0x080034d0        0x8 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtn.o
-                0x080034d8                        . = ALIGN (0x4)
-                0x080034d8                        _etext = .
+ .fini          0x08003e4c        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crti.o
+                0x08003e4c                _fini
+ .fini          0x08003e50        0x8 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtn.o
+                0x08003e58                        . = ALIGN (0x4)
+                0x08003e58                        _etext = .
 
-.vfp11_veneer   0x080034d8        0x0
- .vfp11_veneer  0x080034d8        0x0 linker stubs
+.vfp11_veneer   0x08003e58        0x0
+ .vfp11_veneer  0x08003e58        0x0 linker stubs
 
-.v4_bx          0x080034d8        0x0
- .v4_bx         0x080034d8        0x0 linker stubs
+.v4_bx          0x08003e58        0x0
+ .v4_bx         0x08003e58        0x0 linker stubs
 
-.iplt           0x080034d8        0x0
- .iplt          0x080034d8        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
+.iplt           0x08003e58        0x0
+ .iplt          0x08003e58        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.rodata         0x080034d8       0x20
-                0x080034d8                        . = ALIGN (0x4)
+.rodata         0x08003e58       0x20
+                0x08003e58                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.APBPrescTable
-                0x080034d8        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
-                0x080034d8                APBPrescTable
+                0x08003e58        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+                0x08003e58                APBPrescTable
  .rodata.AHBPrescTable
-                0x080034e0       0x10 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
-                0x080034e0                AHBPrescTable
+                0x08003e60       0x10 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+                0x08003e60                AHBPrescTable
  .rodata.flagBitshiftOffset.0
-                0x080034f0        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x080034f8                        . = ALIGN (0x4)
+                0x08003e70        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08003e78                        . = ALIGN (0x4)
 
-.ARM.extab      0x080034f8        0x0
-                0x080034f8                        . = ALIGN (0x4)
+.ARM.extab      0x08003e78        0x0
+                0x08003e78                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080034f8                        . = ALIGN (0x4)
+                0x08003e78                        . = ALIGN (0x4)
 
-.ARM            0x080034f8        0x8
-                0x080034f8                        . = ALIGN (0x4)
-                0x080034f8                        __exidx_start = .
+.ARM            0x08003e78        0x8
+                0x08003e78                        . = ALIGN (0x4)
+                0x08003e78                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x080034f8        0x8 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
-                0x08003500                        __exidx_end = .
-                0x08003500                        . = ALIGN (0x4)
+ .ARM.exidx     0x08003e78        0x8 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x08003e80                        __exidx_end = .
+                0x08003e80                        . = ALIGN (0x4)
 
-.preinit_array  0x08003500        0x0
-                0x08003500                        . = ALIGN (0x4)
-                0x08003500                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08003e80        0x0
+                0x08003e80                        . = ALIGN (0x4)
+                0x08003e80                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08003500                        PROVIDE (__preinit_array_end = .)
-                0x08003500                        . = ALIGN (0x4)
+                0x08003e80                        PROVIDE (__preinit_array_end = .)
+                0x08003e80                        . = ALIGN (0x4)
 
-.init_array     0x08003500        0x8
-                0x08003500                        . = ALIGN (0x4)
-                0x08003500                        PROVIDE (__init_array_start = .)
+.init_array     0x08003e80        0x8
+                0x08003e80                        . = ALIGN (0x4)
+                0x08003e80                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x08003500        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+                0x08003e80        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x08003504        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x08003508                        PROVIDE (__init_array_end = .)
-                0x08003508                        . = ALIGN (0x4)
+ .init_array    0x08003e84        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x08003e88                        PROVIDE (__init_array_end = .)
+                0x08003e88                        . = ALIGN (0x4)
 
-.fini_array     0x08003508        0x4
-                0x08003508                        . = ALIGN (0x4)
-                0x08003508                        PROVIDE (__fini_array_start = .)
+.fini_array     0x08003e88        0x4
+                0x08003e88                        . = ALIGN (0x4)
+                0x08003e88                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08003508        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x0800350c                        PROVIDE (__fini_array_end = .)
-                0x0800350c                        . = ALIGN (0x4)
-                0x0800350c                        _sidata = LOADADDR (.data)
+ .fini_array    0x08003e88        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x08003e8c                        PROVIDE (__fini_array_end = .)
+                0x08003e8c                        . = ALIGN (0x4)
+                0x08003e8c                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x0800350c        0x0
- .rel.iplt      0x0800350c        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
+.rel.dyn        0x08003e8c        0x0
+ .rel.iplt      0x08003e8c        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.data           0x20000000       0x10 load address 0x0800350c
+.data           0x20000000       0x10 load address 0x08003e8c
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -2177,12 +2207,12 @@ LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm
  *(.RamFunc*)
                 0x20000010                        . = ALIGN (0x4)
                 0x20000010                        _edata = .
-                0x0800351c                        _siccmram = LOADADDR (.ccmram)
+                0x08003e9c                        _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x20000010        0x0 load address 0x0800351c
+.igot.plt       0x20000010        0x0 load address 0x08003e9c
  .igot.plt      0x20000010        0x0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.ccmram         0x10000000        0x0 load address 0x0800351c
+.ccmram         0x10000000        0x0 load address 0x08003e9c
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _sccmram = .
  *(.ccmram)
@@ -2191,7 +2221,7 @@ LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm
                 0x10000000                        _eccmram = .
                 0x10000000                        . = ALIGN (0x4)
 
-.bss            0x20000010      0x3d4
+.bss            0x20000010      0x438
                 0x20000010                        _sbss = .
                 0x20000010                        __bss_start__ = _sbss
  *(.bss)
@@ -2203,67 +2233,74 @@ LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm
  .bss.motor_can_send_data
                 0x20000044        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
                 0x20000044                motor_can_send_data
- .bss.J4310_1   0x2000004c       0x1c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x2000004c                J4310_1
- .bss.M3508_4   0x20000068        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x20000068                M3508_4
- .bss.M3508_3   0x20000070        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x20000070                M3508_3
- .bss.M3508_2   0x20000078        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x20000078                M3508_2
- .bss.M3508_1   0x20000080        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x20000080                M3508_1
+ .bss.J4310_4   0x2000004c       0x1c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x2000004c                J4310_4
+ .bss.J4310_3   0x20000068       0x1c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x20000068                J4310_3
+ .bss.J4310_2   0x20000084       0x1c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x20000084                J4310_2
+ .bss.J4310_1   0x200000a0       0x1c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x200000a0                J4310_1
+ .bss.M3508_4   0x200000bc        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x200000bc                M3508_4
+ .bss.M3508_3   0x200000c4        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x200000c4                M3508_3
+ .bss.M3508_2   0x200000cc        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x200000cc                M3508_2
+ .bss.M3508_1   0x200000d4        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x200000d4                M3508_1
  .bss.motor_6020
-                0x20000088        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                0x20000088                motor_6020
+                0x200000dc        0x8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x200000dc                motor_6020
  .bss.HAL_RCC_CAN1_CLK_ENABLED
-                0x20000090        0x4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
- .bss.hcan2     0x20000094       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
-                0x20000094                hcan2
- .bss.hcan1     0x200000bc       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
-                0x200000bc                hcan1
- .bss.RC_Data   0x200000e4       0x12 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
-                0x200000e4                RC_Data
- *fill*         0x200000f6        0x2 
- .bss.RC        0x200000f8       0x16 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
-                0x200000f8                RC
- *fill*         0x2000010e        0x2 
- .bss.htim8     0x20000110       0x48 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
-                0x20000110                htim8
- .bss.htim1     0x20000158       0x48 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
-                0x20000158                htim1
+                0x200000e4        0x4 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+ .bss.hcan2     0x200000e8       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+                0x200000e8                hcan2
+ .bss.hcan1     0x20000110       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+                0x20000110                hcan1
+ .bss.Pos       0x20000138       0x10 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+                0x20000138                Pos
+ .bss.RC_Data   0x20000148       0x12 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+                0x20000148                RC_Data
+ *fill*         0x2000015a        0x2 
+ .bss.RC        0x2000015c       0x16 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+                0x2000015c                RC
+ *fill*         0x20000172        0x2 
+ .bss.htim8     0x20000174       0x48 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+                0x20000174                htim8
+ .bss.htim1     0x200001bc       0x48 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+                0x200001bc                htim1
  .bss.hdma_usart3_rx
-                0x200001a0       0x60 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
-                0x200001a0                hdma_usart3_rx
- .bss.huart3    0x20000200       0x48 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
-                0x20000200                huart3
- .bss.uwTick    0x20000248        0x4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x20000248                uwTick
+                0x20000204       0x60 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+                0x20000204                hdma_usart3_rx
+ .bss.huart3    0x20000264       0x48 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+                0x20000264                huart3
+ .bss.uwTick    0x200002ac        0x4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x200002ac                uwTick
  .bss.__lock___atexit_recursive_mutex
-                0x2000024c        0x1 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
-                0x2000024c                __lock___atexit_recursive_mutex
- *fill*         0x2000024d        0x3 
- .bss.__atexit  0x20000250        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
-                0x20000250                __atexit
+                0x200002b0        0x1 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+                0x200002b0                __lock___atexit_recursive_mutex
+ *fill*         0x200002b1        0x3 
+ .bss.__atexit  0x200002b4        0x4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+                0x200002b4                __atexit
  .bss.__atexit0
-                0x20000254      0x190 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
-                0x20000254                __atexit0
+                0x200002b8      0x190 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+                0x200002b8                __atexit0
  *(COMMON)
-                0x200003e4                        . = ALIGN (0x4)
-                0x200003e4                        _ebss = .
-                0x200003e4                        __bss_end__ = _ebss
+                0x20000448                        . = ALIGN (0x4)
+                0x20000448                        _ebss = .
+                0x20000448                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200003e4      0x604
-                0x200003e8                        . = ALIGN (0x8)
- *fill*         0x200003e4        0x4 
+                0x20000448      0x600
+                0x20000448                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x200003e8                        PROVIDE (_end = .)
-                0x200005e8                        . = (. + _Min_Heap_Size)
- *fill*         0x200003e8      0x200 
-                0x200009e8                        . = (. + _Min_Stack_Size)
- *fill*         0x200005e8      0x400 
-                0x200009e8                        . = ALIGN (0x8)
+                0x20000448                        PROVIDE (_end = .)
+                0x20000648                        . = (. + _Min_Heap_Size)
+ *fill*         0x20000448      0x200 
+                0x20000a48                        . = (. + _Min_Stack_Size)
+ *fill*         0x20000648      0x400 
+                0x20000a48                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -2320,145 +2357,153 @@ LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm
  .ARM.attributes
                 0x000003d7       0x2e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .ARM.attributes
-                0x00000405       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
+                0x00000405       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldf3.o)
  .ARM.attributes
-                0x00000423       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
+                0x00000423       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000441       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+                0x00000441       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x0000045f       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x0000045f       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
  .ARM.attributes
-                0x0000048d       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_dvmd_tls.o)
+                0x0000047d       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
  .ARM.attributes
-                0x000004ab       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
+                0x0000049b       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_cmpsf2.o)
  .ARM.attributes
-                0x000004d9       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
+                0x000004b9       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x00000507       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+                0x000004d7       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x00000535       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+                0x00000505       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000563       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+                0x00000523       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
  .ARM.attributes
-                0x00000591       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+                0x00000551       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
  .ARM.attributes
-                0x000005bf       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+                0x0000057f       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
  .ARM.attributes
-                0x000005ed       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtn.o
+                0x000005ad       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+ .ARM.attributes
+                0x000005db       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+ .ARM.attributes
+                0x00000609       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+ .ARM.attributes
+                0x00000637       0x2e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+ .ARM.attributes
+                0x00000665       0x1e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp/crtn.o
 OUTPUT(6axis-arm-pr.elf elf32-littlearm)
 LOAD linker stubs
 LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc.a
 LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a
 LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a
 
-.debug_info     0x00000000    0x147da
- .debug_info    0x00000000      0xe76 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
- .debug_info    0x00000e76      0xc8a CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
- .debug_info    0x00001b00      0x4d9 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
- .debug_info    0x00001fd9      0x2ec CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
- .debug_info    0x000022c5      0xd12 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
- .debug_info    0x00002fd7      0x6c3 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
- .debug_info    0x0000369a      0x265 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_info    0x000038ff      0x7fa CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_info    0x000040f9      0x334 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_info    0x0000442d      0xfff CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
- .debug_info    0x0000542c      0x9e9 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
- .debug_info    0x00005e15       0x30 CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
- .debug_info    0x00005e45      0x9e2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_info    0x00006827     0x11f7 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_info    0x00007a1e      0xfbb CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_info    0x000089d9      0xad9 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_info    0x000094b2      0x704 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_info    0x00009bb6      0xa6d CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_info    0x0000a623     0x3be0 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
- .debug_info    0x0000e203     0x1ac8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
- .debug_info    0x0000fccb     0x3fcf CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_info    0x00013c9a       0xe0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
- .debug_info    0x00013d7a      0x10b D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
- .debug_info    0x00013e85      0x20a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
- .debug_info    0x0001408f      0x2dd D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
- .debug_info    0x0001436c      0x118 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
- .debug_info    0x00014484       0xf7 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
- .debug_info    0x0001457b      0x25f D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+.debug_info     0x00000000    0x14ea9
+ .debug_info    0x00000000      0xefe CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+ .debug_info    0x00000efe      0xc8a CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+ .debug_info    0x00001b88      0x4d9 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
+ .debug_info    0x00002061      0x2ec CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
+ .debug_info    0x0000234d     0x1359 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+ .debug_info    0x000036a6      0x6c3 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+ .debug_info    0x00003d69      0x265 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_info    0x00003fce      0x7fa CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_info    0x000047c8      0x334 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_info    0x00004afc      0xfff CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+ .debug_info    0x00005afb      0x9e9 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+ .debug_info    0x000064e4       0x30 CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
+ .debug_info    0x00006514      0x9e2 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_info    0x00006ef6     0x11f7 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_info    0x000080ed      0xfbb CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_info    0x000090a8      0xad9 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_info    0x00009b81      0x704 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_info    0x0000a285      0xa6d CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_info    0x0000acf2     0x3be0 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+ .debug_info    0x0000e8d2     0x1ac8 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+ .debug_info    0x0001039a     0x3fcf CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_info    0x00014369       0xe0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
+ .debug_info    0x00014449      0x10b D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
+ .debug_info    0x00014554      0x20a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+ .debug_info    0x0001475e      0x2dd D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+ .debug_info    0x00014a3b      0x118 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+ .debug_info    0x00014b53       0xf7 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+ .debug_info    0x00014c4a      0x25f D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
 
-.debug_abbrev   0x00000000     0x32bf
+.debug_abbrev   0x00000000     0x32f0
  .debug_abbrev  0x00000000      0x232 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
  .debug_abbrev  0x00000232      0x241 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
  .debug_abbrev  0x00000473      0x12b CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
  .debug_abbrev  0x0000059e       0xd6 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
- .debug_abbrev  0x00000674      0x2b8 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
- .debug_abbrev  0x0000092c      0x19d CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
- .debug_abbrev  0x00000ac9       0xd6 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_abbrev  0x00000b9f      0x1cc CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_abbrev  0x00000d6b      0x120 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_abbrev  0x00000e8b      0x26c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
- .debug_abbrev  0x000010f7      0x222 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
- .debug_abbrev  0x00001319       0x24 CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
- .debug_abbrev  0x0000133d      0x240 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_abbrev  0x0000157d      0x27b CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_abbrev  0x000017f8      0x391 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_abbrev  0x00001b89      0x2c0 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_abbrev  0x00001e49      0x202 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_abbrev  0x0000204b      0x2c7 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_abbrev  0x00002312      0x271 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
- .debug_abbrev  0x00002583      0x26f CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
- .debug_abbrev  0x000027f2      0x32f CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_abbrev  0x00002b21       0x9e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
- .debug_abbrev  0x00002bbf       0xc9 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
- .debug_abbrev  0x00002c88      0x115 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
- .debug_abbrev  0x00002d9d      0x20c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
- .debug_abbrev  0x00002fa9       0xc1 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
- .debug_abbrev  0x0000306a       0xcc D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
- .debug_abbrev  0x00003136      0x189 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+ .debug_abbrev  0x00000674      0x2e9 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+ .debug_abbrev  0x0000095d      0x19d CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+ .debug_abbrev  0x00000afa       0xd6 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_abbrev  0x00000bd0      0x1cc CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_abbrev  0x00000d9c      0x120 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_abbrev  0x00000ebc      0x26c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+ .debug_abbrev  0x00001128      0x222 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+ .debug_abbrev  0x0000134a       0x24 CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
+ .debug_abbrev  0x0000136e      0x240 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_abbrev  0x000015ae      0x27b CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_abbrev  0x00001829      0x391 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_abbrev  0x00001bba      0x2c0 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_abbrev  0x00001e7a      0x202 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_abbrev  0x0000207c      0x2c7 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_abbrev  0x00002343      0x271 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+ .debug_abbrev  0x000025b4      0x26f CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+ .debug_abbrev  0x00002823      0x32f CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_abbrev  0x00002b52       0x9e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
+ .debug_abbrev  0x00002bf0       0xc9 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
+ .debug_abbrev  0x00002cb9      0x115 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+ .debug_abbrev  0x00002dce      0x20c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+ .debug_abbrev  0x00002fda       0xc1 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+ .debug_abbrev  0x0000309b       0xcc D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+ .debug_abbrev  0x00003167      0x189 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
 
 .debug_loclists
-                0x00000000     0x931e
+                0x00000000     0x931b
  .debug_loclists
-                0x00000000      0x2ad CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                0x00000000      0x2a7 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
  .debug_loclists
-                0x000002ad       0x8b CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+                0x000002a7       0x8b CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
  .debug_loclists
-                0x00000338       0x4f CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+                0x00000332       0x52 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
  .debug_loclists
-                0x00000387       0x34 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+                0x00000384       0x34 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
  .debug_loclists
-                0x000003bb       0xdb CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+                0x000003b8       0xdb CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
  .debug_loclists
-                0x00000496       0x48 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+                0x00000493       0x48 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
  .debug_loclists
-                0x000004de       0x50 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+                0x000004db       0x50 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
  .debug_loclists
-                0x0000052e       0xc9 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x0000052b       0xc9 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_loclists
-                0x000005f7      0x85b CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x000005f4      0x85b CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_loclists
-                0x00000e52      0x439 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x00000e4f      0x439 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .debug_loclists
-                0x0000128b      0x763 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x00001288      0x763 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .debug_loclists
-                0x000019ee      0x356 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+                0x000019eb      0x356 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
  .debug_loclists
-                0x00001d44      0x3a9 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x00001d41      0x3a9 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
  .debug_loclists
-                0x000020ed     0x3331 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+                0x000020ea     0x3331 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
  .debug_loclists
-                0x0000541e     0x129a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+                0x0000541b     0x129a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
  .debug_loclists
-                0x000066b8     0x29f1 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x000066b5     0x29f1 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .debug_loclists
-                0x000090a9       0x47 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
+                0x000090a6       0x47 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
  .debug_loclists
-                0x000090f0       0x44 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
+                0x000090ed       0x44 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
  .debug_loclists
-                0x00009134       0x23 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+                0x00009131       0x23 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
  .debug_loclists
-                0x00009157       0xd4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+                0x00009154       0xd4 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
  .debug_loclists
-                0x0000922b       0x2a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+                0x00009228       0x2a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
  .debug_loclists
-                0x00009255       0x3b D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+                0x00009252       0x3b D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
  .debug_loclists
-                0x00009290       0x8e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+                0x0000928d       0x8e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
 
 .debug_aranges  0x00000000      0xfa8
  .debug_aranges
@@ -2577,92 +2622,92 @@ LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm
  .debug_rnglists
                 0x00000bc5       0x14 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
 
-.debug_line     0x00000000    0x1289d
- .debug_line    0x00000000      0x692 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
- .debug_line    0x00000692      0x5a3 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
- .debug_line    0x00000c35      0x240 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
- .debug_line    0x00000e75      0x20d CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
- .debug_line    0x00001082      0x4cb CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
- .debug_line    0x0000154d      0x399 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
- .debug_line    0x000018e6      0x1fd CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_line    0x00001ae3      0x400 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_line    0x00001ee3      0x2c5 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_line    0x000021a8      0x6ac CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
- .debug_line    0x00002854      0x402 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
- .debug_line    0x00002c56       0x7a CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
- .debug_line    0x00002cd0      0x643 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_line    0x00003313     0x1207 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_line    0x0000451a      0x930 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_line    0x00004e4a      0xf1c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_line    0x00005d66      0x77f CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_line    0x000064e5      0xbfd CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_line    0x000070e2     0x4b3a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
- .debug_line    0x0000bc1c     0x1dd3 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
- .debug_line    0x0000d9ef     0x439c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_line    0x00011d8b      0x17e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
- .debug_line    0x00011f09      0x188 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
- .debug_line    0x00012091      0x19b D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
- .debug_line    0x0001222c      0x28a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
- .debug_line    0x000124b6      0x102 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
- .debug_line    0x000125b8      0x140 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
- .debug_line    0x000126f8      0x1a5 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+.debug_line     0x00000000    0x129b6
+ .debug_line    0x00000000      0x6b5 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+ .debug_line    0x000006b5      0x5a3 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+ .debug_line    0x00000c58      0x240 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
+ .debug_line    0x00000e98      0x20d CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
+ .debug_line    0x000010a5      0x5c1 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+ .debug_line    0x00001666      0x399 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+ .debug_line    0x000019ff      0x1fd CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_line    0x00001bfc      0x400 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_line    0x00001ffc      0x2c5 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_line    0x000022c1      0x6ac CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+ .debug_line    0x0000296d      0x402 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+ .debug_line    0x00002d6f       0x7a CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
+ .debug_line    0x00002de9      0x643 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_line    0x0000342c     0x1207 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_line    0x00004633      0x930 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_line    0x00004f63      0xf1c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_line    0x00005e7f      0x77f CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_line    0x000065fe      0xbfd CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_line    0x000071fb     0x4b3a CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+ .debug_line    0x0000bd35     0x1dd3 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+ .debug_line    0x0000db08     0x439c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_line    0x00011ea4      0x17e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
+ .debug_line    0x00012022      0x188 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
+ .debug_line    0x000121aa      0x19b D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+ .debug_line    0x00012345      0x28a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+ .debug_line    0x000125cf      0x102 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+ .debug_line    0x000126d1      0x140 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+ .debug_line    0x00012811      0x1a5 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
 
-.debug_str      0x00000000     0x505a
- .debug_str     0x00000000      0x7dd CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
-                                0x896 (size before relaxing)
- .debug_str     0x000007dd      0x726 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+.debug_str      0x00000000     0x5071
+ .debug_str     0x00000000      0x7f5 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+                                0x8ae (size before relaxing)
+ .debug_str     0x000007f5      0x726 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
                                 0xba1 (size before relaxing)
- .debug_str     0x00000f03       0x36 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
+ .debug_str     0x00000f1b       0x36 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
                                 0x7e5 (size before relaxing)
- .debug_str     0x00000f39       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
+ .debug_str     0x00000f51       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
                                 0x2c7 (size before relaxing)
- .debug_str     0x00000f71      0x66f CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
-                                0xa4d (size before relaxing)
- .debug_str     0x000015e0       0x5e CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+ .debug_str     0x00000f89      0x66e CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+                                0xc8e (size before relaxing)
+ .debug_str     0x000015f7       0x5e CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
                                 0x69e (size before relaxing)
- .debug_str     0x0000163e       0x44 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_str     0x00001655       0x44 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
                                 0x2d3 (size before relaxing)
- .debug_str     0x00001682      0x144 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_str     0x00001699      0x144 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
                                 0x79e (size before relaxing)
- .debug_str     0x000017c6       0x9f CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_str     0x000017dd       0x9f CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
                                 0x339 (size before relaxing)
- .debug_str     0x00001865      0x53e CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+ .debug_str     0x0000187c      0x53e CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
                                 0xb69 (size before relaxing)
- .debug_str     0x00001da3       0x85 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+ .debug_str     0x00001dba       0x85 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
                                 0x879 (size before relaxing)
- .debug_str     0x00001e28       0x5c CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
+ .debug_str     0x00001e3f       0x5c CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj
                                  0x89 (size before relaxing)
- .debug_str     0x00001e84      0x34e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_str     0x00001e9b      0x34e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
                                 0xb7c (size before relaxing)
- .debug_str     0x000021d2      0x3e0 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_str     0x000021e9      0x3e0 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
                                 0xa4d (size before relaxing)
- .debug_str     0x000025b2      0x4d7 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_str     0x000025c9      0x4d7 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
                                 0xc8d (size before relaxing)
- .debug_str     0x00002a89      0x2ed CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_str     0x00002aa0      0x2ed CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
                                 0x78e (size before relaxing)
- .debug_str     0x00002d76      0x16e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_str     0x00002d8d      0x16e CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
                                 0x4f8 (size before relaxing)
- .debug_str     0x00002ee4      0x1bc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_str     0x00002efb      0x1bc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
                                 0x71e (size before relaxing)
- .debug_str     0x000030a0      0xe62 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+ .debug_str     0x000030b7      0xe62 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
                                0x1717 (size before relaxing)
- .debug_str     0x00003f02      0x454 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+ .debug_str     0x00003f19      0x454 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
                                 0xf23 (size before relaxing)
- .debug_str     0x00004356      0x5fb CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_str     0x0000436d      0x5fb CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
                                 0xdb3 (size before relaxing)
- .debug_str     0x00004951      0x16a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
+ .debug_str     0x00004968      0x16a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
                                 0x206 (size before relaxing)
- .debug_str     0x00004abb       0xb6 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
+ .debug_str     0x00004ad2       0xb6 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
                                 0x267 (size before relaxing)
- .debug_str     0x00004b71      0x266 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+ .debug_str     0x00004b88      0x266 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
                                 0x379 (size before relaxing)
- .debug_str     0x00004dd7      0x100 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+ .debug_str     0x00004dee      0x100 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
                                 0x343 (size before relaxing)
- .debug_str     0x00004ed7       0x9e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+ .debug_str     0x00004eee       0x9e D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
                                 0x243 (size before relaxing)
- .debug_str     0x00004f75       0x7a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+ .debug_str     0x00004f8c       0x7a D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
                                 0x23d (size before relaxing)
- .debug_str     0x00004fef       0x6b D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+ .debug_str     0x00005006       0x6b D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
                                 0x31a (size before relaxing)
 
 .comment        0x00000000       0x43
@@ -2695,38 +2740,42 @@ LOAD D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm
  .comment       0x00000043       0x44 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
  .comment       0x00000043       0x44 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
 
-.debug_frame    0x00000000     0x2774
- .debug_frame   0x00000000      0x134 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
- .debug_frame   0x00000134       0x78 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
- .debug_frame   0x000001ac       0x2c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
- .debug_frame   0x000001d8       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
- .debug_frame   0x00000200       0x70 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
- .debug_frame   0x00000270       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
- .debug_frame   0x000002a8       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_frame   0x000002d0       0xf0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_frame   0x000003c0       0x30 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_frame   0x000003f0       0xd0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
- .debug_frame   0x000004c0       0x64 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
- .debug_frame   0x00000524      0x1ec CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_frame   0x00000710      0x2d4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_frame   0x000009e4      0x214 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_frame   0x00000bf8      0x188 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_frame   0x00000d80       0xd4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_frame   0x00000e54      0x16c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_frame   0x00000fc0      0xb08 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
- .debug_frame   0x00001ac8      0x40c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
- .debug_frame   0x00001ed4      0x5dc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_frame   0x000024b0       0x4c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
- .debug_frame   0x000024fc       0x38 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
- .debug_frame   0x00002534       0x2c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00002560       0x34 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x00002594       0x20 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
- .debug_frame   0x000025b4       0x2c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
- .debug_frame   0x000025e0       0xb0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
- .debug_frame   0x00002690       0x58 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
- .debug_frame   0x000026e8       0x20 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
- .debug_frame   0x00002708       0x38 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
- .debug_frame   0x00002740       0x34 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
+.debug_frame    0x00000000     0x2948
+ .debug_frame   0x00000000      0x138 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj
+ .debug_frame   0x00000138       0x78 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj
+ .debug_frame   0x000001b0       0x2c CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj
+ .debug_frame   0x000001dc       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj
+ .debug_frame   0x00000204       0x78 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj
+ .debug_frame   0x0000027c       0x38 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj
+ .debug_frame   0x000002b4       0x28 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_frame   0x000002dc       0xf0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_frame   0x000003cc       0x30 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_frame   0x000003fc       0xd0 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj
+ .debug_frame   0x000004cc       0x64 CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj
+ .debug_frame   0x00000530      0x1ec CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_frame   0x0000071c      0x2d4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_frame   0x000009f0      0x214 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_frame   0x00000c04      0x188 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_frame   0x00000d8c       0xd4 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_frame   0x00000e60      0x16c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_frame   0x00000fcc      0xb08 CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+ .debug_frame   0x00001ad4      0x40c CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+ .debug_frame   0x00001ee0      0x5dc CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_frame   0x000024bc       0x30 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldf3.o)
+ .debug_frame   0x000024ec       0xac D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00002598       0x24 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x000025bc       0x4c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_addsubsf3.o)
+ .debug_frame   0x00002608       0x38 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_muldivsf3.o)
+ .debug_frame   0x00002640       0xc8 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_arm_cmpsf2.o)
+ .debug_frame   0x00002708       0x2c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00002734       0x34 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00002768       0x20 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-memset.o)
+ .debug_frame   0x00002788       0x2c D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-init.o)
+ .debug_frame   0x000027b4       0xb0 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-lock.o)
+ .debug_frame   0x00002864       0x58 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__call_atexit.o)
+ .debug_frame   0x000028bc       0x20 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-atexit.o)
+ .debug_frame   0x000028dc       0x38 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-fini.o)
+ .debug_frame   0x00002914       0x34 D:/Program Files/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libg.a(libc_a-__atexit.o)
 
 .debug_line_str
                 0x00000000       0x6d
