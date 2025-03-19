@@ -29,20 +29,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5eb740ab-a1c0-45d2-be3b-2118bf73fc71" name="更改" comment="达妙电机CAN接收函数完成">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/Communications.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/Communications.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.elf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.hex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-    </list>
+    <list default="true" id="5eb740ab-a1c0-45d2-be3b-2118bf73fc71" name="更改" comment="达妙电机遥控器摇杆位置映射" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +97,7 @@
       <workItem from="1741521589507" duration="643000" />
       <workItem from="1742290267158" duration="13206000" />
       <workItem from="1742363243608" duration="621000" />
-      <workItem from="1742364860633" duration="9533000" />
+      <workItem from="1742364860633" duration="10227000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -160,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742368005323</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="达妙电机遥控器摇杆位置映射">
+      <option name="closed" value="true" />
+      <created>1742391645446</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742391645446</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +200,7 @@
     <MESSAGE value="新增CAN12通讯配置" />
     <MESSAGE value="达妙电机CAN使能完成" />
     <MESSAGE value="达妙电机CAN接收函数完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="达妙电机CAN接收函数完成" />
+    <MESSAGE value="达妙电机遥控器摇杆位置映射" />
+    <option name="LAST_COMMIT_MESSAGE" value="达妙电机遥控器摇杆位置映射" />
   </component>
 </project>
