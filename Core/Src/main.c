@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "cmsis_os.h"
 #include "can.h"
 #include "dma.h"
 #include "tim.h"
@@ -28,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "remote.h"
+#include "Communications.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -37,6 +37,10 @@ uint16_t Get_Compare(int16_t ch_data){
 }
 uint16_t PWM_Compare[6]={500,500,2000,500,500,500};
 extern RC_t RC;
+extern CAN_TxHeaderTypeDef motor_tx_message;
+extern uint8_t motor_can_send_data[8];
+
+extern DM_motor_t J4310_1;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -57,7 +61,6 @@ extern RC_t RC;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -103,30 +106,30 @@ int main(void)
   MX_CAN1_Init();
   MX_CAN2_Init();
   /* USER CODE BEGIN 2 */
+  can_filter_init();
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
-  HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_3);
-  HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_4);
-  HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_2);
-
+  DM_Enable(0x101);
+  HAL_Delay(10);
+  while(J4310_1.State != 1) {
+    DM_Enable(0x101);
+    HAL_Delay(10);
+  }
   /* USER CODE END 2 */
-
-  /* Call init function for freertos objects (in cmsis_os2.c) */
-  MX_FREERTOS_Init();
-
-  /* Start scheduler */
-  osKernelStart();
-
-  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    DM_Enable(0x101);
+    // if(RC.s1 == 3 && RC.s2 == 3) {
+    //   DM_Enable(0x01);
+    //   HAL_Delay(10);
+    DM_SpeedPosition_cmd(&hcan1,0x101,0.0,0.0);
+    // }else {
+    //   DM_Disable(0x01);
+    // }
 
-
+    HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

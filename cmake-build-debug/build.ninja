@@ -53,7 +53,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj: C_COMPILER_
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\Communications.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -63,7 +63,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj: C_COMPILER__6axis-arm-
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\can.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -73,17 +73,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj: C_COMPILER__6axis-arm-
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\dma.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/freertos.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Core/Src/freertos.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\freertos.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -93,7 +83,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj: C_COMPILER__6axis-arm
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\gpio.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -103,17 +93,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj: C_COMPILER__6axis-arm
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\main.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/motor_task.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Core/Src/motor_task.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\motor_task.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -123,7 +103,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj: C_COMPILER__6axis-a
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\remote.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -133,7 +113,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj: C_COMPIL
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\stm32f4xx_hal_msp.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -143,7 +123,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj: C_COMPILER__6
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\stm32f4xx_it.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -153,7 +133,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/syscalls.c.obj: C_COMPILER__6axis
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\syscalls.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -163,7 +143,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/sysmem.c.obj: C_COMPILER__6axis-a
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\sysmem.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -173,7 +153,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj: C_COMPILE
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\system_stm32f4xx.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -183,7 +163,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj: C_COMPILER__6axis-arm-
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\tim.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -193,7 +173,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj: C_COMPILER__6axis-ar
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src\usart.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -203,7 +183,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj: 
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Core\Startup\startup_stm32f407ighx.s.obj.d
   FLAGS = -g -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -x assembler-with-cpp -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Core\Startup
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -213,7 +193,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -223,7 +203,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -233,7 +213,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -243,7 +223,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -253,7 +233,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -263,7 +243,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_exti.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -273,7 +253,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -283,7 +263,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -293,7 +273,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -303,7 +283,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -313,7 +293,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -323,7 +303,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -333,7 +313,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -343,7 +323,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -353,7 +333,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -363,7 +343,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
@@ -373,109 +353,9 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx
   DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
   DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Drivers\STM32F4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/croutine.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\croutine.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/list.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\list.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/queue.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\queue.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/tasks.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\tasks.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source
-  TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
-  TARGET_PDB = 6axis-arm-pr.elf.pdb
-
-build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: C_COMPILER__6axis-arm-pr.2eelf_unscanned_Debug D$:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/timers.c || cmake_object_order_depends_target_6axis-arm-pr.elf
-  DEFINES = -DDEBUG -DSTM32F407xx -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\timers.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -ID:/RoboMaster/6axis-arm-pr/Core/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc -ID:/RoboMaster/6axis-arm-pr/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Device/ST/STM32F4xx/Include -ID:/RoboMaster/6axis-arm-pr/Drivers/CMSIS/Include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/include -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -ID:/RoboMaster/6axis-arm-pr/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-  OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir
-  OBJECT_FILE_DIR = CMakeFiles\6axis-arm-pr.elf.dir\Middlewares\Third_Party\FreeRTOS\Source
   TARGET_COMPILE_PDB = CMakeFiles\6axis-arm-pr.elf.dir\
   TARGET_PDB = 6axis-arm-pr.elf.pdb
 
@@ -487,7 +367,7 @@ build CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/ti
 #############################################
 # Link the executable 6axis-arm-pr.elf
 
-build 6axis-arm-pr.elf: C_EXECUTABLE_LINKER__6axis-arm-pr.2eelf_Debug CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/freertos.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/motor_task.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/syscalls.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/sysmem.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+build 6axis-arm-pr.elf: C_EXECUTABLE_LINKER__6axis-arm-pr.2eelf_Debug CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/Communications.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/can.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/dma.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/gpio.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/remote.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/stm32f4xx_it.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/syscalls.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/sysmem.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/system_stm32f4xx.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/tim.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/usart.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj CMakeFiles/6axis-arm-pr.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
   FLAGS = -g
   LINK_FLAGS = -Wl,-gc-sections,--print-memory-usage,-Map=D:/RoboMaster/6axis-arm-pr/cmake-build-debug/6axis-arm-pr.map -mcpu=cortex-m4 -mthumb -mthumb-interwork -T D:/RoboMaster/6axis-arm-pr/STM32F407IGHX_FLASH.ld
   OBJECT_DIR = CMakeFiles\6axis-arm-pr.elf.dir

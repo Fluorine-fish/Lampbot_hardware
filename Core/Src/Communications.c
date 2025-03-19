@@ -4,7 +4,6 @@
 
 #include "stm32f407xx.h"
 #include "can.h"
-#include "cmsis_os.h"
 #include "main.h"
 
 //大疆电机数据存储结构体
@@ -16,12 +15,19 @@ typedef struct
   int16_t temperate;
 }motor_t;
 
+typedef struct
+{
+  int p_int[3],v_int[3],t_int[3];						//这里可根据电机数目自行修改，读取三个电机的位置、速度、转矩
+  float position[3],velocity[3],torque[3];
+  int16_t State;
+}DM_motor_t;
+
 motor_t motor_6020={0,0,0,0};
 motor_t M3508_1={0,0,0,0};
 motor_t M3508_2={0,0,0,0};
 motor_t M3508_3={0,0,0,0};
 motor_t M3508_4={0,0,0,0};
-motor_t J4310={0,0,0,0};
+DM_motor_t J4310_1={{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},0};
 motor_t H6215_1={0,0,0,0};
 motor_t H6215_2={0,0,0,0};
 uint8_t motor_can_send_data[8];
@@ -80,35 +86,34 @@ HAL_StatusTypeDef cmd_motor(
 }
 
 /**
- * @brief 达妙电机速度模式报文
+ * @brief 达妙电机速度位置模式报文
  *
  * @param stdid
  * @param vel fp16类型的速度值
  * @return HAL_StatusTypeDef
  */
-HAL_StatusTypeDef DM_Speed_cmd(
-  uint32_t stdid, float vel)
-{
+HAL_StatusTypeDef DM_SpeedPosition_cmd(CAN_HandleTypeDef *hacn,uint32_t stdid, float vel, float pos){
   uint32_t send_mail_box;
   motor_tx_message.StdId = stdid;
   motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
   motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
   motor_tx_message.DLC = 0x08;
 
-  char* p=&vel;
+  char* p=&pos;
+  char* q=&vel;
   motor_can_send_data[0] = p[0];
   motor_can_send_data[1] = p[1];
   motor_can_send_data[2] = p[2];
   motor_can_send_data[3] = p[3];
-  motor_can_send_data[4] = 0;
-  motor_can_send_data[5] = 0;
-  motor_can_send_data[6] = 0;
-  motor_can_send_data[7] = 0;
+  motor_can_send_data[4] = q[0];
+  motor_can_send_data[5] = q[1];
+  motor_can_send_data[6] = q[2];
+  motor_can_send_data[7] = q[3];
 
-  return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, &send_mail_box);
+  return HAL_CAN_AddTxMessage(&hacn, &motor_tx_message, motor_can_send_data, &send_mail_box);
 }
 
-//达妙H6215相关函数；
+//达妙相关函数；
 /**
  * @brief 达妙电机使能命令
  *
@@ -163,51 +168,6 @@ HAL_StatusTypeDef DM_Disable(
   return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, &send_mail_box);
 }
 
-/**
- * @brief 达妙电机用浮点转换整形
- *
- * @param X_float
- * @param X_min
- * @param X_max
- * @param bits
- * @return int
- */
-static int float_to_uint(float X_float, float X_min, float X_max,
-  int bits){
-    float span = X_max - X_min;
-    float offset = X_min;
-    return (int) ((X_float-offset)*((float)((1<<bits)-1))/span);
-}
-
-HAL_StatusTypeDef DM_H6215_MIT_cmd(uint32_t stdid, float Torque)
-{
-  uint32_t send_mail_box;
-  motor_tx_message.StdId = stdid;
-  motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
-  motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
-  motor_tx_message.DLC = 0x08;
-
-  //根据上位机的电机转矩最大最小限位
-  float T_Max = 17.0;
-  float T_Min = -17.0;
-  int KD_Tmp = float_to_uint(0,0,5,12);
-  int Torque_Tmp = float_to_uint(Torque,-T_Max,T_Max,12);
-
-
-  motor_can_send_data[0] = 0;
-  motor_can_send_data[1] = 0;
-  motor_can_send_data[2] = 0;
-  motor_can_send_data[3] = 0;
-  motor_can_send_data[4] = 0;
-  motor_can_send_data[5] = 0;
-  motor_can_send_data[6] = (uint8_t)((KD_Tmp&0x0F)<<4) | (Torque_Tmp>>8);
-  motor_can_send_data[7] = (uint8_t)(Torque_Tmp);
-
-  return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, &send_mail_box);
-}
-
-
-
 /*解码函数*/
 void decode_motor_measure(motor_t * motor, uint8_t * data)
 {
@@ -215,16 +175,49 @@ void decode_motor_measure(motor_t * motor, uint8_t * data)
   motor->speed_rpm = (data[2] << 8) | data[3];
   motor->current_raw = (data[4] << 8) | data[5];
   motor->temperate = data[6];
-  return;
 }
 
-void decode_motor_measure_DM(motor_t * motor, uint8_t * data)
+float uint_to_float(int x_int, float x_min, float x_max, int bits);
+int float_to_uint(float x, float x_min, float x_max, int bits);
+
+void decode_motor_measure_DM(DM_motor_t * motor, uint8_t * data)
 {
-  motor->angle_ecd = (data[1] << 8) | data[2];
-  motor->speed_rpm = (data[3] << 8) | data[4];
-  motor->current_raw = (data[4] << 8) | data[5];
-  motor->temperate = data[6];
-  return;
+  motor->p_int[0]=(data[1]<<8)|data[2];
+  motor->v_int[0]=(data[3]<<4)|(data[4]>>4);
+  motor->t_int[0]=((data[4]&0xF)<<8)|data[5];
+  motor->position[0] = uint_to_float(motor->p_int[0], 12.5, 12.5, 16); // (-12.5,12.5)
+  motor->velocity[0] = uint_to_float(motor->v_int[0], -45, 45, 12); // (-45.0,45.0)
+  motor->torque[0] = uint_to_float(motor->t_int[0], 18, 18, 12); // (-18.0,18.0)
+  motor->State=data[0];
+}
+
+/**
+ * @brief  采用浮点数据等比例转换成整数
+ * @param  x_int     	要转换的无符号整数
+ * @param  x_min      目标浮点数的最小值
+ * @param  x_max    	目标浮点数的最大值
+ * @param  bits      	无符号整数的位数
+ */
+float uint_to_float(int x_int, float x_min, float x_max, int bits){
+  /// converts unsigned int to float, given range and number of bits ///
+  float span = x_max - x_min;
+  float offset = x_min;
+  return ((float)x_int)*span/((float)((1<<bits)-1)) + offset;
+}
+
+/**
+ * @brief  将浮点数转换为无符号整数
+ * @param  x     			要转换的浮点数
+ * @param  x_min      浮点数的最小值
+ * @param  x_max    	浮点数的最大值
+ * @param  bits      	无符号整数的位数
+ */
+
+int float_to_uint(float x, float x_min, float x_max, int bits){
+  /// Converts a float to an unsigned int, given range and number of bits///
+  float span = x_max - x_min;
+  float offset = x_min;
+  return (int) ((x-offset)*((float)((1<<bits)-1))/span);
 }
 
 /**
@@ -251,16 +244,10 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan)
   if (rx_header.StdId == 0x204) {
     decode_motor_measure(&M3508_4, rx_data);
   }
-  if (rx_header.StdId == 0x0B ){
-    decode_motor_measure(&J4310, rx_data);
+  if (rx_header.StdId == 0x205) {
+    decode_motor_measure(&motor_6020, rx_data);
   }
-    if (rx_header.StdId == 0x302) {
-    decode_motor_measure(&J4310, rx_data);
-  }
-    if (rx_header.StdId == 0x303) {
-    decode_motor_measure(&J4310, rx_data);
-  }
-    if (rx_header.StdId == 0x304) {
-    decode_motor_measure(&J4310, rx_data);
+  if (rx_header.StdId == 0x02) {
+    decode_motor_measure_DM(&J4310_1, rx_data);
   }
 }
