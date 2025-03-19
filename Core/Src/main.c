@@ -129,7 +129,6 @@ int main(void)
         HAL_Delay(5);
         Enable_flag = 1;
       }
-
       Pos[0] =(Get_Pos(RC.ch0)<=6 && Get_Pos(RC.ch0)>=0)?Get_Pos(RC.ch0):0;
       Pos[1] =(Get_Pos(RC.ch1)<=6 && Get_Pos(RC.ch1)>=0)?Get_Pos(RC.ch1):0;
       Pos[2] =(Get_Pos(RC.ch2)<=6 && Get_Pos(RC.ch2)>=0)?Get_Pos(RC.ch2):0;
