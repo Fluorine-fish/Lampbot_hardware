@@ -17,8 +17,8 @@ typedef struct
 
 typedef struct
 {
-  int p_int[3],v_int[3],t_int[3];						//这里可根据电机数目自行修改，读取三个电机的位置、速度、转矩
-  float position[3],velocity[3],torque[3];
+  int p_int,v_int,t_int;						//这里可根据电机数目自行修改，读取三个电机的位置、速度、转矩
+  float position,velocity,torque;
   int16_t State;
 }DM_motor_t;
 
@@ -27,7 +27,7 @@ motor_t M3508_1={0,0,0,0};
 motor_t M3508_2={0,0,0,0};
 motor_t M3508_3={0,0,0,0};
 motor_t M3508_4={0,0,0,0};
-DM_motor_t J4310_1={{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},0};
+DM_motor_t J4310_1={0,0,0,0,0,0,0};
 motor_t H6215_1={0,0,0,0};
 motor_t H6215_2={0,0,0,0};
 uint8_t motor_can_send_data[8];
@@ -99,16 +99,17 @@ HAL_StatusTypeDef DM_SpeedPosition_cmd(CAN_HandleTypeDef *hacn,uint32_t stdid, f
   motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
   motor_tx_message.DLC = 0x08;
 
-  char* p=&pos;
-  char* q=&vel;
-  motor_can_send_data[0] = p[0];
-  motor_can_send_data[1] = p[1];
-  motor_can_send_data[2] = p[2];
-  motor_can_send_data[3] = p[3];
-  motor_can_send_data[4] = q[0];
-  motor_can_send_data[5] = q[1];
-  motor_can_send_data[6] = q[2];
-  motor_can_send_data[7] = q[3];
+  uint8_t *pbuf,*vbuf;
+  pbuf=(uint8_t*)&pos;
+  vbuf=(uint8_t*)&vel;
+  motor_can_send_data[0] =*pbuf;
+  motor_can_send_data[1] = *(pbuf+1);
+  motor_can_send_data[2] = *(pbuf+2);
+  motor_can_send_data[3] = *(pbuf+3);
+  motor_can_send_data[4] = *vbuf;
+  motor_can_send_data[5] = *(vbuf+1);
+  motor_can_send_data[6] = *(vbuf+2);
+  motor_can_send_data[7] = *(vbuf+3);
 
   return HAL_CAN_AddTxMessage(&hacn, &motor_tx_message, motor_can_send_data, &send_mail_box);
 }
@@ -182,13 +183,13 @@ int float_to_uint(float x, float x_min, float x_max, int bits);
 
 void decode_motor_measure_DM(DM_motor_t * motor, uint8_t * data)
 {
-  motor->p_int[0]=(data[1]<<8)|data[2];
-  motor->v_int[0]=(data[3]<<4)|(data[4]>>4);
-  motor->t_int[0]=((data[4]&0xF)<<8)|data[5];
-  motor->position[0] = uint_to_float(motor->p_int[0], 12.5, 12.5, 16); // (-12.5,12.5)
-  motor->velocity[0] = uint_to_float(motor->v_int[0], -45, 45, 12); // (-45.0,45.0)
-  motor->torque[0] = uint_to_float(motor->t_int[0], 18, 18, 12); // (-18.0,18.0)
-  motor->State=data[0];
+  motor->p_int=(data[1]<<8)|data[2];
+  motor->v_int=(data[3]<<4)|(data[4]>>4);
+  motor->t_int=((data[4]&0xF)<<8)|data[5];
+  motor->position = uint_to_float(motor->p_int, -12.5, 12.5, 16); // (-12.5,12.5)
+  motor->velocity = uint_to_float(motor->v_int, -45, 45, 12); // (-45.0,45.0)
+  motor->torque = uint_to_float(motor->t_int, -18, 18, 12); // (-18.0,18.0)
+  motor->State=(data[0] & 0x0F);
 }
 
 /**
@@ -247,7 +248,9 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan)
   if (rx_header.StdId == 0x205) {
     decode_motor_measure(&motor_6020, rx_data);
   }
-  if (rx_header.StdId == 0x02) {
+
+  //达妙在速度位置模式下接收为MasterID
+  if (rx_header.StdId == 0x011) {
     decode_motor_measure_DM(&J4310_1, rx_data);
   }
 }

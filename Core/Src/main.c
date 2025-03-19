@@ -108,26 +108,29 @@ int main(void)
   /* USER CODE BEGIN 2 */
   can_filter_init();
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
-  DM_Enable(0x101);
-  HAL_Delay(10);
-  while(J4310_1.State != 1) {
-    DM_Enable(0x101);
-    HAL_Delay(10);
-  }
+  uint8_t Enable_flag = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    DM_Enable(0x101);
-    // if(RC.s1 == 3 && RC.s2 == 3) {
-    //   DM_Enable(0x01);
-    //   HAL_Delay(10);
-    DM_SpeedPosition_cmd(&hcan1,0x101,0.0,0.0);
-    // }else {
-    //   DM_Disable(0x01);
-    // }
+    if(RC.s1 == 3 && RC.s2 == 3) {
+      //判断是否使能如果没有使能就使能
+      if(!Enable_flag) {
+        DM_Enable(0x101);
+        Enable_flag = 1;
+        HAL_Delay(10);
+      }
+
+      // DM_SpeedPosition_cmd(&hcan1,0x101,0.0,0.0);
+    }else {
+      if(Enable_flag) {
+        DM_Disable(0x101);
+        Enable_flag = 0;
+        HAL_Delay(10);
+      }
+    }
 
     HAL_Delay(10);
     /* USER CODE END WHILE */
