@@ -29,7 +29,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5eb740ab-a1c0-45d2-be3b-2118bf73fc71" name="更改" comment="达妙电机遥控器摇杆位置映射" />
+    <list default="true" id="5eb740ab-a1c0-45d2-be3b-2118bf73fc71" name="更改" comment="版本管理修正">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/6axis-arm-pr.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/6axis-arm-pr.elf.dir/Core/Src/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,26 +68,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "CMake 应用程序.6axis-arm-pr.elf.executor": "Run",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/RoboMaster/6axis-arm-pr",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake 应用程序.6axis-arm-pr.elf.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/RoboMaster/6axis-arm-pr&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="6axis-arm-pr.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="6axis-arm-pr" TARGET_NAME="6axis-arm-pr.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="6axis-arm-pr" RUN_TARGET_NAME="6axis-arm-pr.elf">
       <method v="2">
@@ -98,6 +109,8 @@
       <workItem from="1742290267158" duration="13206000" />
       <workItem from="1742363243608" duration="621000" />
       <workItem from="1742364860633" duration="10227000" />
+      <workItem from="1742564357547" duration="680000" />
+      <workItem from="1742566115239" duration="1319000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -155,7 +168,31 @@
       <option name="project" value="LOCAL" />
       <updated>1742391645446</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="push">
+      <option name="closed" value="true" />
+      <created>1742393492701</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1742393492701</updated>
+    </task>
+    <task id="LOCAL-00009" summary="push">
+      <option name="closed" value="true" />
+      <created>1742393578346</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1742393578346</updated>
+    </task>
+    <task id="LOCAL-00010" summary="版本管理修正">
+      <option name="closed" value="true" />
+      <created>1742393749445</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1742393749445</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,7 +214,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/development" />
                       </list>
                     </value>
                   </entry>
@@ -201,6 +238,9 @@
     <MESSAGE value="达妙电机CAN使能完成" />
     <MESSAGE value="达妙电机CAN接收函数完成" />
     <MESSAGE value="达妙电机遥控器摇杆位置映射" />
-    <option name="LAST_COMMIT_MESSAGE" value="达妙电机遥控器摇杆位置映射" />
+    <MESSAGE value="调整管理" />
+    <MESSAGE value="push" />
+    <MESSAGE value="版本管理修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="版本管理修正" />
   </component>
 </project>

@@ -32,10 +32,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-float Get_Pos(int16_t ch_data){
-  return 6.0/1320.0*(ch_data+660);
-}
-float Pos[4] = {0,0,0,0};
+
+float Pos[4] = {0.1,0.1,0.1,0.1};
 extern RC_t RC;
 extern CAN_TxHeaderTypeDef motor_tx_message;
 extern uint8_t motor_can_send_data[8];
@@ -116,7 +114,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    if(RC.s1 == 3 && RC.s2 == 3) {
+    if(RC.s1 == 1 && RC.s2 == 1) {
       //判断是否使能如果没有使能就使能
       if(!Enable_flag) {
         DM_Enable(0x101);
@@ -129,10 +127,35 @@ int main(void)
         HAL_Delay(5);
         Enable_flag = 1;
       }
-      Pos[0] =(Get_Pos(RC.ch0)<=6 && Get_Pos(RC.ch0)>=0)?Get_Pos(RC.ch0):0;
-      Pos[1] =(Get_Pos(RC.ch1)<=6 && Get_Pos(RC.ch1)>=0)?Get_Pos(RC.ch1):0;
-      Pos[2] =(Get_Pos(RC.ch2)<=6 && Get_Pos(RC.ch2)>=0)?Get_Pos(RC.ch2):0;
-      Pos[3] =(Get_Pos(RC.ch3)<=6 && Get_Pos(RC.ch3)>=0)?Get_Pos(RC.ch3):0;
+
+      if(RC.ch0 >= 100 && RC.ch0 <=660 ) {
+        if(Pos[0] <= 2) Pos[0] += 0.02;
+        else Pos[0] = 2;
+      }else if(RC.ch0 >= -660 && RC.ch0 <=-110) {
+        if(Pos[0] >= 0.1) Pos[0] -= 0.02;
+        else Pos[0] = 0.1;
+      }
+      if(RC.ch1 >= 100 && RC.ch1 <=660 ) {
+        if(Pos[1] <= 2) Pos[1] += 0.02;
+        else Pos[1] = 2;
+      }else if(RC.ch1 >= -660 && RC.ch1 <=-110) {
+        if(Pos[1] >= 0.1) Pos[1] -= 0.02;
+        else Pos[1] = 0.1;
+      }
+      if(RC.ch2 >= 100 && RC.ch2 <=660 ) {
+        if(Pos[2] <= 2) Pos[2] += 0.02;
+        else Pos[2] = 2;
+      }else if(RC.ch2 >= -660 && RC.ch2 <=-110) {
+        if(Pos[2] >= 0.1) Pos[2] -= 0.02;
+        else Pos[2] = 0.1;
+      }
+      if(RC.ch3 >= 100 && RC.ch3 <=660 ) {
+        if(Pos[3] <= 2) Pos[3] += 0.02;
+        else Pos[3] = 2;
+      }else if(RC.ch3 >= -660 && RC.ch3 <=-110) {
+        if(Pos[3] >= 0.1) Pos[3] -= 0.02;
+        else Pos[3] = 0.1;
+      }
 
       DM_SpeedPosition_cmd(&hcan1,0x101,3.0,Pos[0]);
       HAL_Delay(5);
@@ -142,8 +165,35 @@ int main(void)
       HAL_Delay(5);
       DM_SpeedPosition_cmd(&hcan1,0x104,3.0,Pos[3]);
       HAL_Delay(5);
+    }
+    else if(RC.s1 == 3 && RC.s2 == 3) {
+        //判断是否使能如果没有使能就使能
+        if(!Enable_flag) {
+          DM_Enable(0x101);
+          HAL_Delay(5);
+          DM_Enable(0x102);
+          HAL_Delay(5);
+          DM_Enable(0x103);
+          HAL_Delay(5);
+          DM_Enable(0x104);
+          HAL_Delay(5);
+          Enable_flag = 1;
+      }
 
-    }else {
+      for(char i =0 ;i<4;i++) {
+        Pos[i] = 0.1;
+      }
+      DM_SpeedPosition_cmd(&hcan1,0x101,0.8,0.1);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x102,0.8,0.1);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x103,0.8,0.1);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x104,0.8,0.1);
+      HAL_Delay(5);
+
+    }
+    else {
       //判断是否失能如果没有失能就失能
       if(Enable_flag) {
         DM_Disable(0x101);
