@@ -29,7 +29,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5eb740ab-a1c0-45d2-be3b-2118bf73fc71" name="更改" comment="版本管理修正">
+    <list default="true" id="5eb740ab-a1c0-45d2-be3b-2118bf73fc71" name="更改" comment="完成根据推杆角度递增">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
@@ -110,7 +110,8 @@
       <workItem from="1742363243608" duration="621000" />
       <workItem from="1742364860633" duration="10227000" />
       <workItem from="1742564357547" duration="680000" />
-      <workItem from="1742566115239" duration="1319000" />
+      <workItem from="1742566115239" duration="5477000" />
+      <workItem from="1742641258132" duration="2938000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -192,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742393749445</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="完成根据推杆角度递增">
+      <option name="closed" value="true" />
+      <created>1742567546292</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1742567546292</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +223,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/development" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -241,6 +250,7 @@
     <MESSAGE value="调整管理" />
     <MESSAGE value="push" />
     <MESSAGE value="版本管理修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="版本管理修正" />
+    <MESSAGE value="完成根据推杆角度递增" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成根据推杆角度递增" />
   </component>
 </project>
