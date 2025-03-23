@@ -23,6 +23,13 @@ typedef struct
     int16_t State;
 }DM_motor_t;
 
+typedef struct
+{
+    uint16_t angle_ecd;
+    int16_t speed_rpm;
+    int16_t torque;
+}M2006_motor_t;
+
 #define P_MIN -12.5		//位置最小值
 #define P_MAX 12.5		//位置最大值
 #define V_MIN -45			//速度最小值

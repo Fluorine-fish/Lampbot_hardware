@@ -29,8 +29,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5eb740ab-a1c0-45d2-be3b-2118bf73fc71" name="更改" comment="完成根据推杆角度递增">
+    <list default="true" id="5eb740ab-a1c0-45d2-be3b-2118bf73fc71" name="更改" comment="所以电机零点矫正">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/Communications.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/Communications.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/Communications.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/Communications.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
@@ -111,7 +113,9 @@
       <workItem from="1742364860633" duration="10227000" />
       <workItem from="1742564357547" duration="680000" />
       <workItem from="1742566115239" duration="5477000" />
-      <workItem from="1742641258132" duration="2938000" />
+      <workItem from="1742641258132" duration="4781000" />
+      <workItem from="1742700848641" duration="3180000" />
+      <workItem from="1742719674412" duration="390000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -201,7 +205,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742567546292</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="所以电机零点矫正">
+      <option name="closed" value="true" />
+      <created>1742649667145</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1742649667145</updated>
+    </task>
+    <task id="LOCAL-00013" summary="所以电机零点矫正">
+      <option name="closed" value="true" />
+      <created>1742649702533</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1742649702533</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +271,8 @@
     <MESSAGE value="push" />
     <MESSAGE value="版本管理修正" />
     <MESSAGE value="完成根据推杆角度递增" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成根据推杆角度递增" />
+    <MESSAGE value="所有电机零点矫正" />
+    <MESSAGE value="所以电机零点矫正" />
+    <option name="LAST_COMMIT_MESSAGE" value="所以电机零点矫正" />
   </component>
 </project>

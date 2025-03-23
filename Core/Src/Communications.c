@@ -17,6 +17,13 @@ typedef struct
 
 typedef struct
 {
+  uint16_t angle_ecd;
+  int16_t speed_rpm;
+  int16_t torque;
+}M2006_motor_t;
+
+typedef struct
+{
   int p_int,v_int,t_int;						//这里可根据电机数目自行修改，读取三个电机的位置、速度、转矩
   float position,velocity,torque;
   int16_t State;
@@ -27,10 +34,13 @@ motor_t M3508_1={0,0,0,0};
 motor_t M3508_2={0,0,0,0};
 motor_t M3508_3={0,0,0,0};
 motor_t M3508_4={0,0,0,0};
+
 DM_motor_t J4310_1={0,0,0,0,0,0,0};
 DM_motor_t J4310_2={0,0,0,0,0,0,0};
 DM_motor_t J4310_3={0,0,0,0,0,0,0};
 DM_motor_t J4310_4={0,0,0,0,0,0,0};
+M2006_motor_t M2006_1={0,0,0};
+
 motor_t H6215_1={0,0,0,0};
 motor_t H6215_2={0,0,0,0};
 uint8_t motor_can_send_data[8];
@@ -181,6 +191,13 @@ void decode_motor_measure(motor_t * motor, uint8_t * data)
   motor->temperate = data[6];
 }
 
+void decode_motor_measure_M2006(M2006_motor_t * motor, uint8_t * data)
+{
+  motor->angle_ecd = (data[0] << 8) | data[1];
+  motor->speed_rpm = (data[2] << 8) | data[3];
+  motor->torque = (data[4] << 8) | data[5];
+}
+
 float uint_to_float(int x_int, float x_min, float x_max, int bits);
 int float_to_uint(float x, float x_min, float x_max, int bits);
 
@@ -237,21 +254,8 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan)
   HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data);
   //标识符=0x200+ID
   if (rx_header.StdId == 0x201) {
-    decode_motor_measure(&M3508_1, rx_data);
+    decode_motor_measure_M2006(&M2006_1, rx_data);
   }
-  if (rx_header.StdId == 0x202) {
-    decode_motor_measure(&M3508_2, rx_data);
-  }
-  if (rx_header.StdId == 0x203) {
-    decode_motor_measure(&M3508_3, rx_data);
-  }
-  if (rx_header.StdId == 0x204) {
-    decode_motor_measure(&M3508_4, rx_data);
-  }
-  if (rx_header.StdId == 0x205) {
-    decode_motor_measure(&motor_6020, rx_data);
-  }
-
   //达妙在速度位置模式下接收为MasterID
   if (rx_header.StdId == 0x011) {
     decode_motor_measure_DM(&J4310_1, rx_data);
