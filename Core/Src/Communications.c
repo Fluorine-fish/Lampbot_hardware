@@ -18,7 +18,8 @@ typedef struct
 typedef struct
 {
   uint16_t angle_ecd;
-  int16_t speed_rpm;
+  int16_t raw_speed_rpm;
+  float speed_rpm;
   int16_t torque;
 }M2006_motor_t;
 
@@ -194,8 +195,9 @@ void decode_motor_measure(motor_t * motor, uint8_t * data)
 void decode_motor_measure_M2006(M2006_motor_t * motor, uint8_t * data)
 {
   motor->angle_ecd = (data[0] << 8) | data[1];
-  motor->speed_rpm = (data[2] << 8) | data[3];
+  motor->raw_speed_rpm = (data[2] << 8) | data[3];
   motor->torque = (data[4] << 8) | data[5];
+  motor->speed_rpm = motor->raw_speed_rpm/36.0f;
 }
 
 float uint_to_float(int x_int, float x_min, float x_max, int bits);

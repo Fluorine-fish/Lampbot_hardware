@@ -26,6 +26,7 @@ typedef struct
 typedef struct
 {
     uint16_t angle_ecd;
+    int16_t raw_speed_rpm;
     int16_t speed_rpm;
     int16_t torque;
 }M2006_motor_t;
