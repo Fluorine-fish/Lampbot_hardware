@@ -1,9 +1,0 @@
-<changelist name="更改" date="1742392696009" recycled="false">
-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/更改/shelved.patch" />
-  <option name="DESCRIPTION" value="更改" />
-  <binary>
-    <option name="BEFORE_PATH" value="cmake-build-debug/.ninja_deps" />
-    <option name="AFTER_PATH" value="cmake-build-debug/.ninja_deps" />
-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/更改/.ninja_deps" />
-  </binary>
-</changelist>
