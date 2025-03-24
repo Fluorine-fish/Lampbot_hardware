@@ -41,10 +41,13 @@ extern uint8_t motor_can_send_data[8];
 
 extern DM_motor_t J4310_1;
 extern M2006_motor_t M2006_1;
-extern PID_Param PID_M2006_1;
+extern PID_Param PID_Speed_M2006_1;
+extern PID_Param PID_Angle_M2006_1;
+
 extern int32_t angle;
 extern int32_t last_angle;
-extern int16_t delta_angle;
+extern int32_t True_angle;
+extern int16_t first_angle;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -113,7 +116,8 @@ int main(void)
   can_filter_init();
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   uint8_t Enable_flag = 0;
-
+  while(M2006_1.angle_ecd == 0) {}
+  first_angle = M2006_1.angle_ecd;
   last_angle = M2006_1.angle_ecd;
   /* USER CODE END 2 */
 
@@ -217,8 +221,13 @@ int main(void)
     //   }
     // }
     Angle_Calc(M2006_1.angle_ecd);
-    PID_Solution(&PID_M2006_1,M2006_1.raw_speed_rpm,PID_M2006_1.target);
-    cmd_motor(0x200,PID_M2006_1.out,0,0,0);
+    // PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
+    if(RC.s1 == 3 && RC.s2 == 3) {
+      PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,RC.ch1);
+      cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
+    }else {
+      cmd_motor(0x200,0,0,0,0);
+    }
     HAL_Delay(2);
     /* USER CODE END WHILE */
 
