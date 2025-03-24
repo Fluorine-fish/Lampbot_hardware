@@ -42,6 +42,9 @@ extern uint8_t motor_can_send_data[8];
 extern DM_motor_t J4310_1;
 extern M2006_motor_t M2006_1;
 extern PID_Param PID_M2006_1;
+extern int32_t angle;
+extern int32_t last_angle;
+extern int16_t delta_angle;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -111,6 +114,7 @@ int main(void)
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   uint8_t Enable_flag = 0;
 
+  last_angle = M2006_1.angle_ecd;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -212,7 +216,7 @@ int main(void)
     //     Enable_flag = 0;
     //   }
     // }
-    PID_Angle();
+    Angle_Calc(M2006_1.angle_ecd);
     PID_Solution(&PID_M2006_1,M2006_1.raw_speed_rpm,PID_M2006_1.target);
     cmd_motor(0x200,PID_M2006_1.out,0,0,0);
     HAL_Delay(2);

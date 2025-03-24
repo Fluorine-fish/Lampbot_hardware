@@ -19,4 +19,5 @@ typedef struct PID_Param {
 
 void PID_Solution(PID_Param *param,int16_t measure,int16_t target);
 void PID_Angle(PID_Param *param,int16_t measure,int16_t target,int16_t max_speed);
+void Angle_Calc(int16_t raw_angle);
 #endif //PID_H

@@ -6,6 +6,10 @@
 #include "main.h"
 
 PID_Param PID_M2006_1 = {12,0.2,0,6000,600,0,0,0,0,0,0,0,0};
+int32_t angle=0;
+int32_t last_angle=0;
+int16_t delta_angle=0;
+
 
 void PID_Solution(PID_Param *param,int16_t measure,int16_t target) {
     param->target = target;
@@ -48,3 +52,17 @@ void PID_Angle(PID_Param *param,int16_t measure,int16_t target,int16_t max_speed
     if(param -> out >=max_speed) param->out = max_speed;
     if(param -> out <= -max_speed) param->out = -max_speed;
 }
+
+void Angle_Calc(int16_t raw_angle) {
+    delta_angle = raw_angle - last_angle;
+    if(raw_angle - last_angle > 6000) delta_angle = raw_angle-last_angle - 8191;
+    else if(raw_angle - last_angle <-6000) delta_angle = raw_angle -last_angle + 8191;
+    else delta_angle = raw_angle - last_angle;
+
+    if(angle + delta_angle > 8191*36) angle = angle + delta_angle - 8191*36;
+    else if(angle + delta_angle < 0) angle = angle + delta_angle + 8191*36;
+    else angle = angle + delta_angle;
+
+    last_angle = raw_angle;
+}
+
