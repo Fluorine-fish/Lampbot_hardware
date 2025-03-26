@@ -221,13 +221,13 @@ int main(void)
     //   }
     // }
     Angle_Calc(M2006_1.angle_ecd);
-    // PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
-    if(RC.s1 == 3 && RC.s2 == 3) {
-      PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,RC.ch1);
-      cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
-    }else {
-      cmd_motor(0x200,0,0,0,0);
-    }
+    // if(RC.s1 == 3 && RC.s2 == 3) {
+    PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
+    PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
+    //   cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
+    // }else {
+    cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
+    // }
     HAL_Delay(2);
     /* USER CODE END WHILE */
 
