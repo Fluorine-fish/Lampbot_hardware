@@ -35,6 +35,7 @@
 /* USER CODE BEGIN PTD */
 
 float Pos[4] = {0.5,-0.1,0.6,0.5};
+uint8_t Init_Flag = 0;
 extern RC_t RC;
 extern CAN_TxHeaderTypeDef motor_tx_message;
 extern uint8_t motor_can_send_data[8];
@@ -46,8 +47,22 @@ extern PID_Param PID_Angle_M2006_1;
 
 extern int32_t angle;
 extern int32_t last_angle;
-extern int32_t True_angle;
-extern int16_t first_angle;
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+  //中断处理M2006的PID位置环
+  if (htim == &htim5) {
+    if(Init_Flag) {
+      Angle_Calc(M2006_1.angle_ecd);
+      // if(RC.s1 == 3 && RC.s2 == 3) {
+      PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
+      PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
+      //   cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
+      // }else {
+      cmd_motor(0x200,PID_Angle_M2006_1.out,0,0,0);
+      // }
+    }
+  }
+}
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -108,127 +123,115 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_TIM1_Init();
-  MX_TIM8_Init();
   MX_USART3_UART_Init();
   MX_CAN1_Init();
   MX_CAN2_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
   can_filter_init();
+  HAL_TIM_Base_Start_IT(&htim5);
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   uint8_t Enable_flag = 0;
+
   while(M2006_1.angle_ecd == 0) {}
-  first_angle = M2006_1.angle_ecd;
+  Init_Flag = 1;
   last_angle = M2006_1.angle_ecd;
+  angle+=2000; //防止从反方向转到100
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  // ReSharper disable once CppDFAEndlessLoop
   while (1)
   {
-    // if(RC.s1 == 1 && RC.s2 == 1) {
-    //   //判断是否使能如果没有使能就使能
-    //   if(!Enable_flag) {
-    //     DM_Enable(0x101);
-    //     HAL_Delay(5);
-    //     DM_Enable(0x102);
-    //     HAL_Delay(5);
-    //     DM_Enable(0x103);
-    //     HAL_Delay(5);
-    //     DM_Enable(0x104);
-    //     HAL_Delay(5);
-    //     Enable_flag = 1;
-    //   }
-    //
-    //   if(RC.ch0 >= 100 && RC.ch0 <=660 ) {
-    //     if(Pos[0] < 2) Pos[0] += 0.02;
-    //     else Pos[0] = 2;
-    //   }else if(RC.ch0 >= -660 && RC.ch0 <=-110) {
-    //     if(Pos[0] > 0.5) Pos[0] -= 0.02;
-    //     else Pos[0] = 0.5;
-    //   }
-    //   if(RC.ch1 >= 100 && RC.ch1 <=660 ) {
-    //     if(Pos[1] < 2) Pos[1] += 0.02;
-    //     else Pos[1] = 2;
-    //   }else if(RC.ch1 >= -660 && RC.ch1 <=-110) {
-    //     if(Pos[1] > 0.5) Pos[1] -= 0.02;
-    //     else Pos[1] = 0.5;
-    //   }
-    //   if(RC.ch2 >= 100 && RC.ch2 <=660 ) {
-    //     if(Pos[2] < 2) Pos[2] += 0.02;
-    //     else Pos[2] = 2;
-    //   }else if(RC.ch2 >= -660 && RC.ch2 <=-110) {
-    //     if(Pos[2] > 0.6) Pos[2] -= 0.02;
-    //     else Pos[2] = 0.6;
-    //   }
-    //   if(RC.ch3 >= 100 && RC.ch3 <=660 ) {
-    //     if(Pos[3] < 2) Pos[3] += 0.02;
-    //     else Pos[3] = 2;
-    //   }else if(RC.ch3 >= -660 && RC.ch3 <=-110) {
-    //     if(Pos[3] > 0.5) Pos[3] -= 0.02;
-    //     else Pos[3] = 0.5;
-    //   }
-    //
-    //   DM_SpeedPosition_cmd(&hcan1,0x101,3.0,Pos[0]);
-    //   HAL_Delay(5);
-    //   DM_SpeedPosition_cmd(&hcan1,0x102,3.0,Pos[1]);
-    //   HAL_Delay(5);
-    //   DM_SpeedPosition_cmd(&hcan1,0x103,3.0,Pos[2]);
-    //   HAL_Delay(5);
-    //   DM_SpeedPosition_cmd(&hcan1,0x104,3.0,Pos[3]);
-    //   HAL_Delay(5);
-    // }
-    // else if(RC.s1 == 3 && RC.s2 == 3) {
-    //     //判断是否使能如果没有使能就使能
-    //     if(!Enable_flag) {
-    //       DM_Enable(0x101);
-    //       HAL_Delay(5);
-    //       DM_Enable(0x102);
-    //       HAL_Delay(5);
-    //       DM_Enable(0x103);
-    //       HAL_Delay(5);
-    //       DM_Enable(0x104);
-    //       HAL_Delay(5);
-    //       Enable_flag = 1;
-    //   }
-    //
-    //   for(uint8_t i = 0; i < 4; i++) {
-    //     Pos[i] = 0.5;
-    //   }
-    //   Pos[2]=0.7;
-    //   Pos[1]=1.0;
-    //   DM_SpeedPosition_cmd(&hcan1,0x101,0.8,0.5);
-    //   HAL_Delay(5);
-    //   DM_SpeedPosition_cmd(&hcan1,0x102,0.8,1.0);
-    //   HAL_Delay(5);
-    //   DM_SpeedPosition_cmd(&hcan1,0x103,0.8,0.7);
-    //   HAL_Delay(5);
-    //   DM_SpeedPosition_cmd(&hcan1,0x104,0.8,0.5);
-    //   HAL_Delay(5);
-    //
-    // }
-    // else {
-    //   //判断是否失能如果没有失能就失能
-    //   if(Enable_flag) {
-    //     DM_Disable(0x101);
-    //     HAL_Delay(5);
-    //     DM_Disable(0x102);
-    //     HAL_Delay(5);
-    //     DM_Disable(0x103);
-    //     HAL_Delay(5);
-    //     DM_Disable(0x104);
-    //     HAL_Delay(5);
-    //     Enable_flag = 0;
-    //   }
-    // }
-    Angle_Calc(M2006_1.angle_ecd);
-    // if(RC.s1 == 3 && RC.s2 == 3) {
-    PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
-    PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
-    //   cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
-    // }else {
-    cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
-    // }
-    HAL_Delay(2);
+    if(RC.s1 == 3 && RC.s2 == 1) {
+      //判断是否使能如果没有使能就使�??????
+      if(!Enable_flag) {
+        DM_Enable(0x101);
+        HAL_Delay(5);
+        DM_Enable(0x102);
+        HAL_Delay(5);
+        DM_Enable(0x103);
+        HAL_Delay(5);
+        Enable_flag = 1;
+      }
+
+      if(RC.ch0 >= 100 && RC.ch0 <=660 ) {
+        if(Pos[0] < 2) Pos[0] += 0.02;
+        else Pos[0] = 2;
+      }else if(RC.ch0 >= -660 && RC.ch0 <=-110) {
+        if(Pos[0] > 0.5) Pos[0] -= 0.02;
+        else Pos[0] = 0.5;
+      }
+      if(RC.ch1 >= 100 && RC.ch1 <=660 ) {
+        if(Pos[1] < 2) Pos[1] += 0.02;
+        else Pos[1] = 2;
+      }else if(RC.ch1 >= -660 && RC.ch1 <=-110) {
+        if(Pos[1] > 0.5) Pos[1] -= 0.02;
+        else Pos[1] = 0.5;
+      }
+      if(RC.ch2 >= 100 && RC.ch2 <=660 ) {
+        if(Pos[2] < 2) Pos[2] += 0.02;
+        else Pos[2] = 2;
+      }else if(RC.ch2 >= -660 && RC.ch2 <=-110) {
+        if(Pos[2] > 0.6) Pos[2] -= 0.02;
+        else Pos[2] = 0.6;
+      }
+      if(RC.ch3 >= 100 && RC.ch3 <=660 ) {
+        if(Pos[3] < 2) Pos[3] += 0.02;
+        else Pos[3] = 2;
+      }else if(RC.ch3 >= -660 && RC.ch3 <=-110) {
+        if(Pos[3] > 0.5) Pos[3] -= 0.02;
+        else Pos[3] = 0.5;
+      }
+
+      DM_SpeedPosition_cmd(&hcan1,0x101,3.0,Pos[0]);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x102,3.0,Pos[1]);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x103,3.0,Pos[2]);
+      HAL_Delay(5);
+    }
+    else if(RC.s1 == 3 && RC.s2 == 3) {
+        //判断是否使能如果没有使能就使�??????
+        if(!Enable_flag) {
+          DM_Enable(0x101);
+          HAL_Delay(5);
+          DM_Enable(0x102);
+          HAL_Delay(5);
+          DM_Enable(0x103);
+          HAL_Delay(5);
+          Enable_flag = 1;
+      }
+
+      for(uint8_t i = 0; i < 4; i++) {
+        Pos[i] = 0.5;
+      }
+      Pos[2]=0.7;
+      Pos[1]=1.0;
+      DM_SpeedPosition_cmd(&hcan1,0x101,0.8,0.5);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x102,0.8,1.0);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x103,0.8,0.7);
+      HAL_Delay(5);
+
+    }
+    else {
+      //判断是否失能如果没有失能就失�??????
+      if(Enable_flag) {
+        DM_Disable(0x101);
+        HAL_Delay(5);
+        DM_Disable(0x102);
+        HAL_Delay(5);
+        DM_Disable(0x103);
+        HAL_Delay(5);
+        Enable_flag = 0;
+      }
+    }
+
+    HAL_Delay(50);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

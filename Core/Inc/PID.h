@@ -5,8 +5,8 @@
 #ifndef PID_H
 #define PID_H
 
-#define ANGLE_PID_MAX_SPEED (1500)
-#define ANGLE_PID_MIN_SPEED (-1500)
+#define ANGLE_PID_MAX_SPEED (3000)
+#define ANGLE_PID_MIN_SPEED (-3000)
 
 #include "main.h"
 
