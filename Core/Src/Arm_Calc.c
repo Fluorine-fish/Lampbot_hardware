@@ -47,8 +47,8 @@ uint8_t Arm_Calculate(double target,double X_B,double Y_B,Arm_Params_t *arm_para
     q2 = clamp(q2, 0.0, PI);       // 限制在 [0, π]
 
     // 计算 q3 -------------------------------------------------
-    arm_param->q[2] = target - arm_param->q[1] - arm_param->theta2 + arm_param->q[0] + arm_param->theta3;
-    arm_param->q[2] = clamp(arm_param->q[2], -1.66, 1.66);   // 限制在 [-1.66, 1.66]
+    double q3  = target - q2 -atan2(Y_B, X_B) + q1 + arm_param->theta3;
+    q3= clamp(q3, -1.66, 1.66);   // 限制在 [-1.66, 1.66]
 
     // //运行正运动学求解进行比较判断逆解正确性
     // arm_param->B_resume[0] = arm_param->L1*cos(PI-arm_param->q[0])+arm_param->L2*cos(arm_param->q[2]+arm_param->theta2-arm_param->q[1]);
@@ -63,5 +63,11 @@ uint8_t Arm_Calculate(double target,double X_B,double Y_B,Arm_Params_t *arm_para
     // printf("q1 = %.4f rad (%.2f°)\n", arm_param->q[0], arm_param->q[0]*180/PI);
     // printf("q2 = %.4f rad (%.2f°)\n", arm_param->q[1], arm_param->q[1]*180/PI);
     // printf("q3 = %.4f rad (%.2f°)\n", arm_param->q[2], arm_param->q[2]*180/PI);
+
+    //如果没有任何问题导致return 就把计算出来的数据更新
+    arm_param->q[0] = q1;
+    arm_param->q[1] = q2;
+    arm_param->q[2] = q3;
+
     return 0;
 }

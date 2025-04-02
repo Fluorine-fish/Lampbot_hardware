@@ -145,13 +145,12 @@ int main(void)
 
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   uint8_t Enable_flag = 0;
+  HAL_TIM_Base_Start_IT(&htim2);
 
   while(M2006_1.angle_ecd == 0) {}
   HAL_TIM_Base_Start_IT(&htim5);
   last_angle = M2006_1.angle_ecd;
   angle+=2000; //防止从反方向转到100
-  HAL_TIM_Base_Start_IT(&htim2);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
