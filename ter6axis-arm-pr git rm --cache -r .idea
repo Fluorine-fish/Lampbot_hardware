@@ -1,0 +1,113 @@
+[33mcommit 6ac8371439337d2d138232ca415580e2be2a022e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Wed Apr 2 16:30:58 2025 +0800
+
+    新增TIM2中断（20hz）用于进行机械臂解算（没有修复计算失败不更新）
+
+[33mcommit 80485c8f2184ca6d2fa434246620de0d3fad6a68[m[33m ([m[1;31morigin/M2006-dev[m[33m, [m[1;32mM2006-dev[m[33m)[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Thu Mar 27 23:54:39 2025 +0800
+
+    定时器中断回调做M2006位置环控制（参数未完全整定）
+
+[33mcommit d6c09e4b379db0a61c4ced6f7b5843278573b6be[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Wed Mar 26 21:47:45 2025 +0800
+
+    M2006 位置环PD参数整定 输入角度限位+回零设置
+
+[33mcommit 328cb58155063611649f639fa7ce90d3170cd152[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Mon Mar 24 17:00:00 2025 +0800
+
+    Stop tracking .idea & cmake-build-debug
+
+[33mcommit 0b72ddeade6917eacf5f2b08874d4ac446901c08[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Mon Mar 24 16:51:55 2025 +0800
+
+    M2006 位置环PD参数整定（未做零点矫正）
+
+[33mcommit 0b7adac1ddd0c8824b26def4b0b81d76bc88b10c[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Mon Mar 24 09:30:19 2025 +0800
+
+    M2006 利用编码器累加完成轴上位置定位（未做零点矫正）
+
+[33mcommit 526867121386427673ddee34171dc53f2065dfbb[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Sun Mar 23 22:18:44 2025 +0800
+
+    M2006速度环
+
+[33mcommit 8fae68e536b013b8cf3632d0ce885e5ff14a5285[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Sun Mar 23 16:55:35 2025 +0800
+
+    M2006结构体建设
+
+[33mcommit 0b8c049a9baf2d35d800ba2b483aaa2611b37193[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Sat Mar 22 21:21:01 2025 +0800
+
+    所以电机零点矫正
+
+[33mcommit ff0e2fa7ef58a78acf30a7520d1df184b7b406c2[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Fri Mar 21 22:32:15 2025 +0800
+
+    完成根据推杆角度递增
+
+[33mcommit 99ccf514b373ee828afae5d568811a2a551dd7ef[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Wed Mar 19 22:15:47 2025 +0800
+
+    版本管理修正
+
+[33mcommit e37821017f0cbaff96a199c8a170a9e23cbc3c4f[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Wed Mar 19 22:11:32 2025 +0800
+
+    push
+
+[33mcommit c8570b02ebde2ce67897c36aab5d6a1b4cc5bd7b[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Wed Mar 19 21:40:42 2025 +0800
+
+    达妙电机遥控器摇杆位置映射
+
+[33mcommit 04f20ef3659e8a66d134a56e0a2c57ff94a99c06[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Wed Mar 19 15:06:45 2025 +0800
+
+    达妙电机CAN接收函数完成
+
+[33mcommit b7b062f74e76a0cb46cf4b0d7492121eb6afb2a4[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Wed Mar 19 14:20:03 2025 +0800
+
+    达妙电机CAN使能完成
+
+[33mcommit b012df5d4e4fbc37c032504f6d53cae23be981b6[m[33m ([m[1;31morigin/development[m[33m, [m[1;32mdevelopment[m[33m)[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Wed Mar 19 14:20:03 2025 +0800
+
+    达妙电机CAN使能完成
+
+[33mcommit 22ad129ba789042b1285bffc3e9648d6134434e3[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Tue Mar 18 18:16:40 2025 +0800
+
+    新增CAN12通讯配置
+
+[33mcommit 1c6edc866cdf14595f00d676bc01e0fbaec9e3df[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Tue Mar 18 18:16:07 2025 +0800
+
+    新增CAN12通讯配置
+
+[33mcommit 3ab279a2927aa9bc6f5abd72e8a128a2a6c26f6f[m
+Author: Fluorine-fish <2256096153@qq.com>
+Date:   Tue Mar 18 17:55:34 2025 +0800
+
+    first commit
