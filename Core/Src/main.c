@@ -22,6 +22,7 @@
 #include "dma.h"
 #include "tim.h"
 #include "usart.h"
+#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -29,16 +30,16 @@
 #include "remote.h"
 #include "Communications.h"
 #include "PID.h"
+#include "Arm_Calc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-float Pos[4] = {0.5,-0.1,0.6,0.5};
-uint8_t Init_Flag = 0;
 extern RC_t RC;
 extern CAN_TxHeaderTypeDef motor_tx_message;
 extern uint8_t motor_can_send_data[8];
+extern Arm_Params_t Arm_params;
 
 extern DM_motor_t J4310_1;
 extern M2006_motor_t M2006_1;
@@ -48,19 +49,29 @@ extern PID_Param PID_Angle_M2006_1;
 extern int32_t angle;
 extern int32_t last_angle;
 
+
+float Pos[4] = {0.5,-0.1,0.6,0.5};
+/**
+ * [0]为 target,[1]为 X_B ,[2] 为 Y_B
+ */
+double Arm_params_input[3] = {0.0,64.0,64.0};
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-  //中断处理M2006的PID位置环
+  //中断处理M2006的PID位置�?
   if (htim == &htim5) {
-    if(Init_Flag) {
-      Angle_Calc(M2006_1.angle_ecd);
-      // if(RC.s1 == 3 && RC.s2 == 3) {
-      PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
-      PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
-      //   cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
-      // }else {
-      cmd_motor(0x200,PID_Angle_M2006_1.out,0,0,0);
-      // }
-    }
+    Angle_Calc(M2006_1.angle_ecd);
+    // if(RC.s1 == 3 && RC.s2 == 3) {
+    PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
+    PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
+    //   cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
+    // }else {
+    cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
+    // }
+  }
+
+  if(htim == &htim2) {
+    //如果算不出结果就保持原有结果
+    Arm_Calculate(Arm_params_input[0],Arm_params_input[1],Arm_params_input[2],&Arm_params);
   }
 }
 /* USER CODE END PTD */
@@ -127,16 +138,19 @@ int main(void)
   MX_CAN1_Init();
   MX_CAN2_Init();
   MX_TIM5_Init();
+  MX_USB_DEVICE_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   can_filter_init();
-  HAL_TIM_Base_Start_IT(&htim5);
+
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   uint8_t Enable_flag = 0;
 
   while(M2006_1.angle_ecd == 0) {}
-  Init_Flag = 1;
+  HAL_TIM_Base_Start_IT(&htim5);
   last_angle = M2006_1.angle_ecd;
   angle+=2000; //防止从反方向转到100
+  HAL_TIM_Base_Start_IT(&htim2);
 
   /* USER CODE END 2 */
 
@@ -146,7 +160,7 @@ int main(void)
   while (1)
   {
     if(RC.s1 == 3 && RC.s2 == 1) {
-      //判断是否使能如果没有使能就使�??????
+      //判断是否使能如果没有使能就使�???????
       if(!Enable_flag) {
         DM_Enable(0x101);
         HAL_Delay(5);
@@ -194,7 +208,7 @@ int main(void)
       HAL_Delay(5);
     }
     else if(RC.s1 == 3 && RC.s2 == 3) {
-        //判断是否使能如果没有使能就使�??????
+        //判断是否使能如果没有使能就使�???????
         if(!Enable_flag) {
           DM_Enable(0x101);
           HAL_Delay(5);
@@ -219,7 +233,7 @@ int main(void)
 
     }
     else {
-      //判断是否失能如果没有失能就失�??????
+      //判断是否失能如果没有失能就失�???????
       if(Enable_flag) {
         DM_Disable(0x101);
         HAL_Delay(5);
@@ -256,15 +270,14 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 8;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLM = 6;
   RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 4;
+  RCC_OscInitStruct.PLL.PLLQ = 7;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
