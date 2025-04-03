@@ -7,7 +7,7 @@
 Arm_Params_t Arm_params = {160.0,179.5132307,45,0.418789,1.6580638556,{0,0,0},{0,0},{64.0,64.0},0.0};
 
 double clamp(double value, double min, double max) {
-    return (value < min) ? min : (value > max) ? max : value;
+    return (value < min) ? min :( (value > max) ? max : value);
 }
 
 uint8_t Arm_Calculate(double target,double X_B,double Y_B,Arm_Params_t *arm_param) {
@@ -47,7 +47,7 @@ uint8_t Arm_Calculate(double target,double X_B,double Y_B,Arm_Params_t *arm_para
     q2 = clamp(q2, 0.0, PI);       // 限制在 [0, π]
 
     // 计算 q3 -------------------------------------------------
-    double q3  = target - q2 -atan2(Y_B, X_B) + q1 + arm_param->theta3;
+    double q3  = target + arm_param->theta3 - q2 - atan2(Y_B, X_B) +q1;
     q3= clamp(q3, -1.66, 1.66);   // 限制在 [-1.66, 1.66]
 
     // //运行正运动学求解进行比较判断逆解正确性
