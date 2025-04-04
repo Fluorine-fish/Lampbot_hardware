@@ -1,0 +1,63 @@
+%% Modified DH
+clear;
+clc;
+% 请一定要在使用MDH的时候加入 'modified'
+L(1) = Link('revolute','alpha',0,'a',0,'d',0.07,'modified');
+L(2) = Link('revolute','alpha',-pi/2,'a',0,'offset',-pi/2,'d',0,'modified');
+L(3) = Link('revolute','alpha',0,'a',0.046,'offset',pi/2,'d',0,'modified');
+L(4) = Link('revolute','alpha',pi,'a',-0.16,'offset',atan(73/164),'d',0,'modified');
+L(5) = Link('revolute','alpha',0,'a',sqrt(0.164^2+0.073^2),'offset',(0.959931-atan(73/164)),'d',0,'modified');
+L(6) = Link('revolute','alpha',pi/2,'a',0,'offset',0,'d',0.045,'modified');
+Arm = SerialLink(L,'name','4-Arm');
+
+% 连杆逆解算
+target = [0 10 200 0; 0 180 240 2; 0 10 200 0]; % target[0]=target_Angle;target[1]=X_b;target[2]=Y_b;
+theta2 = atan(73/164);
+theta3 = 0.959931;
+L2 = sqrt(73^2+164^2);
+L1 = 160;
+
+for i = 1:size(target,1) % 逆解算初始点和目标点
+    R = sqrt(target(i,3)^2+target(i,2)^2);
+    q1_t(i) = -atan2(target(i,3),target(i,2))+acos((L2^2-R^2-L1^2)/(2*L1*R));
+    q1(i) = max(0,min(pi,q1_t(i)));
+
+    q2_t(i) = acos((L1^2+L2^2-target(i,2)^2-target(i,3)^2)/(2*L1*L2))-atan(73/164);
+    q2(i) = max(0,min(pi,q2_t(i)));
+
+    q3_t(i) = target(i,1)+theta3+q1(i)-q2(i)-theta2;
+    q3(i) = max(0,min(0.959931*2,q3_t(i)));
+end
+
+Q = [0 0 q1(2) q2(2) q3(2) 0];
+% Q = [0 0 0 0 0 0];
+
+joint = zeros(100*(size(target,1)-1),6);
+for i = 1:(size(target,1)-1) 
+joint(i*100 - 99: (i)*100, 1) = linspace(target(i,4),target(i+1,4),100);
+joint(i*100 - 99: (i)*100, 2) = 0;
+joint(i*100 - 99: (i)*100, 3) = linspace(q1(i),q1(i+1),100);
+joint(i*100 - 99: (i)*100, 4) = linspace(q2(i),q2(i+1),100);
+joint(i*100 - 99: (i)*100, 5) = linspace(q3(i),q3(i+1),100);
+joint(i*100 - 99: (i)*100, 6) = 0;
+end
+% Arm.plot(Q,'jointdiam',1.2,'view',[15 2])
+Arm.plot(joint, 'jointdiam', 1.2, 'fps', 30, 'trail', 'k-', 'view', [15 2], 'loop');
+% Arm.teach
+% Four_axis_arm.plot3d(q0,'tilesize',0.1,'workspace',w,'path','D:\RoboMaster\4axis-arm-model','nowrist','view',v)
+
+% 创建UI界面显示关节角度
+% fig = uifigure('Name', 'Joint Angles', 'Position', [100, 100, 300, 200]);
+% jointTable = uitable(fig, 'Position', [10, 10, 280, 180], 'ColumnName', {'Joint', 'Angle (rad)'});
+% 
+% % 准备表格数据
+% jointData = cell(Arm.n, 2);
+% for i = 1:Arm.n
+%    jointData(i, 1) = {['Joint ' num2str(i)]};
+%    jointData(i, 2) = {num2str(Q(i))};
+% end
+% 
+% % 设置表格数据
+% jointTable.Data = jointData;
+
+
