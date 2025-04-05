@@ -48,29 +48,20 @@ extern PID_Param PID_Angle_M2006_1;
 
 extern int32_t angle;
 extern int32_t last_angle;
+float Pos[4] = {0.5,-0.1,0.6,0.0};
 
-
-float Pos[4] = {0.5,-0.1,0.6,0.5};
 /**
  * [0]为 target,[1]为 X_B ,[2] 为 Y_B
  */
 double Arm_params_input[3] = {0.0,64.0,64.0};
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-  //中断处理M2006的PID位置�?
+  //TIM5负责处理M2006的位置环PID
   if (htim == &htim5) {
-    Angle_Calc(M2006_1.angle_ecd);
-    // if(RC.s1 == 3 && RC.s2 == 3) {
-    PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
-    PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
-    //   cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
-    // }else {
-    cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
-    // }
+    M2006_Angel(Pos[3]);
   }
-
+  //TIM2负责处理机械臂计算 20Hz 抢占优先级低
   if(htim == &htim2) {
-    //如果算不出结果就保持原有结果
     Arm_Calculate(Arm_params_input[0],Arm_params_input[1],Arm_params_input[2],&Arm_params);
   }
 }
@@ -142,15 +133,10 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   can_filter_init();
-
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   uint8_t Enable_flag = 0;
-  HAL_TIM_Base_Start_IT(&htim2);
 
-  while(M2006_1.angle_ecd == 0) {}
-  HAL_TIM_Base_Start_IT(&htim5);
-  last_angle = M2006_1.angle_ecd;
-  angle+=2000; //防止从反方向转到100
+  Arm_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */

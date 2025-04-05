@@ -5,6 +5,8 @@
 #include "stm32f407xx.h"
 #include "can.h"
 #include "main.h"
+#include "PID.h"
+#include "tim.h"
 
 //大疆电机数据存储结构体
 typedef struct
@@ -46,6 +48,11 @@ motor_t H6215_1={0,0,0,0};
 motor_t H6215_2={0,0,0,0};
 uint8_t motor_can_send_data[8];
 CAN_TxHeaderTypeDef motor_tx_message;
+
+extern int32_t angle;
+extern PID_Param PID_Speed_M2006_1;
+extern PID_Param PID_Angle_M2006_1;
+extern int32_t last_angle;
 
 /**
  * @brief CAN过滤器初始化
@@ -271,4 +278,35 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan)
   if (rx_header.StdId == 0x014) {
     decode_motor_measure_DM(&J4310_4, rx_data);
   }
+}
+
+/** 以下是用于机械臂电机使用的计算函数  **/
+
+/**
+ *  输入弧度制角度
+ */
+void M2006_Angel(double target_angle)
+{
+  target_angle = (target_angle >0)? ((target_angle < 0.959931)? target_angle : 0.959931) : 0;
+  int16_t angle2M = 2250.0/0.96*target_angle + 200;
+  angle2M = (angle2M >200)? ((angle2M < 2450)? angle2M : 2450) : 200;
+
+  PID_Angle_M2006_1.target = angle2M;
+
+  Angle_Calc(M2006_1.angle_ecd);
+  PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
+  PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
+  cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
+}
+
+void Arm_Init()
+{
+  HAL_TIM_Base_Start_IT(&htim2);
+
+  //阻塞主函数 直到M2006电机零点标记完成
+  while(M2006_1.angle_ecd == 0) {}
+  HAL_TIM_Base_Start_IT(&htim5);
+
+  last_angle = M2006_1.angle_ecd;
+  angle+=2000; //防止从反方向转到100
 }

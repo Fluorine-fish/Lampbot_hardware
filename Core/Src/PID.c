@@ -41,7 +41,7 @@ void PID_Angle(PID_Param *param,int16_t measure,int16_t target) {
 
     //输入角度限制
     if(param->target >= 2450) param->target = 2450;
-    else if(param->target <= 100) param->target = 100;
+    else if(param->target <= 200) param->target = 200;
 
     param->error = param->target - param->measure;
     param->error_sum += param->error;
