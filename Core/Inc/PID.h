@@ -5,8 +5,8 @@
 #ifndef PID_H
 #define PID_H
 
-#define ANGLE_PID_MAX_SPEED (3000)
-#define ANGLE_PID_MIN_SPEED (-3000)
+#define ANGLE_PID_MAX_SPEED (1500)
+#define ANGLE_PID_MIN_SPEED (-1500)
 
 #include "main.h"
 
@@ -23,4 +23,5 @@ typedef struct PID_Param {
 void PID_Solution(PID_Param *param,int16_t measure,int16_t target);
 void PID_Angle(PID_Param *param,int16_t measure,int16_t target);
 void Angle_Calc(int16_t raw_angle);
+
 #endif //PID_H

@@ -2,7 +2,6 @@
 #include <math.h>
 #include "Arm_Calc.h"
 
-#define PI 3.14159265
 
 Arm_Params_t Arm_params = {160.0,179.5132307,45,0.418789,1.6580638556,{0,0,0},{0,0},{64.0,64.0},0.0};
 

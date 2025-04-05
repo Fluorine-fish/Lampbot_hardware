@@ -27,8 +27,8 @@ void PID_Solution(PID_Param *param,int16_t measure,int16_t target) {
     if(param -> error < 50 && param -> error > -50) param->error_sum = 0;
 
     //输出限幅防止超出限制
-    if(param -> out >=16000) param->out = 16000;
-    if(param -> out <= -16000) param->out = -16000;
+    if(param -> out >=14000) param->out = 14000;
+    if(param -> out <= -14000) param->out = -14000;
 }
 
 void PID_Angle(PID_Param *param,int16_t measure,int16_t target) {

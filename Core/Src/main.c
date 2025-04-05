@@ -29,6 +29,7 @@
 /* USER CODE BEGIN Includes */
 #include "remote.h"
 #include "Communications.h"
+#include "Arm.h"
 #include "PID.h"
 #include "Arm_Calc.h"
 /* USER CODE END Includes */
@@ -48,12 +49,10 @@ extern PID_Param PID_Angle_M2006_1;
 
 extern int32_t angle;
 extern int32_t last_angle;
-float Pos[4] = {0.5,-0.1,0.6,0.0};
 
-/**
- * [0]为 target,[1]为 X_B ,[2] 为 Y_B
- */
-double Arm_params_input[3] = {0.0,64.0,64.0};
+extern double Pos[4];
+uint8_t Enable_flag = 0;
+extern double Arm_params_input[4];
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   //TIM5负责处理M2006的位置环PID
@@ -134,7 +133,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
   can_filter_init();
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
-  uint8_t Enable_flag = 0;
 
   Arm_Init();
   /* USER CODE END 2 */
@@ -145,15 +143,9 @@ int main(void)
   while (1)
   {
     if(RC.s1 == 3 && RC.s2 == 1) {
-      //判断是否使能如果没有使能就使�???????
+      //判断是否使能如果没有使能就使能
       if(!Enable_flag) {
-        DM_Enable(0x101);
-        HAL_Delay(5);
-        DM_Enable(0x102);
-        HAL_Delay(5);
-        DM_Enable(0x103);
-        HAL_Delay(5);
-        Enable_flag = 1;
+        Arm_Motor_Enable();
       }
 
       if(RC.ch0 >= 100 && RC.ch0 <=660 ) {
@@ -193,17 +185,10 @@ int main(void)
       HAL_Delay(5);
     }
     else if(RC.s1 == 3 && RC.s2 == 3) {
-        //判断是否使能如果没有使能就使�???????
+        //判断是否使能如果没有使能就使能
         if(!Enable_flag) {
-          DM_Enable(0x101);
-          HAL_Delay(5);
-          DM_Enable(0x102);
-          HAL_Delay(5);
-          DM_Enable(0x103);
-          HAL_Delay(5);
-          Enable_flag = 1;
+          Arm_Motor_Enable();
       }
-
       for(uint8_t i = 0; i < 4; i++) {
         Pos[i] = 0.5;
       }
@@ -217,18 +202,29 @@ int main(void)
       HAL_Delay(5);
 
     }
+    else if(RC.s1 == 1 && RC.s2 == 1)
+    {
+      DM_SpeedPosition_cmd(&hcan1,0x101,0.8,0);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x102,0.8,0);
+      HAL_Delay(5);
+      DM_SpeedPosition_cmd(&hcan1,0x103,0.8,0);
+      HAL_Delay(5);
+    }
     else {
-      //判断是否失能如果没有失能就失�???????
+      //判断是否失能如果没有失能就失能
       if(Enable_flag) {
-        DM_Disable(0x101);
-        HAL_Delay(5);
-        DM_Disable(0x102);
-        HAL_Delay(5);
-        DM_Disable(0x103);
-        HAL_Delay(5);
-        Enable_flag = 0;
+        Arm_Motor_Disable();
       }
     }
+
+    // if(RC.s1 == 3 && RC.s2 == 3)
+    // {
+    //   Pos[3] = 0.959931/1320*(RC.ch1 + 660);
+    // }else
+    // {
+    //   Pos[3] = 0.0;
+    // }
 
     HAL_Delay(50);
     /* USER CODE END WHILE */
