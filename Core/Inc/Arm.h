@@ -7,10 +7,13 @@
 
 #include "main.h"
 
-#define POS_BASE (0) //基础状态，默认使能后的状态
+#define HOMING_POSTURE (0) //基础状态，默认使能后等待pitch3归位的状态
+
+extern double Arm_Posture[][4];
 
 void Arm_Motor_Enable();
 void Arm_Motor_Disable();
 void Arm_Init();
+void Arm_Motor_Pos_cmd(uint8_t Posture);
 
 #endif //ARM_H

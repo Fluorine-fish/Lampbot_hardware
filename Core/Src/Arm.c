@@ -29,18 +29,51 @@ double Arm_params_input[4] = {0.0,64.0,64.0};
 /**
  * @brief 电机转动的最大速度
  */
-double Vel[4] = {3,3,3,3};
+double Vel[4] = {0.5,0.5,0.5,0.5};
+/**
+ * @brief 记录机械臂不同动作对应的电机角度q值
+ */
+double Arm_Posture[][4] = {{0.0,0.5,0.4,0.0},
+    };
 
 void Arm_Init()
 {
     HAL_TIM_Base_Start_IT(&htim2);
 
-    //阻塞主函数 直到M2006电机零点标记完成
-    while(M2006_1.angle_ecd == 0) {}
-    HAL_TIM_Base_Start_IT(&htim5);
+    Arm_Motor_Enable();
+    Arm_Motor_Pos_cmd(HOMING_POSTURE);
 
+    HAL_Delay(3000);
+
+    //阻塞主函数 直到M2006电机零点标记完成,按下key认为标记完成
+    // if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0) == GPIO_PIN_RESET)
+    // {
+    //     HAL_Delay(15);//按键消抖
+    //     // while(HAL_GPIO_ReadPin(GPIOA,KEY_Pin) == GPIO_PIN_SET) {}
+    //     if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0) == GPIO_PIN_RESET)
+    //     {
+    //         HAL_TIM_Base_Start_IT(&htim5);//打开写在中断回调里的Pitch3电机PID控制
+    //         last_angle = M2006_1.angle_ecd;
+    //         angle+=3000; //防止从反方向转到100
+    //     }
+    // }
+
+    //堵转回0
+    for (uint8_t i = 0; i < 130; i++)
+    {
+        cmd_motor(0x200,-700,0,0,0);
+        HAL_Delay(3);
+    }
+
+    while(M2006_1.speed_rpm < -100)
+    {
+        cmd_motor(0x200,-700,0,0,0);
+        HAL_Delay(3);
+    }
+    HAL_TIM_Base_Start_IT(&htim5);//打开写在中断回调里的Pitch3电机PID控制
     last_angle = M2006_1.angle_ecd;
     angle+=3000; //防止从反方向转到100
+
 }
 
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
@@ -85,8 +118,13 @@ void Arm_Motor_Disable() //yaw pitch1 pitch2 失能
     Enable_flag = 0;
 }
 
-void Arm_Motor_Pos_cmd()
+void Arm_Motor_Pos_cmd(uint8_t Posture)
 {
+    for(uint8_t i = 0; i < 4; i++)
+    {
+        Pos[i] = Arm_Posture[Posture][i];
+    }
+
     DM_SpeedPosition_cmd(&hcan1,0x101,Vel[0],Pos[0]);
     HAL_Delay(5);
     DM_SpeedPosition_cmd(&hcan1,0x102,Vel[1],Pos[1]);

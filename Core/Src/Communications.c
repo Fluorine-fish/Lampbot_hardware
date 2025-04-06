@@ -271,5 +271,5 @@ void M2006_Angel(double target_angle)
   Angle_Calc(M2006_1.angle_ecd);
   PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
   PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
-  cmd_motor(0x200,0/*PID_Speed_M2006_1.out*/,0,0,0);
+  cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
 }
