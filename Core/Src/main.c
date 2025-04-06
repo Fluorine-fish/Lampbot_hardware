@@ -135,13 +135,14 @@ int main(void)
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
 
   Arm_Init();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   // ReSharper disable once CppDFAEndlessLoop
   while (1)
-  {
+    {
     // if(RC.s1 == 3 && RC.s2 == 1) {
     //   //判断是否使能如果没有使能就使�?
     //   if(!Enable_flag) {
@@ -205,7 +206,9 @@ int main(void)
     // else if(RC.s1 == 1 && RC.s2 == 1)
     // {
 
-    Arm_Motor_Pos_cmd(HOMING_POSTURE);
+    // Arm_Motor_Pos_cmd(HOMING_POSTURE);
+
+
     // DM_SpeedPosition_cmd(&hcan1,0x101,0.1,0.0);
     // HAL_Delay(5);
     // DM_SpeedPosition_cmd(&hcan1,0x102,0.1,0.5);
@@ -228,7 +231,10 @@ int main(void)
     // //   Pos[3] = 0.0;
     // // }
 
-    HAL_Delay(50);
+    cmd_Light(0x150,70,140);
+    HAL_Delay(10);
+    Arm_Motor_Pos_cmd(BASE_POSTURE);
+    HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -34,6 +34,7 @@ double Vel[4] = {0.5,0.5,0.5,0.5};
  * @brief 记录机械臂不同动作对应的电机角度q值
  */
 double Arm_Posture[][4] = {{0.0,0.5,0.4,0.0},
+                            {-0.6,1.0,1.2,0.0},
     };
 
 void Arm_Init()
@@ -41,56 +42,47 @@ void Arm_Init()
     HAL_TIM_Base_Start_IT(&htim2);
 
     Arm_Motor_Enable();
-    Arm_Motor_Pos_cmd(HOMING_POSTURE);
 
-    HAL_Delay(3000);
+    //等待yaw pitch1 pitch2电机就位
+    while(!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
+        (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
+        (J4310_3.position - Pos[2] <= 0.1) && (J4310_3.position - Pos[2] >= -0.1))) {
+        Arm_Motor_Pos_cmd(HOMING_POSTURE);
+    }
 
-    //阻塞主函数 直到M2006电机零点标记完成,按下key认为标记完成
-    // if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0) == GPIO_PIN_RESET)
-    // {
-    //     HAL_Delay(15);//按键消抖
-    //     // while(HAL_GPIO_ReadPin(GPIOA,KEY_Pin) == GPIO_PIN_SET) {}
-    //     if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0) == GPIO_PIN_RESET)
-    //     {
-    //         HAL_TIM_Base_Start_IT(&htim5);//打开写在中断回调里的Pitch3电机PID控制
-    //         last_angle = M2006_1.angle_ecd;
-    //         angle+=3000; //防止从反方向转到100
-    //     }
-    // }
+    HAL_Delay(2000);
 
     //堵转回0
-    for (uint8_t i = 0; i < 130; i++)
-    {
+    for (uint8_t i = 0; i < 130; i++){
+        cmd_motor(0x200,-700,0,0,0);
+        HAL_Delay(3);
+    }
+    //阻塞主函数 直到M2006电机零点标记完成,堵转认为标记完成
+    while(M2006_1.speed_rpm < -100){
         cmd_motor(0x200,-700,0,0,0);
         HAL_Delay(3);
     }
 
-    while(M2006_1.speed_rpm < -100)
-    {
-        cmd_motor(0x200,-700,0,0,0);
-        HAL_Delay(3);
-    }
     HAL_TIM_Base_Start_IT(&htim5);//打开写在中断回调里的Pitch3电机PID控制
     last_angle = M2006_1.angle_ecd;
     angle+=3000; //防止从反方向转到100
 
+    //ptich3就位
+    Arm_Motor_Pos_cmd(BASE_POSTURE);
 }
 
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
 {
     //阻塞直到使能成功
-    while(J4310_1.Err != 1)
-    {
+    while(J4310_1.Err != 1){
         DM_Enable(0x101);
         HAL_Delay(3);
     }
-    while(J4310_2.Err != 1)
-    {
+    while(J4310_2.Err != 1){
         DM_Enable(0x102);
         HAL_Delay(3);
     }
-    while(J4310_3.Err != 1)
-    {
+    while(J4310_3.Err != 1){
         DM_Enable(0x103);
         HAL_Delay(3);
     }
@@ -100,18 +92,15 @@ void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
 void Arm_Motor_Disable() //yaw pitch1 pitch2 失能
 {
     //阻塞直到失能成功
-    while(J4310_1.Err != 0)
-    {
+    while(J4310_1.Err != 0){
         DM_Disable(0x101);
         HAL_Delay(3);
     }
-    while(J4310_2.Err != 0)
-    {
+    while(J4310_2.Err != 0){
         DM_Disable(0x102);
         HAL_Delay(3);
     }
-    while(J4310_3.Err != 0)
-    {
+    while(J4310_3.Err != 0){
         DM_Disable(0x103);
         HAL_Delay(3);
     }
@@ -120,8 +109,7 @@ void Arm_Motor_Disable() //yaw pitch1 pitch2 失能
 
 void Arm_Motor_Pos_cmd(uint8_t Posture)
 {
-    for(uint8_t i = 0; i < 4; i++)
-    {
+    for(uint8_t i = 0; i < 4; i++){
         Pos[i] = Arm_Posture[Posture][i];
     }
 

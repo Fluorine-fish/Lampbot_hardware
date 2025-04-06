@@ -35,8 +35,7 @@ extern uint8_t Enable_flag;
  * @brief CAN过滤器初始化
  *
  */
-void can_filter_init(void)
-{
+void can_filter_init(void){
   CAN_FilterTypeDef can_filter_st;
   can_filter_st.FilterActivation = ENABLE;
   can_filter_st.FilterMode = CAN_FILTERMODE_IDMASK;
@@ -262,8 +261,8 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan)
  */
 void M2006_Angel(double target_angle)
 {
-  target_angle = (target_angle >0)? ((target_angle < 0.959931)? target_angle : 0.959931) : 0;
-  int16_t angle2M = 2250.0/0.96*target_angle + 200;
+  target_angle = (target_angle >0)? ((target_angle < 2.2340214) ? target_angle : 2.2340214) : 0;
+  int16_t angle2M = 2250.0/2.3*target_angle + 200;
   angle2M = (angle2M >200)? ((angle2M < 2450)? angle2M : 2450) : 200;
 
   PID_Angle_M2006_1.target = angle2M;
@@ -271,5 +270,26 @@ void M2006_Angel(double target_angle)
   Angle_Calc(M2006_1.angle_ecd);
   PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
   PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
-  cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
+  cmd_motor(0x200,0/*PID_Speed_M2006_1.out*/,0,0,0);
+}
+
+HAL_StatusTypeDef cmd_Light(
+  uint32_t stdid, uint8_t Channel1,uint8_t Channel2)
+{
+  uint32_t send_mail_box;
+  motor_tx_message.StdId = stdid;
+  motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
+  motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
+  motor_tx_message.DLC = 0x08;
+
+  motor_can_send_data[0] = Channel1;
+  motor_can_send_data[1] = Channel2;
+  motor_can_send_data[2] = 0;
+  motor_can_send_data[3] = 0;
+  motor_can_send_data[4] = 0;
+  motor_can_send_data[5] = 0;
+  motor_can_send_data[6] = 0;
+  motor_can_send_data[7] = 0;
+
+  return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, &send_mail_box);
 }

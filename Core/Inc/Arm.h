@@ -7,7 +7,8 @@
 
 #include "main.h"
 
-#define HOMING_POSTURE (0) //基础状态，默认使能后等待pitch3归位的状态
+#define HOMING_POSTURE (0) //init状态，默认使能后等待pitch3归位的状态
+#define BASE_POSTURE (1) //base状态，所有零点初始化结束后的状态
 
 extern double Arm_Posture[][4];
 

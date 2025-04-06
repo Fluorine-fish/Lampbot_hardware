@@ -3,7 +3,7 @@
 #include "Arm_Calc.h"
 
 
-Arm_Params_t Arm_params = {160.0,179.5132307,45,0.418789,1.6580638556,{0,0,0},{0,0},{64.0,64.0},0.0};
+Arm_Params_t Arm_params = {160.0,179.5132307,45,0.418789,2.2340214,{0,0,0},{0,0},{64.0,64.0},0.0};
 
 double clamp(double value, double min, double max) {
     return (value < min) ? min :( (value > max) ? max : value);
@@ -17,7 +17,7 @@ uint8_t Arm_Calculate(double target,double X_B,double Y_B,Arm_Params_t *arm_para
     arm_param->L2 = sqrt(73*73+164*164);
     arm_param->L3 = 45.0;
     arm_param->theta2 = atan(73.0/164.0);
-    arm_param->theta3 = 0.959931;
+    arm_param->theta3 = 2.2340214;
 
     // 计算中间变量
     const double R = sqrt(arm_param->B[0]*arm_param->B[0] + arm_param->B[1]*arm_param->B[1]);
