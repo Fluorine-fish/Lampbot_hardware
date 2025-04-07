@@ -231,8 +231,7 @@ int main(void)
     // //   Pos[3] = 0.0;
     // // }
 
-    cmd_Light(0x150,70,140);
-    HAL_Delay(10);
+    Arm_Light_cmd(6000,244);
     Arm_Motor_Pos_cmd(BASE_POSTURE);
     HAL_Delay(500);
     /* USER CODE END WHILE */

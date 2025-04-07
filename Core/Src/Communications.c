@@ -5,6 +5,7 @@
 #include "stm32f407xx.h"
 #include "can.h"
 #include "main.h"
+#include "Arm.h"
 #include "PID.h"
 #include "tim.h"
 #include "Communications.h"
@@ -30,6 +31,7 @@ extern PID_Param PID_Speed_M2006_1;
 extern PID_Param PID_Angle_M2006_1;
 extern int32_t last_angle;
 extern uint8_t Enable_flag;
+extern uint8_t Light_Channel[2];
 
 /**
  * @brief CAN过滤器初始化
@@ -262,15 +264,15 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan)
 void M2006_Angel(double target_angle)
 {
   target_angle = (target_angle >0)? ((target_angle < 2.2340214) ? target_angle : 2.2340214) : 0;
-  int16_t angle2M = 2250.0/2.3*target_angle + 200;
-  angle2M = (angle2M >200)? ((angle2M < 2450)? angle2M : 2450) : 200;
+  int16_t angle2M = 2900.0/2.3*target_angle + 230;
+  angle2M = (angle2M >250)? ((angle2M < 2900)? angle2M : 2900) : 250;
 
   PID_Angle_M2006_1.target = angle2M;
 
   Angle_Calc(M2006_1.angle_ecd);
   PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
   PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
-  cmd_motor(0x200,0/*PID_Speed_M2006_1.out*/,0,0,0);
+  cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
 }
 
 HAL_StatusTypeDef cmd_Light(
@@ -292,4 +294,10 @@ HAL_StatusTypeDef cmd_Light(
   motor_can_send_data[7] = 0;
 
   return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, &send_mail_box);
+}
+
+void Light_cmd()
+{
+  cmd_Light(0x150,Light_Channel[0],Light_Channel[1]);
+  HAL_Delay(10);
 }

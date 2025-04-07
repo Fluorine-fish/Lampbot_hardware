@@ -11,10 +11,12 @@
 #define BASE_POSTURE (1) //base状态，所有零点初始化结束后的状态
 
 extern double Arm_Posture[][4];
+extern uint8_t Light_Channel[2];
 
 void Arm_Motor_Enable();
 void Arm_Motor_Disable();
 void Arm_Init();
 void Arm_Motor_Pos_cmd(uint8_t Posture);
+void Arm_Light_cmd(uint16_t Temperature,uint8_t Light);
 
 #endif //ARM_H

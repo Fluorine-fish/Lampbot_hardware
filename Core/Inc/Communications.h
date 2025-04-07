@@ -56,6 +56,7 @@ HAL_StatusTypeDef DM_H6215_MIT_cmd(uint32_t stdid, float Torque);
 void M2006_Angel(double target_angle);
 HAL_StatusTypeDef cmd_Light(
   uint32_t stdid, uint8_t Channel1,uint8_t Channel2);
+void Light_cmd();
 
 
 #endif //COMMUNICATIONS_H

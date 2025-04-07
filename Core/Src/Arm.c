@@ -33,9 +33,13 @@ double Vel[4] = {0.5,0.5,0.5,0.5};
 /**
  * @brief 记录机械臂不同动作对应的电机角度q值
  */
-double Arm_Posture[][4] = {{0.0,0.5,0.4,0.0},
-                            {-0.6,1.0,1.2,0.0},
+double Arm_Posture[][4] = {{0.0,0.5,0.8,0.0},
+                            {-0.6,1.0,1.5,0.0},
     };
+/**
+ * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-150
+ */
+uint8_t Light_Channel[2] = {0,0};
 
 void Arm_Init()
 {
@@ -50,7 +54,7 @@ void Arm_Init()
         Arm_Motor_Pos_cmd(HOMING_POSTURE);
     }
 
-    HAL_Delay(2000);
+    HAL_Delay(1000);
 
     //堵转回0
     for (uint8_t i = 0; i < 130; i++){
@@ -65,10 +69,13 @@ void Arm_Init()
 
     HAL_TIM_Base_Start_IT(&htim5);//打开写在中断回调里的Pitch3电机PID控制
     last_angle = M2006_1.angle_ecd;
-    angle+=3000; //防止从反方向转到100
+    angle+=5000; //防止从反方向转到100
 
     //ptich3就位
     Arm_Motor_Pos_cmd(BASE_POSTURE);
+
+    //打开灯
+    Arm_Light_cmd(5000,60);
 }
 
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
@@ -119,4 +126,18 @@ void Arm_Motor_Pos_cmd(uint8_t Posture)
     HAL_Delay(5);
     DM_SpeedPosition_cmd(&hcan1,0x103,Vel[2],Pos[2]);
     HAL_Delay(5);
+}
+
+/**
+ * @brief 计算指定色温指定亮度的对应channel值
+ * @param Temperature 输入色温， 3000-6500
+ * @param Light 输入亮度 0-70
+ */
+void Arm_Light_cmd(uint16_t Temperature,uint8_t Light)
+{
+    uint8_t channel1 = ((Temperature-3000)/3500.0)*Light;
+    uint8_t channel2 = ((6500-Temperature)/3500.0)*Light;
+    Light_Channel[0] = ((((channel1 > 148) ? 148 : channel1) < 0) ? 0 : (channel1 > 148) ? 148 : channel1);
+    Light_Channel[1] = ((((channel2 > 148) ? 148 : channel2) < 0) ? 0 : (channel2 > 148) ? 148 : channel2);
+    Light_cmd();
 }
