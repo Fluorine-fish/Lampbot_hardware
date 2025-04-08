@@ -299,5 +299,5 @@ HAL_StatusTypeDef cmd_Light(
 void Light_cmd()
 {
   cmd_Light(0x150,Light_Channel[0],Light_Channel[1]);
-  HAL_Delay(10);
+  HAL_Delay(50);
 }

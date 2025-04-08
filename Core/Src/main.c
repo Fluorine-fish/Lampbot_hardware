@@ -145,6 +145,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   can_filter_init();
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
+  Arm_Switch_Init();
 
   /* USER CODE END 2 */
 
@@ -241,14 +242,9 @@ int main(void)
     // //   Pos[3] = 0.0;
     // // }
 
-    // Arm_Light_cmd(6000,244);
-    // Arm_Motor_Pos_cmd(BASE_POSTURE);
-
-
     if(Switch_flag == 1){
       if(Enable_flag == 0){
         Arm_Init();
-        Arm_Light_cmd(5000,244);
       }
     }else if(Switch_flag == 0){
       if(Enable_flag == 1){
