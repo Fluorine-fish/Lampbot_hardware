@@ -20,5 +20,6 @@ typedef struct Arm_Params_t
 #define PI 3.14159265
 
 uint8_t Arm_Calculate(double target,double X_B,double Y_B,Arm_Params_t *arm_param);
+double clamp(double value, double min, double max);
 
 #endif //ARM_CALC_H
