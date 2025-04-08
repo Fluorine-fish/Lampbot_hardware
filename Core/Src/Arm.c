@@ -34,7 +34,8 @@ double Vel[4] = {0.5,0.5,0.5,0.5};
  * @brief 记录机械臂不同动作对应的电机角度q值
  */
 double Arm_Posture[][4] = {{0.0,0.5,0.8,0.0},
-                            {-0.6,1.0,1.5,0.0},
+                            {0.0,1.0,1.5,0.1},
+                            {0.0,0.1,0.07,0.7},
     };
 /**
  * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-150
@@ -47,6 +48,7 @@ void Arm_Init()
 
     Arm_Motor_Enable();
 
+    Arm_Motor_Pos_cmd(HOMING_POSTURE);//修改Pos数组的值防止比较失败
     //等待yaw pitch1 pitch2电机就位
     while(!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
         (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
@@ -54,7 +56,7 @@ void Arm_Init()
         Arm_Motor_Pos_cmd(HOMING_POSTURE);
     }
 
-    HAL_Delay(1000);
+    HAL_Delay(500);
 
     //堵转回0
     for (uint8_t i = 0; i < 130; i++){
@@ -68,14 +70,15 @@ void Arm_Init()
     }
 
     HAL_TIM_Base_Start_IT(&htim5);//打开写在中断回调里的Pitch3电机PID控制
+    angle = 0;
     last_angle = M2006_1.angle_ecd;
     angle+=5000; //防止从反方向转到100
 
     //ptich3就位
     Arm_Motor_Pos_cmd(BASE_POSTURE);
-
     //打开灯
-    Arm_Light_cmd(5000,60);
+    Arm_Light_cmd(5000,244);
+    HAL_Delay(1000);
 }
 
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
@@ -126,6 +129,18 @@ void Arm_Motor_Pos_cmd(uint8_t Posture)
     HAL_Delay(5);
     DM_SpeedPosition_cmd(&hcan1,0x103,Vel[2],Pos[2]);
     HAL_Delay(5);
+
+    while(!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
+    (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
+    (J4310_3.position - Pos[2] <= 0.1) && (J4310_3.position - Pos[2] >= -0.1))) {
+        DM_SpeedPosition_cmd(&hcan1,0x101,Vel[0],Pos[0]);
+        HAL_Delay(5);
+        DM_SpeedPosition_cmd(&hcan1,0x102,Vel[1],Pos[1]);
+        HAL_Delay(5);
+        DM_SpeedPosition_cmd(&hcan1,0x103,Vel[2],Pos[2]);
+        HAL_Delay(5);
+    }
+
 }
 
 /**
@@ -140,4 +155,25 @@ void Arm_Light_cmd(uint16_t Temperature,uint8_t Light)
     Light_Channel[0] = ((((channel1 > 148) ? 148 : channel1) < 0) ? 0 : (channel1 > 148) ? 148 : channel1);
     Light_Channel[1] = ((((channel2 > 148) ? 148 : channel2) < 0) ? 0 : (channel2 > 148) ? 148 : channel2);
     Light_cmd();
+}
+
+void Arm_Off()
+{
+    Arm_Light_cmd(6000,0);
+    Arm_Motor_Pos_cmd(OFF_POSTURE);
+    while(!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
+    (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
+    (J4310_3.position - Pos[2] <= 0.1) && (J4310_3.position - Pos[2] >= -0.1))) {
+        Arm_Motor_Pos_cmd(OFF_POSTURE);
+    }
+    HAL_Delay(500);
+
+    //关闭pitch3
+    cmd_motor(0x200,0,0,0,0);
+    HAL_TIM_Base_Stop_IT(&htim5);
+    HAL_TIM_Base_Stop_IT(&htim2);
+    cmd_motor(0x200,0,0,0,0);
+
+    Arm_Motor_Disable();
+    HAL_Delay(500);
 }

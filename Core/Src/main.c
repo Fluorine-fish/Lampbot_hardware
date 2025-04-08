@@ -52,6 +52,7 @@ extern int32_t last_angle;
 
 extern double Pos[4];
 uint8_t Enable_flag = 0;
+uint8_t Switch_flag = 0;
 extern double Arm_params_input[4];
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
@@ -59,9 +60,20 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if (htim == &htim5) {
     M2006_Angel(Pos[3]);
   }
-  //TIM2负责处理机械臂解算 20Hz 抢占优先级低
+  //TIM2负责处理机械臂解�?? 20Hz 抢占优先级低
   if(htim == &htim2) {
     Arm_Calculate(Arm_params_input[0],Arm_params_input[1],Arm_params_input[2],&Arm_params);
+  }
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+  if(GPIO_Pin == GPIO_PIN_9){
+    //开关
+    if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_SET) {
+      Switch_flag = 0;
+    }else if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_RESET) {
+      Switch_flag = 1;
+    }
   }
 }
 /* USER CODE END PTD */
@@ -134,8 +146,6 @@ int main(void)
   can_filter_init();
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
 
-  Arm_Init();
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -144,7 +154,7 @@ int main(void)
   while (1)
     {
     // if(RC.s1 == 3 && RC.s2 == 1) {
-    //   //判断是否使能如果没有使能就使�?
+    //   //判断是否使能如果没有使能就使�???
     //   if(!Enable_flag) {
     //     Arm_Motor_Enable();
     //   }
@@ -186,7 +196,7 @@ int main(void)
     //   HAL_Delay(5);
     // }
     // else if(RC.s1 == 3 && RC.s2 == 3) {
-    //     //判断是否使能如果没有使能就使�?
+    //     //判断是否使能如果没有使能就使�???
     //     if(!Enable_flag) {
     //       Arm_Motor_Enable();
     //   }
@@ -217,7 +227,7 @@ int main(void)
     // HAL_Delay(5);
     // }
     // else {
-    //   //判断是否失能如果没有失能就失�?
+    //   //判断是否失能如果没有失能就失�???
     //   if(Enable_flag) {
     //     Arm_Motor_Disable();
     //   }
@@ -231,8 +241,20 @@ int main(void)
     // //   Pos[3] = 0.0;
     // // }
 
-    Arm_Light_cmd(6000,244);
-    Arm_Motor_Pos_cmd(BASE_POSTURE);
+    // Arm_Light_cmd(6000,244);
+    // Arm_Motor_Pos_cmd(BASE_POSTURE);
+
+
+    if(Switch_flag == 1){
+      if(Enable_flag == 0){
+        Arm_Init();
+        Arm_Light_cmd(5000,244);
+      }
+    }else if(Switch_flag == 0){
+      if(Enable_flag == 1){
+        Arm_Off();
+      }
+    }
     HAL_Delay(500);
     /* USER CODE END WHILE */
 
