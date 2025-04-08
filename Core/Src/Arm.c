@@ -17,6 +17,7 @@ extern uint8_t Enable_flag;
 extern M2006_motor_t M2006_1;
 extern int32_t last_angle;
 extern int32_t angle;
+extern uint8_t Switch_flag;
 
 /**
  * @brief 机械臂yaw pitch轴角度
@@ -34,8 +35,8 @@ double Vel[4] = {0.5,0.5,0.5,0.5};
  * @brief 记录机械臂不同动作对应的电机角度q值
  */
 double Arm_Posture[][4] = {{0.0,0.5,0.8,0.0},
-                            {0.0,1.0,1.5,0.1},
-                            {0.0,0.1,0.07,0.7},
+                            {0.0,1.0,1.5,0.05},
+                            {0.0,0.06,0.07,0.7},
     };
 /**
  * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-150
@@ -77,8 +78,8 @@ void Arm_Init()
     //ptich3就位
     Arm_Motor_Pos_cmd(BASE_POSTURE);
     //打开灯
-    Arm_Light_cmd(5000,244);
-    HAL_Delay(1000);
+    for(uint8_t i = 0; i < 4; i++){Arm_Light_cmd(6000,244);}
+    HAL_Delay(300);
 }
 
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
@@ -157,9 +158,12 @@ void Arm_Light_cmd(uint16_t Temperature,uint8_t Light)
     Light_cmd();
 }
 
+/**
+ * @brief 机械臂关闭
+ */
 void Arm_Off()
 {
-    Arm_Light_cmd(6000,0);
+    for(uint8_t i=0;i<4;i++){Arm_Light_cmd(6000,0);}
     Arm_Motor_Pos_cmd(OFF_POSTURE);
     while(!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
     (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
@@ -175,5 +179,19 @@ void Arm_Off()
     cmd_motor(0x200,0,0,0,0);
 
     Arm_Motor_Disable();
-    HAL_Delay(500);
+    HAL_Delay(300);
+}
+
+/**
+ * @brief 开关初始化
+ */
+void Arm_Switch_Init()
+{
+    if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_SET) {
+        Switch_flag = 0;
+        for(uint8_t i=0;i<4;i++){Arm_Light_cmd(6000,0);}
+    }else if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_RESET) {
+        Switch_flag = 1;
+        for(uint8_t i = 0; i < 4; i++){Arm_Light_cmd(6000,244);}
+    }
 }
