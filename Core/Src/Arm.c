@@ -37,7 +37,7 @@ double Vel[4] = {1.5,0.7,0.7,0.7};
  * @brief 记录机械臂不同动作对应的电机角度q值
  */
 double Arm_Posture[][4] = {{0.0,0.5,0.8,0.0},
-                            {0.0,1.0,1.5,0.05},
+                            {-0.5,0.95,0.95,0.15},
                             {0.0,0.06,0.07,0.7},
                             {0.0,1.0,1.5,0.05},
     };
@@ -46,6 +46,7 @@ double Arm_Posture[][4] = {{0.0,0.5,0.8,0.0},
  */
 uint8_t Light_Channel[2] = {0,0};
 uint16_t Temperature = 6000;
+uint16_t Light = 244;
 
 void Arm_Init()
 {
@@ -201,7 +202,6 @@ void Arm_Switch_Init()
         Switch_flag = 0;
     }else if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_RESET) {
         Switch_flag = 1;
-        Arm_Light_slow_ON();
     }
 }
 
@@ -312,6 +312,29 @@ void Arm_Task()
 {
     if(RC.s1 == 1 && RC.s2 == 1) {
         Arm_Remote_Mode();
+    }else if(RC.s1 == 1 && RC.s2 == 3){
+
+        uint16_t temp_Temperature = Temperature;
+        int16_t temp_Light = Light;
+        temp_Temperature = Temperature;
+        if(RC.ch1 >= 20){
+            temp_Temperature -= 100;
+        }else if(RC.ch1 <= -20){
+            temp_Temperature += 100;
+        }
+        if(RC.ch3 >= 20){
+            temp_Light += 10;
+        }else if(RC.ch3 <= -20){
+            temp_Light -= 10;
+        }
+
+        temp_Temperature = ((((temp_Temperature > 6000) ? 6000 : temp_Temperature) < 3500) ? 3500 : (temp_Temperature > 6000) ? 6000 : temp_Temperature);
+        temp_Light = ((((temp_Light > 244) ? 244: temp_Light) < 0) ? 0 : (temp_Light > 244) ? 244 : temp_Light);
+
+        Temperature = temp_Temperature;
+        Light = temp_Light;
+
+        Arm_Light_cmd(Temperature, Light);
     }else {
         Arm_Motor_Pos_cmd(BASE_POSTURE);
         for(uint8_t i=0;i<4;i++){Pos[i] = Arm_Posture[BASE_POSTURE][i];}
