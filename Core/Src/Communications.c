@@ -286,12 +286,12 @@ HAL_StatusTypeDef cmd_Light(
 
   motor_can_send_data[0] = Channel1;
   motor_can_send_data[1] = Channel2;
-  motor_can_send_data[2] = 0;
-  motor_can_send_data[3] = 0;
-  motor_can_send_data[4] = 0;
-  motor_can_send_data[5] = 0;
-  motor_can_send_data[6] = 0;
-  motor_can_send_data[7] = 0;
+  motor_can_send_data[2] = 0xAA;
+  motor_can_send_data[3] = 0xAA;
+  motor_can_send_data[4] = 0xAA;
+  motor_can_send_data[5] = 0xAA;
+  motor_can_send_data[6] = 0xAA;
+  motor_can_send_data[7] = 0xAA;
 
   return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, &send_mail_box);
 }

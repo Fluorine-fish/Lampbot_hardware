@@ -26,5 +26,7 @@ void Arm_Remote_Mode();
 void Arm_Task();
 void Arm_Light_slow_ON();
 void Arm_Light_slow_OFF();
+void Arm_Light_Remote();
+
 
 #endif //ARM_H

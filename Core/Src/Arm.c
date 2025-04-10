@@ -308,33 +308,37 @@ void Arm_Light_slow_OFF()
     Arm_Light_cmd(Temperature, 0); // 循环结束后设置为最大值
 }
 
+void Arm_Light_Remote()
+{
+    uint16_t temp_Temperature = Temperature;
+    int16_t temp_Light = Light;
+    temp_Temperature = Temperature;
+    if(RC.ch1 >= 20){
+        temp_Temperature -= 100;
+    }else if(RC.ch1 <= -20){
+        temp_Temperature += 100;
+    }
+    if(RC.ch3 >= 20){
+        temp_Light += 10;
+    }else if(RC.ch3 <= -20){
+        temp_Light -= 10;
+    }
+
+    temp_Temperature = ((((temp_Temperature > 6000) ? 6000 : temp_Temperature) < 3500) ? 3500 : (temp_Temperature > 6000) ? 6000 : temp_Temperature);
+    temp_Light = ((((temp_Light > 244) ? 244: temp_Light) < 0) ? 0 : (temp_Light > 244) ? 244 : temp_Light);
+
+    Temperature = temp_Temperature;
+    Light = temp_Light;
+
+    Arm_Light_cmd(Temperature, Light);
+}
+
 void Arm_Task()
 {
     if(RC.s1 == 1 && RC.s2 == 1) {
         Arm_Remote_Mode();
     }else if(RC.s1 == 1 && RC.s2 == 3){
-
-        uint16_t temp_Temperature = Temperature;
-        int16_t temp_Light = Light;
-        temp_Temperature = Temperature;
-        if(RC.ch1 >= 20){
-            temp_Temperature -= 100;
-        }else if(RC.ch1 <= -20){
-            temp_Temperature += 100;
-        }
-        if(RC.ch3 >= 20){
-            temp_Light += 10;
-        }else if(RC.ch3 <= -20){
-            temp_Light -= 10;
-        }
-
-        temp_Temperature = ((((temp_Temperature > 6000) ? 6000 : temp_Temperature) < 3500) ? 3500 : (temp_Temperature > 6000) ? 6000 : temp_Temperature);
-        temp_Light = ((((temp_Light > 244) ? 244: temp_Light) < 0) ? 0 : (temp_Light > 244) ? 244 : temp_Light);
-
-        Temperature = temp_Temperature;
-        Light = temp_Light;
-
-        Arm_Light_cmd(Temperature, Light);
+        Arm_Light_Remote();
     }else {
         Arm_Motor_Pos_cmd(BASE_POSTURE);
         for(uint8_t i=0;i<4;i++){Pos[i] = Arm_Posture[BASE_POSTURE][i];}
