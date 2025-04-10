@@ -258,7 +258,6 @@ void Arm_Remote_Mode()
             temp_Temperature += 100;
         }
 
-
         //传入参数限幅
         temp_Pos[0] = clamp(temp_Pos[0],-2.256194,2.256194);
         temp_Pos[1] = clamp(temp_Pos[1],0.1,3.0415927);

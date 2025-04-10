@@ -51,6 +51,7 @@ extern int32_t angle;
 extern int32_t last_angle;
 
 extern double Pos[4];
+extern uint8_t RC_Data[18];
 uint8_t Enable_flag = 0;
 uint8_t Switch_flag = 0;
 extern double Arm_params_input[4];
@@ -102,7 +103,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-extern uint8_t RC_Data[18];
 /* USER CODE END 0 */
 
 /**
