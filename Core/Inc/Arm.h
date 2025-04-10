@@ -21,7 +21,7 @@ void Arm_Motor_Enable();
 void Arm_Motor_Disable();
 void Arm_Init();
 void Arm_Motor_Pos_cmd(uint8_t Posture);
-void Arm_Light_cmd(uint16_t Temperature,uint8_t Light);
+// void Arm_Light_cmd(uint16_t Temperature,uint8_t Light);
 void Arm_Off();
 void Arm_Switch_Init();
 void Arm_Remote_Mode();

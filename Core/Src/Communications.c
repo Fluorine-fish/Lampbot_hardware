@@ -262,27 +262,3 @@ void M2006_Angel(double target_angle, int16_t Max_speed) {
     PID_Solution(&PID_Speed_M2006_1, M2006_1.raw_speed_rpm, PID_Angle_M2006_1.out);
     cmd_motor(0x200, PID_Speed_M2006_1.out, 0, 0, 0);
 }
-
-HAL_StatusTypeDef cmd_Light(
-    uint32_t stdid, uint8_t Channel1, uint8_t Channel2) {
-    motor_tx_message.StdId = stdid;
-    motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
-    motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
-    motor_tx_message.DLC = 0x08;
-
-    motor_can_send_data[0] = Channel1;
-    motor_can_send_data[1] = Channel2;
-    motor_can_send_data[2] = 0xAA;
-    motor_can_send_data[3] = 0xAA;
-    motor_can_send_data[4] = 0xAA;
-    motor_can_send_data[5] = 0xAA;
-    motor_can_send_data[6] = 0xAA;
-    motor_can_send_data[7] = 0xAA;
-
-    return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, (uint32_t*)CAN_TX_MAILBOX0);
-}
-
-void Light_cmd() {
-    cmd_Light(0x150, Light_Channel[0], Light_Channel[1]);
-    HAL_Delay(50);
-}

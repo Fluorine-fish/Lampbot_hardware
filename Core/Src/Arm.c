@@ -11,6 +11,10 @@
 #include "Communications.h"
 #include "math.h"
 
+#include "Light.h"
+
+Light_TypeDef light1;
+
 extern DM_motor_t J4310_1;
 extern DM_motor_t J4310_2;
 extern DM_motor_t J4310_3;
@@ -73,6 +77,7 @@ uint16_t Light = 244;
 void Arm_Init() {
     HAL_TIM_Base_Start_IT(&htim2);
 
+    Light_Init(&light1, &hcan1);
     Arm_Motor_Enable();
 
     Arm_Motor_Pos_cmd(HOMING_POSTURE); //修改Pos数组的值防止比较失败
@@ -105,7 +110,7 @@ void Arm_Init() {
     Arm_Motor_Pos_cmd(BASE_POSTURE);
     //打开灯
     Arm_Light_slow_ON();
-    for (uint8_t i = 0; i < 4; i++) { Arm_Light_cmd(Temperature, 244); }
+    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 244); }
 }
 
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
@@ -171,25 +176,14 @@ void Arm_Motor_Pos_cmd(uint8_t Posture) {
     }
 }
 
-/**
- * @brief 计算指定色温指定亮度的对应channel值
- * @param Temperature 输入色温， 3000-6500
- * @param Light 输入亮度 0-70
- */
-void Arm_Light_cmd(uint16_t Temperature, uint8_t Light) {
-    uint8_t channel1 = ((Temperature - 3000) / 3500.0) * Light;
-    uint8_t channel2 = ((6500 - Temperature) / 3500.0) * Light;
-    Light_Channel[0] = ((((channel1 > 148) ? 148 : channel1) < 0) ? 0 : (channel1 > 148) ? 148 : channel1);
-    Light_Channel[1] = ((((channel2 > 148) ? 148 : channel2) < 0) ? 0 : (channel2 > 148) ? 148 : channel2);
-    Light_cmd();
-}
+
 
 /**
  * @brief 机械臂关闭 包含缓慢关灯
  */
 void Arm_Off() {
     Arm_Light_slow_OFF();
-    for (uint8_t i = 0; i < 4; i++) { Arm_Light_cmd(Temperature, 0); }
+    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 0); }
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.7; }
     Vel[0] = 1.5;
     Arm_Motor_Pos_cmd(OFF_POSTURE);
@@ -211,7 +205,7 @@ void Arm_Off() {
 }
 
 void Arm_Qucik_Off() {
-    for (uint8_t i = 0; i < 4; i++) { Arm_Light_cmd(Temperature, 0); }
+    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 0); }
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.7; }
     Vel[0] = 1.5;
     Arm_Motor_Pos_cmd(OFF_POSTURE);
@@ -314,7 +308,7 @@ void Arm_Remote_Mode() {
         Temperature = temp_Temperature;
 
         Arm_Motor_Pos_cmd(REMOTE_POSTURE);
-        Arm_Light_cmd(Temperature, 244);
+        Light_Ctrl(&light1, Temperature, 244);
     }
     else {
         Vel[0] = 1.5;
@@ -333,9 +327,10 @@ void Arm_Light_slow_ON() {
     float cnt = 0.0;
     for (int i = 0; i < 100; i++) {
         cnt = i * 0.015; // 计算当前 cnt 值
-        Arm_Light_cmd(Temperature, 244 * sin(cnt));
+        Light_Ctrl(&light1, Temperature, 244 * sin(cnt));
+        HAL_Delay(50);
     }
-    Arm_Light_cmd(Temperature, 244); // 循环结束后设置为最大值
+    Light_Ctrl(&light1, Temperature, 244); // 循环结束后设置为最大值
 }
 
 /**
@@ -345,9 +340,10 @@ void Arm_Light_slow_OFF() {
     float cnt = 0.0;
     for (int i = 40; i < 100; i++) {
         cnt = 3.1415927 / 2.0 + i * 0.015; // 计算当前 cnt 值
-        Arm_Light_cmd(Temperature, 244 * sin(cnt));
+        Light_Ctrl(&light1, Temperature, 244 * sin(cnt));
+        HAL_Delay(50);
     }
-    Arm_Light_cmd(Temperature, 0); // 循环结束后设置为最大值
+    Light_Ctrl(&light1, Temperature, 0); // 循环结束后设置为最大值
 }
 
 void Arm_Light_Remote() {
@@ -377,7 +373,7 @@ void Arm_Light_Remote() {
     Temperature = temp_Temperature;
     Light = temp_Light;
 
-    Arm_Light_cmd(Temperature, Light);
+    Light_Ctrl(&light1, Temperature, Light);
 }
 
 void Arm_Remind_Sitting() {
@@ -411,7 +407,7 @@ void Arm_Back() {
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.6; }
     Vel[0] = 1.5;
     Temperature = 6000;
-    Arm_Light_cmd(Temperature, 244);
+    Light_Ctrl(&light1, Temperature, 244);
 }
 
 void Arm_Turn_Itself_Off() {
