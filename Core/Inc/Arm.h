@@ -11,6 +11,8 @@
 #define BASE_POSTURE (1) //base状态，所有零点初始化结束后的状态
 #define OFF_POSTURE (2) //off状态 等待电机使能的关机状态
 #define REMOTE_POSTURE (3) //remote状态 借助遥控器传回的数据控制姿态位置
+#define REMIND_SITTING_POSTURE (4) //提醒坐姿状态
+#define REMIND_LOOKING_FORWARD_POSTURE (5) //提醒远眺姿势
 
 extern double Arm_Posture[][4];
 extern uint8_t Light_Channel[2];
@@ -27,6 +29,9 @@ void Arm_Task();
 void Arm_Light_slow_ON();
 void Arm_Light_slow_OFF();
 void Arm_Light_Remote();
+void Arm_Remind_Sitting();
+void Arm_Looking_Forward();
+void Arm_Back();
 
 
 #endif //ARM_H

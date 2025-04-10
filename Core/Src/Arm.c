@@ -32,7 +32,7 @@ double Arm_params_input[4] = {0.0,64.0,64.0};
 /**
  * @brief 电机转动的最大速度
  */
-double Vel[4] = {1.5,0.7,0.7,0.7};
+double Vel[4] = {1.5,0.6,0.6,0.6};
 /**
  * @brief 记录机械臂不同动作对应的电机角度q值
  */
@@ -40,6 +40,8 @@ double Arm_Posture[][4] = {{0.0,0.5,0.8,0.0},
                             {-0.5,0.95,0.95,0.15},
                             {0.0,0.06,0.07,0.7},
                             {0.0,1.0,1.5,0.05},
+                            {-0.5,0.80,0.75,0.54},
+                            {-2.4,0.70,0.74,1.20},
     };
 /**
  * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-150
@@ -333,19 +335,57 @@ void Arm_Light_Remote()
     Arm_Light_cmd(Temperature, Light);
 }
 
+void Arm_Remind_Sitting()
+{
+    Arm_Motor_Pos_cmd(REMIND_SITTING_POSTURE);
+    HAL_Delay(200);
+    Pos[3] += 0.1;
+    HAL_Delay(400);
+    Pos[3] -= 0.1;
+    HAL_Delay(400);
+    Arm_Motor_Pos_cmd(BASE_POSTURE);
+    HAL_Delay(2000);
+}
+
+void Arm_Looking_Forward()
+{
+    Arm_Motor_Pos_cmd(REMIND_LOOKING_FORWARD_POSTURE);
+    Arm_Light_slow_OFF();
+    HAL_Delay(200);
+    Pos[3] += 0.1;
+    HAL_Delay(400);
+    Pos[3] -= 0.1;
+    HAL_Delay(400);
+    Arm_Motor_Pos_cmd(BASE_POSTURE);
+    Arm_Light_slow_ON();
+    HAL_Delay(2000);
+}
+
+void Arm_Back()
+{
+    Arm_Motor_Pos_cmd(BASE_POSTURE);
+    for(uint8_t i=0;i<4;i++){Pos[i] = Arm_Posture[BASE_POSTURE][i];}
+    for(uint8_t i=0;i<4;i++){Arm_Posture[REMOTE_POSTURE][i] = Arm_Posture[BASE_POSTURE][i];}
+    for(uint8_t i=1;i<4;i++){Vel[i] = 0.6;}
+    Vel[0] = 1.5;
+    Temperature = 6000;
+    Arm_Light_cmd(Temperature, 244);
+}
+
+/**
+ * 拨杆开关从上到下是 1，3，2
+ */
 void Arm_Task()
 {
     if(RC.s1 == 1 && RC.s2 == 1) {
         Arm_Remote_Mode();
     }else if(RC.s1 == 1 && RC.s2 == 3){
         Arm_Light_Remote();
+    }else if(RC.s1 == 3 && RC.s2 == 1){
+        Arm_Remind_Sitting();
+    }else if(RC.s1 == 3 && RC.s2 == 3){
+        Arm_Looking_Forward();
     }else {
-        Arm_Motor_Pos_cmd(BASE_POSTURE);
-        for(uint8_t i=0;i<4;i++){Pos[i] = Arm_Posture[BASE_POSTURE][i];}
-        for(uint8_t i=0;i<4;i++){Arm_Posture[REMOTE_POSTURE][i] = Arm_Posture[BASE_POSTURE][i];}
-        for(uint8_t i=1;i<4;i++){Vel[i] = 0.7;}
-        Vel[0] = 1.5;
-        Temperature = 6000;
-        Arm_Light_cmd(Temperature, 244);
+        Arm_Back();
     }
 }
