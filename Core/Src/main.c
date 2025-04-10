@@ -32,6 +32,7 @@
 #include "Arm.h"
 #include "PID.h"
 #include "Arm_Calc.h"
+#include "DM4310.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,7 +43,6 @@ extern CAN_TxHeaderTypeDef motor_tx_message;
 extern uint8_t motor_can_send_data[8];
 extern Arm_Params_t Arm_params;
 
-extern DM_motor_t J4310_1;
 extern M2006_motor_t M2006_1;
 extern PID_Param PID_Speed_M2006_1;
 extern PID_Param PID_Angle_M2006_1;
@@ -56,6 +56,10 @@ extern int16_t M2006_Max_Vel;
 uint8_t Enable_flag = 0;
 uint8_t Switch_flag = 0;
 extern double Arm_params_input[4];
+
+extern DM4310_HandleTypeDef DM4310_1;
+extern DM4310_HandleTypeDef DM4310_2;
+extern DM4310_HandleTypeDef DM4310_3;
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   //TIM5负责处理M2006的位置环PID
@@ -144,6 +148,9 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  DM4310_Init(&DM4310_1,&hcan1, 1,DM_CtrlMode_SpeedPosition);
+  DM4310_Init(&DM4310_2,&hcan1, 2,DM_CtrlMode_SpeedPosition);
+  DM4310_Init(&DM4310_3, &hcan1,3,DM_CtrlMode_SpeedPosition);
   can_filter_init();
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   Arm_Switch_Init();

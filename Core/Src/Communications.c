@@ -9,6 +9,7 @@
 #include "PID.h"
 #include "tim.h"
 #include "Communications.h"
+#include "DM4310.h"
 
 motor_t motor_6020 = {0, 0, 0, 0};
 motor_t M3508_1 = {0, 0, 0, 0};
@@ -16,9 +17,9 @@ motor_t M3508_2 = {0, 0, 0, 0};
 motor_t M3508_3 = {0, 0, 0, 0};
 motor_t M3508_4 = {0, 0, 0, 0};
 
-DM_motor_t J4310_1 = {0, 0, 0, 0, 0, 0, 0, 0};
-DM_motor_t J4310_2 = {0, 0, 0, 0, 0, 0, 0, 0};
-DM_motor_t J4310_3 = {0, 0, 0, 0, 0, 0, 0, 0};
+DM4310_HandleTypeDef DM4310_1;
+DM4310_HandleTypeDef DM4310_2;
+DM4310_HandleTypeDef DM4310_3;
 M2006_motor_t M2006_1 = {0, 0, 0};
 
 motor_t H6215_1 = {0, 0, 0, 0};
@@ -82,85 +83,6 @@ HAL_StatusTypeDef cmd_motor(
     return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, (uint32_t*)CAN_TX_MAILBOX0);
 }
 
-/**
- * @brief 达妙电机速度位置模式报文
- *
- * @param stdid
- * @param vel fp16类型的速度值
- * @return HAL_StatusTypeDef
- */
-HAL_StatusTypeDef DM_SpeedPosition_cmd(CAN_HandleTypeDef* hacn, uint32_t stdid, float vel, float pos) {
-    motor_tx_message.StdId = stdid;
-    motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
-    motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
-    motor_tx_message.DLC = 0x08;
-
-    uint8_t *pbuf, *vbuf;
-    pbuf = (uint8_t*)&pos;
-    vbuf = (uint8_t*)&vel;
-    motor_can_send_data[0] = *pbuf;
-    motor_can_send_data[1] = *(pbuf + 1);
-    motor_can_send_data[2] = *(pbuf + 2);
-    motor_can_send_data[3] = *(pbuf + 3);
-    motor_can_send_data[4] = *vbuf;
-    motor_can_send_data[5] = *(vbuf + 1);
-    motor_can_send_data[6] = *(vbuf + 2);
-    motor_can_send_data[7] = *(vbuf + 3);
-
-    return HAL_CAN_AddTxMessage(hacn, &motor_tx_message, motor_can_send_data, (uint32_t*)CAN_TX_MAILBOX0);
-}
-
-//达妙相关函数；
-/**
- * @brief 达妙电机使能命令
- *
- * @param stdid
- * @return HAL_StatusTypeDef
- */
-HAL_StatusTypeDef DM_Enable(
-    uint32_t stdid) {
-    motor_tx_message.StdId = stdid;
-    motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
-    motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
-    motor_tx_message.DLC = 0x08;
-
-    motor_can_send_data[0] = 0xFF;
-    motor_can_send_data[1] = 0xFF;
-    motor_can_send_data[2] = 0xFF;
-    motor_can_send_data[3] = 0xFF;
-    motor_can_send_data[4] = 0xFF;
-    motor_can_send_data[5] = 0xFF;
-    motor_can_send_data[6] = 0xFF;
-    motor_can_send_data[7] = 0xFC;
-
-    return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, (uint32_t*)CAN_TX_MAILBOX0);
-}
-
-/**
- * @brief 达妙电机失能命令
- *
- * @param stdid
- * @return HAL_StatusTypeDef
- */
-HAL_StatusTypeDef DM_Disable(
-    uint32_t stdid) {
-    motor_tx_message.StdId = stdid;
-    motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
-    motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
-    motor_tx_message.DLC = 0x08;
-
-    motor_can_send_data[0] = 0xFF;
-    motor_can_send_data[1] = 0xFF;
-    motor_can_send_data[2] = 0xFF;
-    motor_can_send_data[3] = 0xFF;
-    motor_can_send_data[4] = 0xFF;
-    motor_can_send_data[5] = 0xFF;
-    motor_can_send_data[6] = 0xFF;
-    motor_can_send_data[7] = 0xFD;
-
-    return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, (uint32_t*)CAN_TX_MAILBOX0);
-}
-
 /*解码函数*/
 void decode_motor_measure(motor_t* motor, uint8_t* data) {
     motor->angle_ecd = (data[0] << 8) | data[1];
@@ -174,49 +96,6 @@ void decode_motor_measure_M2006(M2006_motor_t* motor, uint8_t* data) {
     motor->raw_speed_rpm = (data[2] << 8) | data[3];
     motor->torque = (data[4] << 8) | data[5];
     motor->speed_rpm = motor->raw_speed_rpm / 36.0f;
-}
-
-float uint_to_float(int x_int, float x_min, float x_max, int bits);
-int float_to_uint(float x, float x_min, float x_max, int bits);
-
-void decode_motor_measure_DM(DM_motor_t* motor, uint8_t* data) {
-    motor->p_int = (data[1] << 8) | data[2];
-    motor->v_int = (data[3] << 4) | (data[4] >> 4);
-    motor->t_int = ((data[4] & 0xF) << 8) | data[5];
-    motor->position = uint_to_float(motor->p_int, -12.5, 12.5, 16); // (-12.5,12.5)
-    motor->velocity = uint_to_float(motor->v_int, -45, 45, 12); // (-45.0,45.0)
-    motor->torque = uint_to_float(motor->t_int, -18, 18, 12); // (-18.0,18.0)
-    motor->CAN_ID = (data[0] & 0x0F);
-    motor->Err = (data[0] & 0xF0) >> 4;
-}
-
-/**
- * @brief  采用浮点数据等比例转换成整数
- * @param  x_int     	要转换的无符号整数
- * @param  x_min      目标浮点数的最小值
- * @param  x_max    	目标浮点数的最大值
- * @param  bits      	无符号整数的位数
- */
-float uint_to_float(int x_int, float x_min, float x_max, int bits) {
-    /// converts unsigned int to float, given range and number of bits ///
-    float span = x_max - x_min;
-    float offset = x_min;
-    return ((float)x_int) * span / ((float)((1 << bits) - 1)) + offset;
-}
-
-/**
- * @brief  将浮点数转换为无符号整数
- * @param  x     			要转换的浮点数
- * @param  x_min      浮点数的最小值
- * @param  x_max    	浮点数的最大值
- * @param  bits      	无符号整数的位数
- */
-
-int float_to_uint(float x, float x_min, float x_max, int bits) {
-    /// Converts a float to an unsigned int, given range and number of bits///
-    float span = x_max - x_min;
-    float offset = x_min;
-    return (int)((x - offset) * ((float)((1 << bits) - 1)) / span);
 }
 
 /**
@@ -235,13 +114,13 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan) {
     }
     //达妙在速度位置模式下接收为MasterID
     if (rx_header.StdId == 0x011) {
-        decode_motor_measure_DM(&J4310_1, rx_data);
+        DM4310_Update(&DM4310_1, rx_data);
     }
     if (rx_header.StdId == 0x012) {
-        decode_motor_measure_DM(&J4310_2, rx_data);
+        DM4310_Update(&DM4310_2, rx_data);
     }
     if (rx_header.StdId == 0x013) {
-        decode_motor_measure_DM(&J4310_3, rx_data);
+        DM4310_Update(&DM4310_3, rx_data);
     }
 }
 

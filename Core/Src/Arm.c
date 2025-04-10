@@ -12,12 +12,14 @@
 #include "math.h"
 
 #include "Light.h"
+#include "DM4310.h"
 
 Light_TypeDef light1;
+extern DM4310_HandleTypeDef DM4310_1;
+extern DM4310_HandleTypeDef DM4310_2;
+extern DM4310_HandleTypeDef DM4310_3;
 
-extern DM_motor_t J4310_1;
-extern DM_motor_t J4310_2;
-extern DM_motor_t J4310_3;
+
 extern uint8_t Enable_flag;
 extern M2006_motor_t M2006_1;
 extern int32_t last_angle;
@@ -82,9 +84,9 @@ void Arm_Init() {
 
     Arm_Motor_Pos_cmd(HOMING_POSTURE); //修改Pos数组的值防止比较失败
     //等待yaw pitch1 pitch2电机就位
-    while (!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
-        (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
-        (J4310_3.position - Pos[2] <= 0.1) && (J4310_3.position - Pos[2] >= -0.1))) {
+    while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
+        (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
+        (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
         Arm_Motor_Pos_cmd(HOMING_POSTURE);
     }
 
@@ -116,16 +118,16 @@ void Arm_Init() {
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
 {
     //阻塞直到使能成功
-    while (J4310_1.Err != 1) {
-        DM_Enable(0x101);
+    while (DM4310_1.Err != 1) {
+        DM_Enable(&DM4310_1);
         HAL_Delay(3);
     }
-    while (J4310_2.Err != 1) {
-        DM_Enable(0x102);
+    while (DM4310_2.Err != 1) {
+        DM_Enable(&DM4310_2);
         HAL_Delay(3);
     }
-    while (J4310_3.Err != 1) {
-        DM_Enable(0x103);
+    while (DM4310_3.Err != 1) {
+        DM_Enable(&DM4310_3);
         HAL_Delay(3);
     }
     Enable_flag = 1;
@@ -134,16 +136,16 @@ void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
 void Arm_Motor_Disable() //yaw pitch1 pitch2 失能
 {
     //阻塞直到失能成功
-    while (J4310_1.Err != 0) {
-        DM_Disable(0x101);
+    while (DM4310_1.Err != 0) {
+        DM_Disable(&DM4310_1);
         HAL_Delay(3);
     }
-    while (J4310_2.Err != 0) {
-        DM_Disable(0x102);
+    while (DM4310_2.Err != 0) {
+        DM_Disable(&DM4310_2);
         HAL_Delay(3);
     }
-    while (J4310_3.Err != 0) {
-        DM_Disable(0x103);
+    while (DM4310_3.Err != 0) {
+        DM_Disable(&DM4310_3);
         HAL_Delay(3);
     }
     Enable_flag = 0;
@@ -154,28 +156,27 @@ void Arm_Motor_Pos_cmd(uint8_t Posture) {
         Pos[i] = Arm_Posture[Posture][i];
     }
 
-    DM_SpeedPosition_cmd(&hcan1, 0x101, Vel[0], Pos[0]);
+    DM4310_Ctrl(&DM4310_1, Pos[0], Vel[0]);
     HAL_Delay(5);
-    DM_SpeedPosition_cmd(&hcan1, 0x102, Vel[1], Pos[1]);
+    DM4310_Ctrl(&DM4310_2, Pos[1], Vel[1]);
     HAL_Delay(5);
-    DM_SpeedPosition_cmd(&hcan1, 0x103, Vel[2], Pos[2]);
+    DM4310_Ctrl(&DM4310_3, Pos[2], Vel[2]);
     HAL_Delay(5);
 
     //确保到位
     if (Posture != REMOTE_POSTURE) {
-        while (!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
-            (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
-            (J4310_3.position - Pos[2] <= 0.1) && (J4310_3.position - Pos[2] >= -0.1))) {
-            DM_SpeedPosition_cmd(&hcan1, 0x101, Vel[0], Pos[0]);
+        while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
+            (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
+            (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
+            DM4310_Ctrl(&DM4310_1, Pos[0], Vel[0]);
             HAL_Delay(5);
-            DM_SpeedPosition_cmd(&hcan1, 0x102, Vel[1], Pos[1]);
+            DM4310_Ctrl(&DM4310_2, Pos[1], Vel[1]);
             HAL_Delay(5);
-            DM_SpeedPosition_cmd(&hcan1, 0x103, Vel[2], Pos[2]);
+            DM4310_Ctrl(&DM4310_3, Pos[2], Vel[2]);
             HAL_Delay(5);
         }
     }
 }
-
 
 
 /**
@@ -187,9 +188,9 @@ void Arm_Off() {
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.7; }
     Vel[0] = 1.5;
     Arm_Motor_Pos_cmd(OFF_POSTURE);
-    while (!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
-        (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
-        (J4310_3.position - Pos[2] <= 0.1) && (J4310_3.position - Pos[2] >= -0.1))) {
+    while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
+        (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
+        (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
         Arm_Motor_Pos_cmd(OFF_POSTURE);
     }
     HAL_Delay(500);
@@ -209,9 +210,9 @@ void Arm_Qucik_Off() {
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.7; }
     Vel[0] = 1.5;
     Arm_Motor_Pos_cmd(OFF_POSTURE);
-    while (!((J4310_1.position - Pos[0] <= 0.1) && (J4310_1.position - Pos[0] >= -0.1) &&
-        (J4310_2.position - Pos[1] <= 0.1) && (J4310_2.position - Pos[1] >= -0.1) &&
-        (J4310_3.position - Pos[2] <= 0.1) && (J4310_3.position - Pos[2] >= -0.1))) {
+    while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
+        (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
+        (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
         Arm_Motor_Pos_cmd(OFF_POSTURE);
     }
     HAL_Delay(500);
