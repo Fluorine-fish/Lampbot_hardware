@@ -57,6 +57,7 @@ void M2006_Angel(double target_angle,int16_t Max_speed);
 HAL_StatusTypeDef cmd_Light(
   uint32_t stdid, uint8_t Channel1,uint8_t Channel2);
 void Light_cmd();
+void Arm_Qucik_Off();
 
 
 #endif //COMMUNICATIONS_H

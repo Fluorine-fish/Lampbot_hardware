@@ -164,7 +164,14 @@ int main(void)
 
     }else if(Switch_flag == 0){
       if(Enable_flag == 1){
-        Arm_Off();
+        if(RC.s1 == 2 && RC.s2 == 2)
+          {
+          Arm_Qucik_Off();
+        }else {
+          Arm_Off();
+        }
+
+
       }
     }
     HAL_Delay(50);
