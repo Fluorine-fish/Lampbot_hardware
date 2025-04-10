@@ -32,7 +32,8 @@ double Arm_params_input[4] = {0.0,64.0,64.0};
 /**
  * @brief 电机转动的最大速度
  */
-double Vel[4] = {1.5,0.6,0.6,0.6};
+double Vel[4] = {1.5,0.6,0.6,1500};
+int16_t M2006_Max_Vel = 250;
 /**
  * @brief 记录机械臂不同动作对应的电机角度q值
  */

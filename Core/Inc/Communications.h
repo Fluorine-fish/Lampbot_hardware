@@ -53,7 +53,7 @@ void decode_motor_measure(motor_t * motor, uint8_t * data);
 HAL_StatusTypeDef DM_Enable(uint32_t stdid);
 HAL_StatusTypeDef DM_Disable(uint32_t stdid);
 HAL_StatusTypeDef DM_H6215_MIT_cmd(uint32_t stdid, float Torque);
-void M2006_Angel(double target_angle);
+void M2006_Angel(double target_angle,int16_t Max_speed);
 HAL_StatusTypeDef cmd_Light(
   uint32_t stdid, uint8_t Channel1,uint8_t Channel2);
 void Light_cmd();

@@ -261,7 +261,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef * hcan)
 /**
  *  输入弧度制角度
  */
-void M2006_Angel(double target_angle)
+void M2006_Angel(double target_angle,int16_t Max_speed)
 {
   target_angle = (target_angle >0)? ((target_angle < 2.2340214) ? target_angle : 2.2340214) : 0;
   int16_t angle2M = 2900.0/2.3*target_angle + 230;
@@ -270,7 +270,7 @@ void M2006_Angel(double target_angle)
   PID_Angle_M2006_1.target = angle2M;
 
   Angle_Calc(M2006_1.angle_ecd);
-  PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target);
+  PID_Angle(&PID_Angle_M2006_1,angle/36,PID_Angle_M2006_1.target,Max_speed);
   PID_Solution(&PID_Speed_M2006_1,M2006_1.raw_speed_rpm,PID_Angle_M2006_1.out);
   cmd_motor(0x200,PID_Speed_M2006_1.out,0,0,0);
 }

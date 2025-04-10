@@ -52,6 +52,7 @@ extern int32_t last_angle;
 
 extern double Pos[4];
 extern uint8_t RC_Data[18];
+extern int16_t M2006_Max_Vel;
 uint8_t Enable_flag = 0;
 uint8_t Switch_flag = 0;
 extern double Arm_params_input[4];
@@ -59,7 +60,7 @@ extern double Arm_params_input[4];
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   //TIM5负责处理M2006的位置环PID
   if (htim == &htim5) {
-    M2006_Angel(Pos[3]);
+    M2006_Angel(Pos[3],M2006_Max_Vel);
   }
   //TIM2负责处理机械臂解�?? 20Hz 抢占优先级低
   if(htim == &htim2) {

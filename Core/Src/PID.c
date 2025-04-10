@@ -6,7 +6,7 @@
 #include "main.h"
 
 PID_Param PID_Speed_M2006_1 = {12,0.2,1,6000,600,0,0,0,0,0,0,0,0,0};
-PID_Param PID_Angle_M2006_1 = {8,0,0,1000,100,0,0,0,0,0,0,0,0,0};
+PID_Param PID_Angle_M2006_1 = {1.5,0,1,1000,100,0,0,0,0,0,0,0,0,0};
 int32_t angle=0;
 int32_t last_angle=0;
 
@@ -31,7 +31,7 @@ void PID_Solution(PID_Param *param,int16_t measure,int16_t target) {
     if(param -> out <= -14000) param->out = -14000;
 }
 
-void PID_Angle(PID_Param *param,int16_t measure,int16_t target) {
+void PID_Angle(PID_Param *param,int16_t measure,int16_t target,int16_t Max_Speed) {
     // 纠正半圈路径
     // if(measure-target>4096) target+=8191;
     // else if(measure-target<-4096) measure+=8191;
@@ -58,8 +58,8 @@ void PID_Angle(PID_Param *param,int16_t measure,int16_t target) {
     if(param -> error < 5 && param -> error > -5) param->error_sum = 0;
 
     //最大速度限制
-    if(param -> out >=ANGLE_PID_MAX_SPEED) param->out = ANGLE_PID_MAX_SPEED;
-    if(param -> out <= ANGLE_PID_MIN_SPEED) param->out = ANGLE_PID_MIN_SPEED;
+    if(param -> out >=Max_Speed) param->out = Max_Speed;
+    if(param -> out <= -Max_Speed) param->out = -Max_Speed;
 }
 
 void Angle_Calc(int16_t raw_angle) {
