@@ -349,8 +349,8 @@ void Arm_Remind_Sitting()
 
 void Arm_Looking_Forward()
 {
-    Arm_Motor_Pos_cmd(REMIND_LOOKING_FORWARD_POSTURE);
     Arm_Light_slow_OFF();
+    Arm_Motor_Pos_cmd(REMIND_LOOKING_FORWARD_POSTURE);
     HAL_Delay(200);
     Pos[3] += 0.1;
     HAL_Delay(400);
