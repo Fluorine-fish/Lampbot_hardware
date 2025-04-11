@@ -10,6 +10,7 @@
 #include "tim.h"
 #include "Communications.h"
 #include "DM4310.h"
+#include "M2006.h"
 
 motor_t motor_6020 = {0, 0, 0, 0};
 motor_t M3508_1 = {0, 0, 0, 0};
@@ -20,7 +21,7 @@ motor_t M3508_4 = {0, 0, 0, 0};
 DM4310_HandleTypeDef DM4310_1;
 DM4310_HandleTypeDef DM4310_2;
 DM4310_HandleTypeDef DM4310_3;
-M2006_motor_t M2006_1 = {0, 0, 0};
+M2006_HandleTypeDef M2006_1;
 
 motor_t H6215_1 = {0, 0, 0, 0};
 motor_t H6215_2 = {0, 0, 0, 0};
@@ -51,37 +52,6 @@ void can_filter_init(void) {
     HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
 }
 
-/**
- * @brief 大疆一拖四电机报文
- *
- * @param stdid 帧头
- * @param motor1
- * @param motor2
- * @param motor3
- * @param motor4
- * @return HAL_StatusTypeDef
- */
-HAL_StatusTypeDef cmd_motor(
-    uint32_t stdid, int16_t motor1, int16_t motor2, int16_t motor3, int16_t motor4) {
-    CAN_TxHeaderTypeDef motor_tx_message;
-    motor_tx_message.StdId = stdid;
-    motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
-    motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
-    motor_tx_message.DLC = 0x08;
-
-    uint8_t motor_can_send_data[8];
-    motor_can_send_data[0] = motor1 >> 8;
-    motor_can_send_data[1] = motor1;
-    motor_can_send_data[2] = motor2 >> 8;
-    motor_can_send_data[3] = motor2;
-    motor_can_send_data[4] = motor3 >> 8;
-    motor_can_send_data[5] = motor3;
-    motor_can_send_data[6] = motor4 >> 8;
-    motor_can_send_data[7] = motor4;
-
-    return HAL_CAN_AddTxMessage(&hcan1, &motor_tx_message, motor_can_send_data, (uint32_t*)CAN_TX_MAILBOX0);
-}
-
 /*解码函数*/
 void decode_motor_measure(motor_t* motor, uint8_t* data) {
     motor->angle_ecd = (data[0] << 8) | data[1];
@@ -90,12 +60,6 @@ void decode_motor_measure(motor_t* motor, uint8_t* data) {
     motor->temperate = data[6];
 }
 
-void decode_motor_measure_M2006(M2006_motor_t* motor, uint8_t* data) {
-    motor->angle_ecd = (data[0] << 8) | data[1];
-    motor->raw_speed_rpm = (data[2] << 8) | data[3];
-    motor->torque = (data[4] << 8) | data[5];
-    motor->speed_rpm = motor->raw_speed_rpm / 36.0f;
-}
 
 /**
  * @brief can接收回调函数 用于解码
@@ -109,7 +73,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan) {
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data);
     //标识符=0x200+ID
     if (rx_header.StdId == 0x201) {
-        decode_motor_measure_M2006(&M2006_1, rx_data);
+        M2006_Update(&M2006_1, rx_data);
     }
     //达妙在速度位置模式下接收为MasterID
     if (rx_header.StdId == 0x011) {
@@ -138,5 +102,6 @@ void M2006_Angel(double target_angle, int16_t Max_speed) {
     Angle_Calc(M2006_1.angle_ecd);
     PID_Angle(&PID_Angle_M2006_1, angle / 36, PID_Angle_M2006_1.target, Max_speed);
     PID_Solution(&PID_Speed_M2006_1, M2006_1.raw_speed_rpm, PID_Angle_M2006_1.out);
-    cmd_motor(0x200, PID_Speed_M2006_1.out, 0, 0, 0);
+
+    M2006_Crtl_Currency(&M2006_1, PID_Speed_M2006_1.out);
 }

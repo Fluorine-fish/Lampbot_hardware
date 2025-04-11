@@ -13,15 +13,16 @@
 
 #include "Light.h"
 #include "DM4310.h"
+#include "M2006.h"
 
 Light_TypeDef light1;
 Posture_enum Arm_Posture_index;
 extern DM4310_HandleTypeDef DM4310_1;
 extern DM4310_HandleTypeDef DM4310_2;
 extern DM4310_HandleTypeDef DM4310_3;
+extern M2006_HandleTypeDef M2006_1;
 
 extern uint8_t Enable_flag;
-extern M2006_motor_t M2006_1;
 extern int32_t last_angle;
 extern int32_t angle;
 extern uint8_t Switch_flag;
@@ -108,12 +109,12 @@ void Arm_Start() {
 
     //堵转回0
     for (uint8_t i = 0; i < 130; i++) {
-        cmd_motor(0x200, -700, 0, 0, 0);
+        M2006_Crtl_Currency(&M2006_1, -700);
         HAL_Delay(3);
     }
     //阻塞主函数 直到M2006电机零点标记完成,堵转认为标记完成
     while (M2006_1.speed_rpm < -100) {
-        cmd_motor(0x200, -700, 0, 0, 0);
+        M2006_Crtl_Currency(&M2006_1, -700);
         HAL_Delay(3);
     }
 
@@ -147,12 +148,12 @@ void Arm_Quick_Start() {
 
     //堵转回0
     for (uint8_t i = 0; i < 130; i++) {
-        cmd_motor(0x200, -700, 0, 0, 0);
+        M2006_Crtl_Currency(&M2006_1, -700);
         HAL_Delay(3);
     }
     //阻塞主函数 直到M2006电机零点标记完成,堵转认为标记完成
     while (M2006_1.speed_rpm < -100) {
-        cmd_motor(0x200, -700, 0, 0, 0);
+        M2006_Crtl_Currency(&M2006_1, -700);
         HAL_Delay(3);
     }
 
@@ -248,10 +249,10 @@ void Arm_Off() {
     HAL_Delay(500);
 
     //关闭pitch3
-    cmd_motor(0x200, 0, 0, 0, 0);
+    M2006_Crtl_Currency(&M2006_1, 0);
     HAL_TIM_Base_Stop_IT(&htim5);
     HAL_TIM_Base_Stop_IT(&htim2);
-    cmd_motor(0x200, 0, 0, 0, 0);
+    M2006_Crtl_Currency(&M2006_1, 0);
 
     Arm_Motor_Disable();
     HAL_Delay(300);
@@ -270,10 +271,10 @@ void Arm_Quick_Off() {
     HAL_Delay(500);
 
     //关闭pitch3
-    cmd_motor(0x200, 0, 0, 0, 0);
+    M2006_Crtl_Currency(&M2006_1, 0);
     HAL_TIM_Base_Stop_IT(&htim5);
     HAL_TIM_Base_Stop_IT(&htim2);
-    cmd_motor(0x200, 0, 0, 0, 0);
+    M2006_Crtl_Currency(&M2006_1, 0);
 
     Arm_Motor_Disable();
     HAL_Delay(300);
@@ -290,7 +291,6 @@ void Arm_Switch_Init() {
         Switch_flag = 1;
     }
 }
-
 
 /**
  * @breif 开启遥控器模式: ch0->yaw;ch1->pitch1;ch2->pitch2；ch3->pitch3

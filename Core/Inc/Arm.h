@@ -18,6 +18,7 @@ typedef enum {
     Remind_Sitting_Posture = 4, //提醒坐姿状态
     Remind_Looking_Forward_Posture = 5, //提醒远眺姿势
 
+    //关闭自己的开关的运动路径
     Turn_Itself_Off_1 = 6,
     Turn_Itself_Off_2 = 7,
     Turn_Itself_Off_3 = 8,

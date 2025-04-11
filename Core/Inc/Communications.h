@@ -36,8 +36,6 @@ typedef struct
 #define T_MAX 18			//转矩最小值
 
 void can_filter_init(void);
-HAL_StatusTypeDef cmd_motor(
-  uint32_t stdid, int16_t motor1, int16_t motor2, int16_t motor3, int16_t motor4);
 void decode_motor_measure(motor_t * motor, uint8_t * data);
 HAL_StatusTypeDef DM_H6215_MIT_cmd(uint32_t stdid, float Torque);
 void M2006_Angel(double target_angle,int16_t Max_speed);
