@@ -24,15 +24,12 @@ M2006_motor_t M2006_1 = {0, 0, 0};
 
 motor_t H6215_1 = {0, 0, 0, 0};
 motor_t H6215_2 = {0, 0, 0, 0};
-uint8_t motor_can_send_data[8];
-CAN_TxHeaderTypeDef motor_tx_message;
 
 extern int32_t angle;
 extern PID_Param PID_Speed_M2006_1;
 extern PID_Param PID_Angle_M2006_1;
 extern int32_t last_angle;
 extern uint8_t Enable_flag;
-extern uint8_t Light_Channel[2];
 
 /**
  * @brief CAN过滤器初始化
@@ -66,11 +63,13 @@ void can_filter_init(void) {
  */
 HAL_StatusTypeDef cmd_motor(
     uint32_t stdid, int16_t motor1, int16_t motor2, int16_t motor3, int16_t motor4) {
+    CAN_TxHeaderTypeDef motor_tx_message;
     motor_tx_message.StdId = stdid;
     motor_tx_message.IDE = CAN_ID_STD; //使用标准帧格式
     motor_tx_message.RTR = CAN_RTR_DATA; //数据帧类型
     motor_tx_message.DLC = 0x08;
 
+    uint8_t motor_can_send_data[8];
     motor_can_send_data[0] = motor1 >> 8;
     motor_can_send_data[1] = motor1;
     motor_can_send_data[2] = motor2 >> 8;

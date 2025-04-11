@@ -15,10 +15,10 @@
 #include "DM4310.h"
 
 Light_TypeDef light1;
+Posture_enum Arm_Posture_index;
 extern DM4310_HandleTypeDef DM4310_1;
 extern DM4310_HandleTypeDef DM4310_2;
 extern DM4310_HandleTypeDef DM4310_3;
-
 
 extern uint8_t Enable_flag;
 extern M2006_motor_t M2006_1;
@@ -47,9 +47,23 @@ double Arm_Posture[][4] = {
     {0.0, 0.5, 0.8, 0.0},
     {-0.5, 0.95, 0.95, 0.15},
     {0.0, 0.06, 0.07, 0.7},
-    {0.0, 1.0, 1.5, 0.05},
+    {-0.5, 0.95, 0.95, 0.15},
     {-0.5, 0.80, 0.75, 0.54},
     {-2.4, 0.70, 0.74, 1.20},
+
+    {-0.5, 0.95, 0.45, 1.75},
+    {-1.35, 0.95, 0.45, 1.75},
+    {-1.05, 0.95, 0.45, 1.75},
+    {-1.65, 0.95, 0.45, 1.75},
+    {1.85, 0.95, 0.45, 1.75},
+    {2.15, 0.95, 0.45, 1.75},
+    {1.55, 0.95, 0.45, 1.75},
+    {1.05, 0.95, 0.45, 1.75},
+    {0.75, 0.95, 0.45, 1.75},
+    {1.35, 0.95, 0.45, 1.75},
+    {1.05, 0.95, 0.45, 1.75},
+    {2.25, 1, 0.25, 0.7},
+    {3.14, 1, 0.20, 0.55},
 };
 /**
  * @brief 记录机械臂把自己关掉需要的动作
@@ -67,27 +81,26 @@ double Turn_Itself_Off_Posture[][4] = {
     {1.15, 0.95, 0.45, 1.75},
     {1.05, 0.95, 0.45, 1.75},
     {2.25, 1, 0.25, 0.7},
-    {3.14, 1, 0.25, 0.7},
+    {3.14, 1, 0.20, 0.55},
 };
 /**
  * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-150
  */
-uint8_t Light_Channel[2] = {0, 0};
 uint16_t Temperature = 6000;
 uint16_t Light = 244;
 
-void Arm_Init() {
+void Arm_Start() {
     HAL_TIM_Base_Start_IT(&htim2);
 
     Light_Init(&light1, &hcan1);
     Arm_Motor_Enable();
 
-    Arm_Motor_Pos_cmd(HOMING_POSTURE); //修改Pos数组的值防止比较失败
+    Arm_Motor_Pos_cmd(Homing_Posture); //修改Pos数组的值防止比较失败
     //等待yaw pitch1 pitch2电机就位
     while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
         (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
         (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
-        Arm_Motor_Pos_cmd(HOMING_POSTURE);
+        Arm_Motor_Pos_cmd(Homing_Posture);
     }
 
     HAL_Delay(500);
@@ -109,9 +122,47 @@ void Arm_Init() {
     angle += 5000; //防止从反方向转到100
 
     //ptich3就位
-    Arm_Motor_Pos_cmd(BASE_POSTURE);
+    Arm_Motor_Pos_cmd(Base_Posture);
     //打开灯
     Arm_Light_slow_ON();
+    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 244); }
+}
+
+void Arm_Quick_Start() {
+    HAL_TIM_Base_Start_IT(&htim2);
+
+    Light_Init(&light1, &hcan1);
+    Arm_Motor_Enable();
+
+    Arm_Motor_Pos_cmd(Homing_Posture); //修改Pos数组的值防止比较失败
+    //等待yaw pitch1 pitch2电机就位
+    while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
+        (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
+        (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
+        Arm_Motor_Pos_cmd(Homing_Posture);
+        }
+
+    HAL_Delay(500);
+
+    //堵转回0
+    for (uint8_t i = 0; i < 130; i++) {
+        cmd_motor(0x200, -700, 0, 0, 0);
+        HAL_Delay(3);
+    }
+    //阻塞主函数 直到M2006电机零点标记完成,堵转认为标记完成
+    while (M2006_1.speed_rpm < -100) {
+        cmd_motor(0x200, -700, 0, 0, 0);
+        HAL_Delay(3);
+    }
+
+    HAL_TIM_Base_Start_IT(&htim5); //打开写在中断回调里的Pitch3电机PID控制
+    angle = 0;
+    last_angle = M2006_1.angle_ecd;
+    angle += 5000; //防止从反方向转到100
+
+    //ptich3就位
+    Arm_Motor_Pos_cmd(Base_Posture);
+    //打开灯
     for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 244); }
 }
 
@@ -164,7 +215,7 @@ void Arm_Motor_Pos_cmd(uint8_t Posture) {
     HAL_Delay(5);
 
     //确保到位
-    if (Posture != REMOTE_POSTURE) {
+    if (Posture != Remote_Posture) {
         while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
             (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
             (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
@@ -187,11 +238,11 @@ void Arm_Off() {
     for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 0); }
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.7; }
     Vel[0] = 1.5;
-    Arm_Motor_Pos_cmd(OFF_POSTURE);
+    Arm_Motor_Pos_cmd(Off_Posture);
     while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
         (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
         (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
-        Arm_Motor_Pos_cmd(OFF_POSTURE);
+        Arm_Motor_Pos_cmd(Off_Posture);
     }
     HAL_Delay(500);
 
@@ -205,15 +256,15 @@ void Arm_Off() {
     HAL_Delay(300);
 }
 
-void Arm_Qucik_Off() {
+void Arm_Quick_Off() {
     for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 0); }
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.7; }
     Vel[0] = 1.5;
-    Arm_Motor_Pos_cmd(OFF_POSTURE);
+    Arm_Motor_Pos_cmd(Off_Posture);
     while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
         (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
         (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
-        Arm_Motor_Pos_cmd(OFF_POSTURE);
+        Arm_Motor_Pos_cmd(Off_Posture);
     }
     HAL_Delay(500);
 
@@ -259,7 +310,7 @@ void Arm_Remote_Mode() {
 
         double temp_Pos[4];
         uint16_t temp_Temperature = 6000;
-        for (uint8_t i = 0; i < 4; i++) { temp_Pos[i] = Arm_Posture[REMOTE_POSTURE][i]; }
+        for (uint8_t i = 0; i < 4; i++) { temp_Pos[i] = Arm_Posture[Remote_Posture][i]; }
         temp_Temperature = Temperature;
 
         if (RC.ch0 >= 20) {
@@ -305,10 +356,10 @@ void Arm_Remote_Mode() {
                                 : temp_Temperature);
 
         //Pos 赋值
-        for (uint8_t i = 0; i < 4; i++) { Arm_Posture[REMOTE_POSTURE][i] = temp_Pos[i]; }
+        for (uint8_t i = 0; i < 4; i++) { Arm_Posture[Remote_Posture][i] = temp_Pos[i]; }
         Temperature = temp_Temperature;
 
-        Arm_Motor_Pos_cmd(REMOTE_POSTURE);
+        Arm_Motor_Pos_cmd(Remote_Posture);
         Light_Ctrl(&light1, Temperature, 244);
     }
     else {
@@ -317,7 +368,7 @@ void Arm_Remote_Mode() {
         Vel[2] = 0.7;
         Vel[3] = 0.7;
 
-        for (uint8_t i = 0; i < 4; i++) { Arm_Posture[REMOTE_POSTURE][i] = Arm_Posture[BASE_POSTURE][i]; }
+        for (uint8_t i = 0; i < 4; i++) { Arm_Posture[Remote_Posture][i] = Arm_Posture[Base_Posture][i]; }
     }
 }
 
@@ -378,33 +429,33 @@ void Arm_Light_Remote() {
 }
 
 void Arm_Remind_Sitting() {
-    Arm_Motor_Pos_cmd(REMIND_SITTING_POSTURE);
+    Arm_Motor_Pos_cmd(Remind_Sitting_Posture);
     HAL_Delay(200);
     Pos[3] += 0.1;
     HAL_Delay(400);
     Pos[3] -= 0.1;
     HAL_Delay(400);
-    Arm_Motor_Pos_cmd(BASE_POSTURE);
+    Arm_Motor_Pos_cmd(Base_Posture);
     HAL_Delay(8000);
 }
 
 void Arm_Looking_Forward() {
     Arm_Light_slow_OFF();
-    Arm_Motor_Pos_cmd(REMIND_LOOKING_FORWARD_POSTURE);
+    Arm_Motor_Pos_cmd(Remind_Looking_Forward_Posture);
     HAL_Delay(200);
     Pos[3] += 0.1;
     HAL_Delay(400);
     Pos[3] -= 0.1;
     HAL_Delay(400);
-    Arm_Motor_Pos_cmd(BASE_POSTURE);
+    Arm_Motor_Pos_cmd(Base_Posture);
     Arm_Light_slow_ON();
     HAL_Delay(8000);
 }
 
 void Arm_Back() {
-    Arm_Motor_Pos_cmd(BASE_POSTURE);
-    for (uint8_t i = 0; i < 4; i++) { Pos[i] = Arm_Posture[BASE_POSTURE][i]; }
-    for (uint8_t i = 0; i < 4; i++) { Arm_Posture[REMOTE_POSTURE][i] = Arm_Posture[BASE_POSTURE][i]; }
+    Arm_Motor_Pos_cmd(Base_Posture);
+    for (uint8_t i = 0; i < 4; i++) { Pos[i] = Arm_Posture[Base_Posture][i]; }
+    for (uint8_t i = 0; i < 4; i++) { Arm_Posture[Remote_Posture][i] = Arm_Posture[Base_Posture][i]; }
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.6; }
     Vel[0] = 1.5;
     Temperature = 6000;
@@ -412,33 +463,49 @@ void Arm_Back() {
 }
 
 void Arm_Turn_Itself_Off() {
-    Arm_Motor_Pos_cmd(BASE_POSTURE);
-    for (uint8_t i = 0; i < 4; i++) { Vel[i] = 0.6; }
+    Arm_Motor_Pos_cmd(Base_Posture);
+    for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.8; }
+    Vel[0] = 1.3;
     HAL_Delay(200);
     //执行自动关机程序
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[1]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_1);
     HAL_Delay(200);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[2]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_2);
     HAL_Delay(200);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[3]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_3);
     HAL_Delay(500);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[4]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_4);
     HAL_Delay(600);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[5]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_5);
     HAL_Delay(500);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[6]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_6);
     HAL_Delay(500);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[7]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_7);
     HAL_Delay(600);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[8]);
+
+    Vel[0] = 0.7;
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_8);
     HAL_Delay(600);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[9]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_9);
+    HAL_Delay(500);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_10);
+    HAL_Delay(1000);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_11);
+    HAL_Delay(500);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_12);
+    HAL_Delay(800);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_13);
     HAL_Delay(200);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[10]);
+}
+
+void Arm_Quick_Turn_Itself_Off() {
+    Arm_Motor_Pos_cmd(Base_Posture);
+    for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.8; }
+    Vel[0] = 1.3;
     HAL_Delay(200);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[11]);
-    HAL_Delay(200);
-    Arm_Motor_Pos_cmd(Turn_Itself_Off_Posture[12]);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_12);
+    HAL_Delay(500);
+    Arm_Motor_Pos_cmd(Turn_Itself_Off_13);
     HAL_Delay(200);
 }
 
@@ -458,9 +525,12 @@ void Arm_Task() {
     else if (RC.s1 == 3 && RC.s2 == 3) {
         Arm_Looking_Forward();
     }
-    // else if (RC.s1 == 2 && RC.s2 == 2) {
-    //     Arm_Turn_Itself_Off();
-    // }
+    else if (RC.s1 == 2 && RC.s2 == 2) {
+        Arm_Turn_Itself_Off();
+    }
+    else if (RC.s1 == 2 && RC.s2 == 3) {
+        Arm_Quick_Turn_Itself_Off();
+    }
     else {
         Arm_Back();
     }
