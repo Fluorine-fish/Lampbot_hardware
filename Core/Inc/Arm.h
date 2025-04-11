@@ -51,5 +51,6 @@ void Arm_Looking_Forward();
 void Arm_Back();
 void Arm_Quick_Off();
 void Arm_Turn_Itself_Off();
+void Arm_Quick_Turn_Itself_Off();
 
 #endif //ARM_H

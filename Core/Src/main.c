@@ -162,21 +162,24 @@ int main(void)
   // ReSharper disable once CppDFAEndlessLoop
   while (1)
     {
-    if(Switch_flag == 1 && Enable_flag == 0){
-      if(RC.s1 == 2){
-        Arm_Quick_Start();
-      }else {
+    if(Switch_flag == 1){
+      if(Enable_flag == 0){
         Arm_Start();
       }
 
       Arm_Task();
 
-    }else if(Switch_flag == 0 && Enable_flag == 1){
-        if(RC.s1 == 2) {
+    }else if(Switch_flag == 0){
+      if(Enable_flag == 1){
+        if(RC.s1 == 2)
+          {
           Arm_Quick_Off();
         }else {
           Arm_Off();
         }
+
+
+      }
     }
     HAL_Delay(50);
     /* USER CODE END WHILE */

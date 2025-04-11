@@ -93,6 +93,7 @@ void Arm_Start() {
     HAL_TIM_Base_Start_IT(&htim2);
 
     Light_Init(&light1, &hcan1);
+
     Arm_Motor_Enable();
 
     Arm_Motor_Pos_cmd(Homing_Posture); //修改Pos数组的值防止比较失败
@@ -173,12 +174,12 @@ void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
         DM_Enable(&DM4310_1);
         HAL_Delay(3);
     }
-    while (DM4310_2.Err != 1) {
-        DM_Enable(&DM4310_2);
-        HAL_Delay(3);
-    }
     while (DM4310_3.Err != 1) {
         DM_Enable(&DM4310_3);
+        HAL_Delay(3);
+    }
+    while (DM4310_2.Err != 1) {
+        DM_Enable(&DM4310_2);
         HAL_Delay(3);
     }
     Enable_flag = 1;
@@ -436,7 +437,7 @@ void Arm_Remind_Sitting() {
     Pos[3] -= 0.1;
     HAL_Delay(400);
     Arm_Motor_Pos_cmd(Base_Posture);
-    HAL_Delay(8000);
+    HAL_Delay(200);
 }
 
 void Arm_Looking_Forward() {
@@ -444,12 +445,11 @@ void Arm_Looking_Forward() {
     Arm_Motor_Pos_cmd(Remind_Looking_Forward_Posture);
     HAL_Delay(200);
     Pos[3] += 0.1;
-    HAL_Delay(400);
+    HAL_Delay(1000);
     Pos[3] -= 0.1;
-    HAL_Delay(400);
+    HAL_Delay(8000);
     Arm_Motor_Pos_cmd(Base_Posture);
     Arm_Light_slow_ON();
-    HAL_Delay(8000);
 }
 
 void Arm_Back() {
