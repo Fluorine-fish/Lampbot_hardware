@@ -40,8 +40,7 @@
 /* USER CODE BEGIN PTD */
 
 extern RC_t RC;
-extern CAN_TxHeaderTypeDef motor_tx_message;
-extern uint8_t motor_can_send_data[8];
+extern Light_TypeDef light1;
 extern Arm_Params_t Arm_params;
 
 extern PID_Param PID_Speed_M2006_1;
@@ -52,6 +51,7 @@ extern int32_t last_angle;
 
 extern double Pos[4];
 extern uint8_t RC_Data[18];
+extern uint8_t voice_data[5];
 extern int16_t M2006_Max_Vel;
 uint8_t Enable_flag = 0;
 uint8_t Switch_flag = 0;
@@ -67,7 +67,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if (htim == &htim5) {
     M2006_Angel(Pos[3],M2006_Max_Vel);
   }
-  //TIM2负责处理机械臂解�?? 20Hz 抢占优先级低
+  //TIM2负责处理机械臂解�??????? 20Hz 抢占优先级低
   if(htim == &htim2) {
     Arm_Calculate(Arm_params_input[0],Arm_params_input[1],Arm_params_input[2],&Arm_params);
   }
@@ -75,7 +75,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
   if(GPIO_Pin == GPIO_PIN_9){
-    //开关
+    //�?????�?????
     if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_SET) {
       Switch_flag = 0;
     }else if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_RESET) {
@@ -148,13 +148,16 @@ int main(void)
   MX_TIM5_Init();
   MX_USB_DEVICE_Init();
   MX_TIM2_Init();
+  MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
   DM4310_Init(&DM4310_1,&hcan1, 1,DM_CtrlMode_SpeedPosition);
   DM4310_Init(&DM4310_2,&hcan1, 2,DM_CtrlMode_SpeedPosition);
   DM4310_Init(&DM4310_3, &hcan1,3,DM_CtrlMode_SpeedPosition);
   M2006_Init(&M2006_1,&hcan1,1);
   can_filter_init();
+  Light_Init(&light1, &hcan1);
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart6,voice_data,sizeof(voice_data));
   Arm_Switch_Init();
 
   /* USER CODE END 2 */
@@ -164,25 +167,23 @@ int main(void)
   // ReSharper disable once CppDFAEndlessLoop
   while (1)
     {
-    if(Switch_flag == 1){
-      if(Enable_flag == 0){
-        Arm_Start();
-      }
-
-      Arm_Task();
-
-    }else if(Switch_flag == 0){
-      if(Enable_flag == 1){
-        if(RC.s1 == 2)
-          {
-          Arm_Quick_Off();
-        }else {
-          Arm_Off();
-        }
-
-
-      }
-    }
+    // if(Switch_flag == 1){
+    //   if(Enable_flag == 0){
+    //     Arm_Start();
+    //   }
+    //
+    //   Arm_Task();
+    //
+    // }else if(Switch_flag == 0){
+    //   if(Enable_flag == 1){
+    //     if(RC.s1 == 2)
+    //       {
+    //       Arm_Quick_Off();
+    //     }else {
+    //       Arm_Off();
+    //     }
+    //   }
+    // }
     HAL_Delay(50);
     /* USER CODE END WHILE */
 

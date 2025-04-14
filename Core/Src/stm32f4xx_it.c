@@ -27,6 +27,8 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
 #include "Remote.h"
+#include "Light.h"
+#include "Arm.h"
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -61,8 +63,14 @@ extern CAN_HandleTypeDef hcan2;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim5;
 extern DMA_HandleTypeDef hdma_usart3_rx;
+extern DMA_HandleTypeDef hdma_usart6_rx;
+extern UART_HandleTypeDef huart3;
+extern UART_HandleTypeDef huart6;
 /* USER CODE BEGIN EV */
-
+extern uint16_t Light;
+extern uint16_t Temperature;
+extern uint8_t voice_data[5];
+extern Light_TypeDef light1;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -260,6 +268,20 @@ void TIM2_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles USART3 global interrupt.
+  */
+void USART3_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
+
+  /* USER CODE END USART3_IRQn 0 */
+  HAL_UART_IRQHandler(&huart3);
+  /* USER CODE BEGIN USART3_IRQn 1 */
+
+  /* USER CODE END USART3_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM5 global interrupt.
   */
 void TIM5_IRQHandler(void)
@@ -271,6 +293,39 @@ void TIM5_IRQHandler(void)
   /* USER CODE BEGIN TIM5_IRQn 1 */
 
   /* USER CODE END TIM5_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA2 stream1 global interrupt.
+  */
+void DMA2_Stream1_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA2_Stream1_IRQn 0 */
+  if(voice_data[0] == '0') {
+    if(Light + 50 > 240) {Light = 240;}
+    else{ Light +=25; }
+    Light_Ctrl(&light1, Temperature, Light);
+  }
+  if(voice_data[0] == '1') {
+    if(Light - 50 < 0) {Light = 0;}
+    else{ Light -=25; }
+    Light_Ctrl(&light1, Temperature, Light);
+  }
+  if(voice_data[0] == '3') {
+    if(Temperature + 500 > 6000) {Temperature = 6000;}
+    else{ Temperature +=250; }
+    Light_Ctrl(&light1, Temperature, Light);
+  }
+  if(voice_data[0] == '2') {
+    if(Temperature - 500 < 3500) {Temperature = 3500;}
+    else{ Temperature -=250; }
+    Light_Ctrl(&light1, Temperature, Light);
+  }
+  /* USER CODE END DMA2_Stream1_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart6_rx);
+  /* USER CODE BEGIN DMA2_Stream1_IRQn 1 */
+
+  /* USER CODE END DMA2_Stream1_IRQn 1 */
 }
 
 /**
@@ -299,6 +354,20 @@ void OTG_FS_IRQHandler(void)
   /* USER CODE BEGIN OTG_FS_IRQn 1 */
 
   /* USER CODE END OTG_FS_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART6 global interrupt.
+  */
+void USART6_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART6_IRQn 0 */
+
+  /* USER CODE END USART6_IRQn 0 */
+  HAL_UART_IRQHandler(&huart6);
+  /* USER CODE BEGIN USART6_IRQn 1 */
+
+  /* USER CODE END USART6_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

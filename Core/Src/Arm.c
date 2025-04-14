@@ -88,7 +88,7 @@ double Turn_Itself_Off_Posture[][4] = {
  * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-150
  */
 uint16_t Temperature = 6000;
-uint16_t Light = 244;
+uint16_t Light = 100;
 
 void Arm_Start() {
     HAL_TIM_Base_Start_IT(&htim2);
@@ -127,7 +127,7 @@ void Arm_Start() {
     Arm_Motor_Pos_cmd(Base_Posture);
     //打开灯
     Arm_Light_slow_ON();
-    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 244); }
+    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 150); }
 }
 
 void Arm_Quick_Start() {
@@ -165,7 +165,7 @@ void Arm_Quick_Start() {
     //ptich3就位
     Arm_Motor_Pos_cmd(Base_Posture);
     //打开灯
-    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 244); }
+    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 150); }
 }
 
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
@@ -361,7 +361,7 @@ void Arm_Remote_Mode() {
         Temperature = temp_Temperature;
 
         Arm_Motor_Pos_cmd(Remote_Posture);
-        Light_Ctrl(&light1, Temperature, 244);
+        Light_Ctrl(&light1, Temperature, 150);
     }
     else {
         Vel[0] = 1.5;
@@ -380,10 +380,10 @@ void Arm_Light_slow_ON() {
     float cnt = 0.0;
     for (int i = 0; i < 100; i++) {
         cnt = i * 0.015; // 计算当前 cnt 值
-        Light_Ctrl(&light1, Temperature, 244 * sin(cnt));
+        Light_Ctrl(&light1, Temperature, 150 * sin(cnt));
         HAL_Delay(50);
     }
-    Light_Ctrl(&light1, Temperature, 244); // 循环结束后设置为最大值
+    Light_Ctrl(&light1, Temperature, 150); // 循环结束后设置为最大值
 }
 
 /**
@@ -393,7 +393,7 @@ void Arm_Light_slow_OFF() {
     float cnt = 0.0;
     for (int i = 40; i < 100; i++) {
         cnt = 3.1415927 / 2.0 + i * 0.015; // 计算当前 cnt 值
-        Light_Ctrl(&light1, Temperature, 244 * sin(cnt));
+        Light_Ctrl(&light1, Temperature, 150 * sin(cnt));
         HAL_Delay(50);
     }
     Light_Ctrl(&light1, Temperature, 0); // 循环结束后设置为最大值
@@ -459,7 +459,7 @@ void Arm_Back() {
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.6; }
     Vel[0] = 1.5;
     Temperature = 6000;
-    Light_Ctrl(&light1, Temperature, 244);
+    Light_Ctrl(&light1, Temperature, 150);
 }
 
 void Arm_Turn_Itself_Off() {

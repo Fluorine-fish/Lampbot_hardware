@@ -6,9 +6,11 @@
 #define ARM_H
 
 #include "main.h"
+#include "Light.h"
 
 extern double Arm_Posture[][4];
 extern uint8_t Light_Channel[2];
+extern Light_TypeDef light1;
 
 typedef enum {
     Homing_Posture = 0, //init状态，默认使能后等待pitch3归位的状态

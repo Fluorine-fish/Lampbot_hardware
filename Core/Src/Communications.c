@@ -7,16 +7,20 @@
 #include "main.h"
 #include "Arm.h"
 #include "PID.h"
+#include "Light.h"
 #include "tim.h"
 #include "Communications.h"
 #include "DM4310.h"
 #include "M2006.h"
+#include "remote.h"
 
 motor_t motor_6020 = {0, 0, 0, 0};
 motor_t M3508_1 = {0, 0, 0, 0};
 motor_t M3508_2 = {0, 0, 0, 0};
 motor_t M3508_3 = {0, 0, 0, 0};
 motor_t M3508_4 = {0, 0, 0, 0};
+
+uint8_t voice_data[5];
 
 DM4310_HandleTypeDef DM4310_1;
 DM4310_HandleTypeDef DM4310_2;
@@ -31,7 +35,9 @@ extern PID_Param PID_Speed_M2006_1;
 extern PID_Param PID_Angle_M2006_1;
 extern int32_t last_angle;
 extern uint8_t Enable_flag;
-
+extern uint16_t Light;
+extern uint16_t Temperature;
+extern Light_TypeDef light1;
 /**
  * @brief CAN过滤器初始化
  *
@@ -105,3 +111,15 @@ void M2006_Angel(double target_angle, int16_t Max_speed) {
 
     M2006_Crtl_Currency(&M2006_1, PID_Speed_M2006_1.out);
 }
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+    if(huart->Instance == USART3)
+    {
+        RC_Processing_Data();
+    }
+    if(huart->Instance == USART6)
+    {
+
+    }
+}
+

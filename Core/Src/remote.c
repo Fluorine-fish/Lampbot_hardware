@@ -48,11 +48,3 @@ void RC_Processing_Data(void)
     //wheel
     RC.wheel = ((int16_t)RC_Data[16] | (int16_t)RC_Data[17] << 8) - 1024;
 }
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-    if(huart->Instance == USART3)
-    {
-        RC_Processing_Data();
-    }
-}
-
