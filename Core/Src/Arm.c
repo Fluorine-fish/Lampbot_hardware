@@ -64,7 +64,9 @@ double Arm_Posture[][4] = {
     {1.35, 0.95, 0.45, 1.75},
     {1.05, 0.95, 0.45, 1.75},
     {2.25, 1, 0.25, 0.7},
-    {3.14, 1, 0.20, 0.55},
+    {2.70, 1, 0.20, 0.55},
+
+    {-0.5, 1.65, 1.60, 0.35},
 };
 /**
  * @brief 记录机械臂把自己关掉需要的动作
@@ -82,7 +84,7 @@ double Turn_Itself_Off_Posture[][4] = {
     {1.15, 0.95, 0.45, 1.75},
     {1.05, 0.95, 0.45, 1.75},
     {2.25, 1, 0.25, 0.7},
-    {3.14, 1, 0.20, 0.55},
+    {2.85, 1, 0.20, 0.55},
 };
 /**
  * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-150
@@ -361,7 +363,7 @@ void Arm_Remote_Mode() {
         Temperature = temp_Temperature;
 
         Arm_Motor_Pos_cmd(Remote_Posture);
-        Light_Ctrl(&light1, Temperature, 150);
+        Light_Ctrl(&light1, Temperature,Light);
     }
     else {
         Vel[0] = 1.5;
@@ -437,7 +439,7 @@ void Arm_Remind_Sitting() {
     Pos[3] -= 0.1;
     HAL_Delay(400);
     Arm_Motor_Pos_cmd(Base_Posture);
-    HAL_Delay(200);
+    HAL_Delay(4000);
 }
 
 void Arm_Looking_Forward() {
@@ -458,8 +460,7 @@ void Arm_Back() {
     for (uint8_t i = 0; i < 4; i++) { Arm_Posture[Remote_Posture][i] = Arm_Posture[Base_Posture][i]; }
     for (uint8_t i = 1; i < 4; i++) { Vel[i] = 0.6; }
     Vel[0] = 1.5;
-    Temperature = 6000;
-    Light_Ctrl(&light1, Temperature, 150);
+    Light_Ctrl(&light1, Temperature, Light);
 }
 
 void Arm_Turn_Itself_Off() {
@@ -509,6 +510,13 @@ void Arm_Quick_Turn_Itself_Off() {
     HAL_Delay(200);
 }
 
+void Arm_Light_Tracing_Present() {
+    Arm_Motor_Pos_cmd(Light_Tracing_Posture);
+    HAL_Delay(3000);
+    Arm_Motor_Pos_cmd(Base_Posture);
+    HAL_Delay(3000);
+}
+
 /**
  * 拨杆开关从上到下是 1，3，2
  */
@@ -521,6 +529,9 @@ void Arm_Task() {
     }
     else if (RC.s1 == 3 && RC.s2 == 1) {
         Arm_Remind_Sitting();
+    }
+    else if (RC.s1 == 3 && RC.s2 == 2) {
+        Arm_Light_Tracing_Present();
     }
     else if (RC.s1 == 3 && RC.s2 == 3) {
         Arm_Looking_Forward();

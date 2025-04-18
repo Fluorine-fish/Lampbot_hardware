@@ -68,6 +68,7 @@ extern UART_HandleTypeDef huart3;
 extern UART_HandleTypeDef huart6;
 /* USER CODE BEGIN EV */
 extern uint16_t Light;
+extern uint8_t Enable_flag;
 extern uint16_t Temperature;
 extern uint8_t voice_data[5];
 extern Light_TypeDef light1;
@@ -217,7 +218,7 @@ void SysTick_Handler(void)
 void DMA1_Stream1_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Stream1_IRQn 0 */
-  RC_Processing_Data();
+
   /* USER CODE END DMA1_Stream1_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_usart3_rx);
   /* USER CODE BEGIN DMA1_Stream1_IRQn 1 */
@@ -301,26 +302,29 @@ void TIM5_IRQHandler(void)
 void DMA2_Stream1_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA2_Stream1_IRQn 0 */
-  if(voice_data[0] == '0') {
-    if(Light + 50 > 240) {Light = 240;}
-    else{ Light +=25; }
-    Light_Ctrl(&light1, Temperature, Light);
+  if(Enable_flag == 1) {
+    if(voice_data[0] == '0') {
+      if(Light + 50 > 240) {Light = 240;}
+      else{ Light +=25; }
+      Light_Ctrl(&light1, Temperature, Light);
+    }
+    if(voice_data[0] == '1') {
+      if(Light - 50 < 0) {Light = 0;}
+      else{ Light -=25; }
+      Light_Ctrl(&light1, Temperature, Light);
+    }
+    if(voice_data[0] == '3') {
+      if(Temperature + 500 > 6000) {Temperature = 6000;}
+      else{ Temperature +=250; }
+      Light_Ctrl(&light1, Temperature, Light);
+    }
+    if(voice_data[0] == '2') {
+      if(Temperature - 500 < 3500) {Temperature = 3500;}
+      else{ Temperature -=250; }
+      Light_Ctrl(&light1, Temperature, Light);
+    }
   }
-  if(voice_data[0] == '1') {
-    if(Light - 50 < 0) {Light = 0;}
-    else{ Light -=25; }
-    Light_Ctrl(&light1, Temperature, Light);
-  }
-  if(voice_data[0] == '3') {
-    if(Temperature + 500 > 6000) {Temperature = 6000;}
-    else{ Temperature +=250; }
-    Light_Ctrl(&light1, Temperature, Light);
-  }
-  if(voice_data[0] == '2') {
-    if(Temperature - 500 < 3500) {Temperature = 3500;}
-    else{ Temperature -=250; }
-    Light_Ctrl(&light1, Temperature, Light);
-  }
+
   /* USER CODE END DMA2_Stream1_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_usart6_rx);
   /* USER CODE BEGIN DMA2_Stream1_IRQn 1 */

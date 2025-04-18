@@ -19,6 +19,7 @@ typedef enum {
     Remote_Posture = 3, //remote状态 借助遥控器传回的数据控制姿态位置
     Remind_Sitting_Posture = 4, //提醒坐姿状态
     Remind_Looking_Forward_Posture = 5, //提醒远眺姿势
+    Light_Tracing_Posture = 19, //展示光照跟随动作
 
     //关闭自己的开关的运动路径
     Turn_Itself_Off_1 = 6,
@@ -55,5 +56,6 @@ void Arm_Back();
 void Arm_Quick_Off();
 void Arm_Turn_Itself_Off();
 void Arm_Quick_Turn_Itself_Off();
+void Arm_Light_Tracing_Present();
 
 #endif //ARM_H

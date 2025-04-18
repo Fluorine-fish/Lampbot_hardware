@@ -67,7 +67,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if (htim == &htim5) {
     M2006_Angel(Pos[3],M2006_Max_Vel);
   }
-  //TIM2负责处理机械臂解�???????? 20Hz 抢占优先级低
+  //TIM2负责处理机械臂解�???????? 20Hz 抢占优先级低
   if(htim == &htim2) {
     Arm_Calculate(Arm_params_input[0],Arm_params_input[1],Arm_params_input[2],&Arm_params);
   }
@@ -75,7 +75,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
   if(GPIO_Pin == GPIO_PIN_9){
-    //�??????�??????
+    //�??????�??????
     if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_SET) {
       Switch_flag = 0;
     }else if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_RESET) {
@@ -167,23 +167,23 @@ int main(void)
   // ReSharper disable once CppDFAEndlessLoop
   while (1)
     {
-    // if(Switch_flag == 1){
-    //   if(Enable_flag == 0){
-    //     Arm_Start();
-    //   }
-    //
-    //   Arm_Task();
-    //
-    // }else if(Switch_flag == 0){
-    //   if(Enable_flag == 1){
-    //     if(RC.s1 == 2)
-    //       {
-    //       Arm_Quick_Off();
-    //     }else {
-    //       Arm_Off();
-    //     }
-    //   }
-    // }
+    if(Switch_flag == 1){
+      if(Enable_flag == 0){
+        Arm_Start();
+      }
+
+      Arm_Task();
+
+    }else if(Switch_flag == 0){
+      if(Enable_flag == 1){
+        if(RC.s1 == 2)
+          {
+          Arm_Quick_Off();
+        }else {
+          Arm_Off();
+        }
+      }
+    }
     HAL_Delay(50);
     /* USER CODE END WHILE */
 
