@@ -34,6 +34,7 @@
 #include "Arm_Calc.h"
 #include "DM4310.h"
 #include "M2006.h"
+#include "USB_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,20 +63,25 @@ extern DM4310_HandleTypeDef DM4310_2;
 extern DM4310_HandleTypeDef DM4310_3;
 extern M2006_HandleTypeDef M2006_1;
 
+extern uint16_t Temperature;
+extern uint16_t Light;
+extern uint8_t Calculatable;
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   //TIM5负责处理M2006的位置环PID
   if (htim == &htim5) {
     M2006_Angel(Pos[3],M2006_Max_Vel);
   }
-  //TIM2负责处理机械臂解�????????? 20Hz 抢占优先级低
+  //TIM2负责处理机械臂解�?????????? 20Hz 抢占优先级低
   if(htim == &htim2) {
-    Arm_Calculate(Arm_params_input[0],Arm_params_input[1],Arm_params_input[2],&Arm_params);
+    // USB_Task();
+    Calculatable = Arm_Calculate(Arm_params_input[0],Arm_params_input[1],Arm_params_input[2],&Arm_params);
   }
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
   if(GPIO_Pin == GPIO_PIN_9){
-    //�???????�???????
+    //�????????�????????
     if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_SET) {
       Switch_flag = 0;
     }else if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_9) == GPIO_PIN_RESET) {
@@ -150,6 +156,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
+  USBData_init();
   DM4310_Init(&DM4310_1,&hcan1, 1,DM_CtrlMode_SpeedPosition);
   DM4310_Init(&DM4310_2,&hcan1, 2,DM_CtrlMode_SpeedPosition);
   DM4310_Init(&DM4310_3, &hcan1,3,DM_CtrlMode_SpeedPosition);
@@ -158,8 +165,9 @@ int main(void)
   Light_Init(&light1, &hcan1);
   HAL_UART_Receive_DMA(&huart3,RC_Data,sizeof(RC_Data));
   HAL_UARTEx_ReceiveToIdle_DMA(&huart6,voice_data,sizeof(voice_data));
-  Arm_Switch_Init();
+  // Arm_Switch_Init();
 
+  HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -184,6 +192,7 @@ int main(void)
         }
       }
     }
+    // Arm_Book_Follow();
     HAL_Delay(50);
     /* USER CODE END WHILE */
 

@@ -14,9 +14,12 @@
 #include "Light.h"
 #include "DM4310.h"
 #include "M2006.h"
+#include "USB_task.h"
 
 Light_TypeDef light1;
 Posture_enum Arm_Posture_index;
+arm_todo_t todo;
+
 extern DM4310_HandleTypeDef DM4310_1;
 extern DM4310_HandleTypeDef DM4310_2;
 extern DM4310_HandleTypeDef DM4310_3;
@@ -27,6 +30,8 @@ extern int32_t last_angle;
 extern int32_t angle;
 extern uint8_t Switch_flag;
 extern RC_t RC;
+extern Arm_Params_t Arm_params;
+extern uint8_t Calculatable;
 
 /**
  * @brief 机械臂yaw pitch轴角度
@@ -35,7 +40,7 @@ double Pos[4] = {0.0, 0.0, 0.0, 0.0};
 /**
  * @brief [0]为 yaw_target,[1]为 X_B ,[2] 为 Y_B，[3]为 pitch3_target
  */
-double Arm_params_input[4] = {0.0, 64.0, 64.0};
+double Arm_params_input[4] = {0.0, 50.0, 250.0};
 /**
  * @brief 电机转动的最大速度
  */
@@ -45,8 +50,8 @@ int16_t M2006_Max_Vel = 250;
  * @brief 记录机械臂不同动作对应的电机角度q值
  */
 double Arm_Posture[][4] = {
-    {0.0, 0.5, 0.8, 0.0},
-    {-0.5, 0.95, 0.95, 0.15},
+    {0.0, 0.7, 0.8, 0.0},
+    {0.0, 1.2, 0.85, 0.85},
     {0.0, 0.06, 0.07, 0.7},
     {-0.5, 0.95, 0.95, 0.15},
     {-0.5, 0.80, 0.75, 0.54},
@@ -67,6 +72,7 @@ double Arm_Posture[][4] = {
     {2.70, 1, 0.20, 0.55},
 
     {-0.5, 1.65, 1.60, 0.35},
+    {0.0, 1.016, 0.906, 0.809}
 };
 /**
  * @brief 记录机械臂把自己关掉需要的动作
@@ -87,10 +93,10 @@ double Turn_Itself_Off_Posture[][4] = {
     {2.85, 1, 0.20, 0.55},
 };
 /**
- * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-150
+ * @brief channel0 是 6500K灯珠亮度，channel1是3000K 灯珠亮度， 亮度范围 0-1000
  */
-uint16_t Temperature = 6000;
-uint16_t Light = 100;
+uint16_t Temperature = Original_temperature;
+uint16_t Light = Original_light;
 
 void Arm_Start() {
     HAL_TIM_Base_Start_IT(&htim2);
@@ -123,13 +129,13 @@ void Arm_Start() {
     HAL_TIM_Base_Start_IT(&htim5); //打开写在中断回调里的Pitch3电机PID控制
     angle = 0;
     last_angle = M2006_1.angle_ecd;
-    angle += 5000; //防止从反方向转到100
+    angle += 2000; //防止从反方向转到100
 
     //ptich3就位
     Arm_Motor_Pos_cmd(Base_Posture);
     //打开灯
     Arm_Light_slow_ON();
-    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 150); }
+    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, Original_light); }
 }
 
 void Arm_Quick_Start() {
@@ -144,7 +150,7 @@ void Arm_Quick_Start() {
         (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
         (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
         Arm_Motor_Pos_cmd(Homing_Posture);
-        }
+    }
 
     HAL_Delay(500);
 
@@ -167,7 +173,7 @@ void Arm_Quick_Start() {
     //ptich3就位
     Arm_Motor_Pos_cmd(Base_Posture);
     //打开灯
-    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, 150); }
+    for (uint8_t i = 0; i < 4; i++) { Light_Ctrl(&light1, Temperature, Original_light); }
 }
 
 void Arm_Motor_Enable() //yaw pitch1 pitch2 使能
@@ -219,7 +225,7 @@ void Arm_Motor_Pos_cmd(uint8_t Posture) {
     HAL_Delay(5);
 
     //确保到位
-    if (Posture != Remote_Posture) {
+    if (Posture != Remote_Posture && Posture != Book_Follow_Posture) {
         while (!((DM4310_1.position - Pos[0] <= 0.1) && (DM4310_1.position - Pos[0] >= -0.1) &&
             (DM4310_2.position - Pos[1] <= 0.1) && (DM4310_2.position - Pos[1] >= -0.1) &&
             (DM4310_3.position - Pos[2] <= 0.1) && (DM4310_3.position - Pos[2] >= -0.1))) {
@@ -306,45 +312,44 @@ void Arm_Remote_Mode() {
     //在遥控器模式下再进行执行
     if (RC.s1 == 1 && RC.s2 == 1) {
         //提升响应速度
-        Vel[0] = 2.5;
-        Vel[1] = 1;
+        Vel[0] = 1;
+        Vel[1] = 2;
         Vel[2] = 1;
         Vel[3] = 1;
 
         double temp_Pos[4];
-        uint16_t temp_Temperature = 6000;
         for (uint8_t i = 0; i < 4; i++) { temp_Pos[i] = Arm_Posture[Remote_Posture][i]; }
-        temp_Temperature = Temperature;
+        uint16_t temp_light = Light;
 
-        if (RC.ch0 >= 20) {
-            temp_Pos[0] += 0.05;
+        if (RC.ch0 >= 200) {
+            temp_Pos[0] += 0.01;
         }
         else if (RC.ch0 <= -200) {
-            temp_Pos[0] -= 0.1;
+            temp_Pos[0] -= 0.01;
         }
-        if (RC.ch1 >= 20) {
-            temp_Pos[1] += 0.05;
+        if (RC.ch1 >= 200) {
+            temp_Pos[1] += 0.01;
         }
         else if (RC.ch1 <= -200) {
-            temp_Pos[1] -= 0.1;
+            temp_Pos[1] -= 0.01;
         }
-        if (RC.ch2 >= 20) {
+        if (RC.ch2 >= 200) {
             temp_Pos[2] += 0.05;
         }
         else if (RC.ch2 <= -200) {
             temp_Pos[2] -= 0.05;
         }
-        if (RC.ch3 >= 20) {
+        if (RC.ch3 >= 200) {
             temp_Pos[3] += 0.05;
         }
         else if (RC.ch3 <= -200) {
             temp_Pos[3] -= 0.05;
         }
-        if (RC.wheel >= 20) {
-            temp_Temperature -= 100;
+        if (RC.wheel >= 200) {
+            temp_light -= 10;
         }
         else if (RC.wheel <= -200) {
-            temp_Temperature += 100;
+            temp_light += 10;
         }
 
         //传入参数限幅
@@ -352,18 +357,14 @@ void Arm_Remote_Mode() {
         temp_Pos[1] = clamp(temp_Pos[1], 0.1, 3.0415927);
         temp_Pos[2] = clamp(temp_Pos[2], 0.1, 3.0415927);
         temp_Pos[3] = clamp(temp_Pos[3], 0.1, 2.1340214);
-        temp_Temperature = ((((temp_Temperature > 6000) ? 6000 : temp_Temperature) < 3500)
-                                ? 3500
-                                : (temp_Temperature > 6000)
-                                ? 6000
-                                : temp_Temperature);
+        temp_light = clamp(temp_light, 0.0f, 1000.0f);
 
         //Pos 赋值
         for (uint8_t i = 0; i < 4; i++) { Arm_Posture[Remote_Posture][i] = temp_Pos[i]; }
-        Temperature = temp_Temperature;
+        Light = Original_light;
 
         Arm_Motor_Pos_cmd(Remote_Posture);
-        Light_Ctrl(&light1, Temperature,Light);
+        Light_Ctrl(&light1, Temperature, Light);
     }
     else {
         Vel[0] = 1.5;
@@ -382,10 +383,10 @@ void Arm_Light_slow_ON() {
     float cnt = 0.0;
     for (int i = 0; i < 100; i++) {
         cnt = i * 0.015; // 计算当前 cnt 值
-        Light_Ctrl(&light1, Temperature, 150 * sin(cnt));
+        Light_Ctrl(&light1, Temperature, Original_light * sin(cnt));
         HAL_Delay(50);
     }
-    Light_Ctrl(&light1, Temperature, 150); // 循环结束后设置为最大值
+    Light_Ctrl(&light1, Temperature, Original_light); // 循环结束后设置为最大值
 }
 
 /**
@@ -395,7 +396,7 @@ void Arm_Light_slow_OFF() {
     float cnt = 0.0;
     for (int i = 40; i < 100; i++) {
         cnt = 3.1415927 / 2.0 + i * 0.015; // 计算当前 cnt 值
-        Light_Ctrl(&light1, Temperature, 150 * sin(cnt));
+        Light_Ctrl(&light1, Temperature, Original_light * sin(cnt));
         HAL_Delay(50);
     }
     Light_Ctrl(&light1, Temperature, 0); // 循环结束后设置为最大值
@@ -423,7 +424,7 @@ void Arm_Light_Remote() {
                             : (temp_Temperature > 6000)
                             ? 6000
                             : temp_Temperature);
-    temp_Light = ((((temp_Light > 244) ? 244 : temp_Light) < 0) ? 0 : (temp_Light > 244) ? 244 : temp_Light);
+    temp_Light = ((((temp_Light > 1000) ? 1000 : temp_Light) < 0) ? 0 : (temp_Light > 1000) ? 1000 : temp_Light);
 
     Temperature = temp_Temperature;
     Light = temp_Light;
@@ -515,6 +516,36 @@ void Arm_Light_Tracing_Present() {
     HAL_Delay(3000);
     Arm_Motor_Pos_cmd(Base_Posture);
     HAL_Delay(3000);
+}
+
+void Arm_Book_Follow() {
+    double temp_Pos[4];
+    for (uint8_t i=0;i<3;i++) { temp_Pos[i] = Arm_Posture[Book_Follow_Posture][i]; }
+
+    if (RC.ch0 >= 100 || RC.ch0 <= -100) temp_Pos[0] = clamp(temp_Pos[0] + 0.05*(RC.ch0/660.0),-1.570796, 1.570796);
+    if (RC.ch1 >= 100 || RC.ch1 <= -100) Arm_params_input[1] = clamp(Arm_params_input[1] + 5*(RC.ch1/660.0) , -100.0 , 300.0);
+    if (RC.ch3 >= 100 || RC.ch3 <= -100) Arm_params_input[2] = clamp(Arm_params_input[2] + 5*(RC.ch3/660.0), 210.0, 300.0);
+
+    temp_Pos[1] = Arm_params.q[0];
+    temp_Pos[2] = Arm_params.q[1];
+    temp_Pos[3] = Arm_params.q[2];
+
+    temp_Pos[1] = clamp(temp_Pos[1], 0.1f, 3.0415927f);
+    temp_Pos[2] = clamp(temp_Pos[2], 0.1f, 3.0415927f);
+    temp_Pos[3] = clamp(temp_Pos[3], 0.1f, 2.1340214f);
+
+    Vel[1] = temp_Pos[1]>Arm_Posture[Book_Follow_Posture][1]? (temp_Pos[1] - Arm_Posture[Book_Follow_Posture][1])/0.15 : (Arm_Posture[Book_Follow_Posture][1] - temp_Pos[1])/0.1 ;
+    Vel[2] = temp_Pos[2]>Arm_Posture[Book_Follow_Posture][2]? (temp_Pos[2] - Arm_Posture[Book_Follow_Posture][2])/0.15 : (Arm_Posture[Book_Follow_Posture][2] - temp_Pos[2])/0.1 ;
+
+    if (Calculatable) {
+        Arm_Posture[Book_Follow_Posture][0] = temp_Pos[0];
+        Arm_Posture[Book_Follow_Posture][1] = temp_Pos[1];
+        Arm_Posture[Book_Follow_Posture][2] = temp_Pos[2];
+        Arm_Posture[Book_Follow_Posture][3] = temp_Pos[3];
+    }
+
+    Arm_Motor_Pos_cmd(Book_Follow_Posture);
+    HAL_Delay(30);
 }
 
 /**

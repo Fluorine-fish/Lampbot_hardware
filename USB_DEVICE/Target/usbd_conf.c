@@ -72,7 +72,13 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* pcdHandle)
   if(pcdHandle->Instance==USB_OTG_FS)
   {
   /* USER CODE BEGIN USB_OTG_FS_MspInit 0 */
-
+    __HAL_RCC_GPIOA_CLK_ENABLE(); //使能GPIO端口
+    GPIO_InitStruct.Pin = GPIO_PIN_12; //PA12也就是DP
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; //定义为推挽输�?
+    GPIO_InitStruct.Pull = GPIO_PULLDOWN; //定义为下�?
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; //引脚翻转速度
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct); //初始�?
+    HAL_Delay(50);
   /* USER CODE END USB_OTG_FS_MspInit 0 */
 
     __HAL_RCC_GPIOA_CLK_ENABLE();

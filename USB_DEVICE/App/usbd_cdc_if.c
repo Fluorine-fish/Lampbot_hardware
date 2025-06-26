@@ -22,7 +22,7 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "USB_task.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -261,6 +261,9 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
+  USBData_GetData(Buf,Len);
+
+  //指定下次数据存放的位�??
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
   return (USBD_OK);
@@ -282,12 +285,20 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
 {
   uint8_t result = USBD_OK;
   /* USER CODE BEGIN 7 */
-  USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
-  if (hcdc->TxState != 0){
-    return USBD_BUSY;
+  USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;//获得设备状�?�信息结构体
+  // if (hcdc->TxState != 0){
+  //   return USBD_BUSY;
+  // }
+
+  uint32_t timeStart = HAL_GetTick();      //获取进入函数时的运行时间
+  while(hcdc->TxState) {                   //等待发�?�空�??
+    if (HAL_GetTick() - timeStart > 20) {  //等待超时ms
+      return USBD_BUSY;                   //没有空闲就返回；忙就放弃发�??
+    }
   }
-  USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
-  result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);
+
+  USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);//把要发�?�的数据，复制到发�?�缓存中
+  result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);//发�?�数据（只有被主机轮询到才可以发出到主机�??
   /* USER CODE END 7 */
   return result;
 }

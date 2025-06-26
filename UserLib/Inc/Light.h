@@ -9,7 +9,7 @@
 #include "can.h"
 
 typedef struct {
-    uint8_t lights[2];
+    uint16_t lights[2];
 
     CAN_HandleTypeDef* hcan;
 } Light_TypeDef;
@@ -21,7 +21,7 @@ void Light_Init(Light_TypeDef* light, CAN_HandleTypeDef* hcan);
  * @param Temperature 输入色温， 3000-6500
  * @param Light 输入亮度 0-70
  */
-void Light_Ctrl(Light_TypeDef* light, uint16_t Temperature, uint8_t Light);
+void Light_Ctrl(Light_TypeDef* light, const uint16_t Temperature, const uint16_t Light);
 
 
 #endif //LIGHT_H
