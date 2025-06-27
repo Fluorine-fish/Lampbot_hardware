@@ -18,7 +18,6 @@
 
 Light_TypeDef light1;
 Posture_enum Arm_Posture_index;
-arm_todo_t todo;
 
 extern DM4310_HandleTypeDef DM4310_1;
 extern DM4310_HandleTypeDef DM4310_2;
